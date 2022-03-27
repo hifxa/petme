@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#262938</color>
+    <color name="colorPrimaryDark">#181A24</color>
+    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorTransparentWhite">#cccccc</color>
+    <color name="colorGray">#FFFFFFFF</color>
+    <color name="logo_fill_pink">#FFDAE6</color>
+    <color name="logo_outline">#F77D82</color>
+    <color name="logo_fill_blue">#9BFDFF</color>
+    <color name="logo_me">#4AA6A8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="purple_200">#FFFFF1</color>
+    <color name="purple_700">#FFFF23</color>
+    <color name="black">#000000</color>
+    <color name="teal_200">#FFFF3F</color>
+</resources>

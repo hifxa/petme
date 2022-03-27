@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/button_bg.xml" value="0.157" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/curve_bg.xml" value="0.152" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/edit_text_bg.xml" value="0.157" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1078125" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_login.xml" value="0.2359375" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_login1.xml" value="0.264" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/login_tab_fragment.xml" value="0.264" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/signup_tab_fragment.xml" value="0.2359375" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.201" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

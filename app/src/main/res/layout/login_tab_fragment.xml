@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="319dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:hint="username"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColor="#191818"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="319dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColor="#191818"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="147dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button_bg"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassword"
+        app:layout_constraintVertical_bias="0.164" />
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="116dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Forgot Password"
+        android:textColor="#6C6C6C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.844"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
