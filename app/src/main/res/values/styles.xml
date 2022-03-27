@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources >
+
+	<style name = "inputBoxOutline" parent = "Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+		<item name = "android:textSize" >13sp</item >
+		<item name = "android:textColorHint" >@color/onBackground</item >
+		<item name = "android:textColor" >@color/black</item >
+
+		<!--TEXT BOX STYLE-->
+		<item name = "boxBackgroundColor" >@color/background</item >
+		<item name = "boxStrokeColor" >@color/primary</item >
+		<item name = "errorEnabled" >false</item >
+		<item name = "hintEnabled" >false</item >
+		<item name = "boxStrokeWidth" >1dp</item >
+		<item name = "boxStrokeWidthFocused" >2dp</item >
+		<item name = "boxCornerRadiusBottomStart" >24dp</item >
+		<item name = "boxCornerRadiusBottomEnd" >24dp</item >
+		<item name = "boxCornerRadiusTopStart" >24dp</item >
+		<item name = "boxCornerRadiusTopEnd" >24dp</item >
+
+		MISC. COLOR
+		<item name = "hintTextColor" >@color/onBackground</item >
+		<item name = "startIconTint" >@color/primary</item >
+
+		TEXT CONTROLLER COLOR
+		<item name = "colorControlActivated" >@color/primary</item >
+		<item name = "colorControlNormal" >@color/primary</item >
+		<item name = "colorControlHighlight" >@color/primary</item >
+		<item name = "android:colorControlActivated" >@color/primary</item >
+		<item name = "android:colorControlNormal" >@color/primary</item >
+		<item name = "android:colorControlHighlight" >@color/primary</item >
+	</style >
+
+</resources >

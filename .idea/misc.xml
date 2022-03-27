@@ -13,6 +13,20 @@
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/login_tab_fragment.xml" value="0.264" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/signup_tab_fragment.xml" value="0.2359375" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.201" />
+        <entry key="..\:/apps/petme/app/src/main/res/drawable/button_bg.xml" value="0.191" />
+        <entry key="..\:/apps/petme/app/src/main/res/drawable/curve_bg.xml" value="0.282" />
+        <entry key="..\:/apps/petme/app/src/main/res/drawable/pet.xml" value="0.244" />
+        <entry key="..\:/apps/petme/app/src/main/res/drawable/user.xml" value="0.244" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/activity_dash.xml" value="0.2" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/activity_login1.xml" value="0.29786324786324786" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/activity_main.xml" value="0.29786324786324786" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/fragment_profile.xml" value="0.297990594271056" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/login_tab_fragment.xml" value="0.25" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/quotes_item_view.xml" value="0.297990594271056" />
+        <entry key="..\:/apps/petme/app/src/main/res/layout/signup_tab_fragment.xml" value="0.29786324786324786" />
+        <entry key="..\:/apps/petme/app/src/main/res/menu/menu.xml" value="0.297990594271056" />
+        <entry key="..\:/apps/petme/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.244" />
       </map>
     </option>
   </component>
