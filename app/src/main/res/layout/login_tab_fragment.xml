@@ -24,7 +24,7 @@
 				android:id = "@+id/username"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
-				android:hint = "username"
+				android:hint = "Username"
 				style="@style/Body1"
 				android:inputType = "textPersonName"
 				android:textColor = "#191818" />
@@ -43,7 +43,7 @@
 			app:passwordToggleTint = "@color/primary" >
 
 			<com.google.android.material.textfield.TextInputEditText
-				android:id = "@+id/password"
+				android:id = "@+id/signupPass"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
 				android:hint = "Password"
