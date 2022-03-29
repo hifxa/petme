@@ -43,7 +43,7 @@
 			app:passwordToggleTint = "@color/primary" >
 
 			<com.google.android.material.textfield.TextInputEditText
-				android:id = "@+id/signupPass"
+				android:id = "@+id/loginPass"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
 				android:hint = "Password"
