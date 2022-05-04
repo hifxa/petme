@@ -4,41 +4,42 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.petme.R;
+import com.example.petme.base.BaseFragment;
+import com.example.petme.databinding.LoginTabFragmentBinding;
 
-public class LoginTabFragment extends Fragment {
+import androidx.navigation.Navigation;
 
-    TextView username;
-    TextView password;
-    TextView forgotPassword;
-    Button login;
+public class LoginTabFragment extends BaseFragment<LoginTabFragmentBinding> {
+
+    @NonNull
+    @Override
+    public LoginTabFragmentBinding getBind(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        return LoginTabFragmentBinding.inflate(inflater,container,false);
+    }
+
     float v=0;
 
     @Override
-    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.login_tab_fragment, container, false);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        bind.username.setAlpha(v);
+        bind.loginPass.setAlpha(v);
+        bind.login.setAlpha(v);
+        bind.dontHaveAcc.setAlpha(v);
+        bind.signupLink.setAlpha(v);
 
-        username = root.findViewById(R.id.username);
-        password = root.findViewById(R.id.loginPass);
-        forgotPassword = root.findViewById(R.id.forgotPassword);
-        login = root.findViewById(R.id.login);
+        bind.username.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+        bind.loginPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        bind.login.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        bind.dontHaveAcc.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+        bind.signupLink.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
 
-        username.setAlpha(v);
-        password.setAlpha(v);
-        forgotPassword.setAlpha(v);
-        login.setAlpha(v);
-
-        username.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        password.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        forgotPassword.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        login.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
-
-        return root;
+        bind.signupLink.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.goToSignUp));
     }
 }

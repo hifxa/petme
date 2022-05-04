@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-	xmlns:tools = "http://schemas.android.com/tools"
-	android:layout_width = "match_parent"
-	android:layout_height = "match_parent"
-	android:background="@color/background"
-	tools:context = ".view.dash.ProfileFragment" >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".view.dash.ProfileFragment">
 
-	<TextView
-		android:layout_width = "match_parent"
-		android:layout_height = "match_parent"
-		android:gravity="center"
-		android:textColor="@color/onBackground"
-		style="@style/Headline4"
-		android:text = "Profile Fragment" />
+    <TextView
+        style="@style/Headline4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Profile Fragment"
+        android:textColor="@color/onBackground" />
 
-</FrameLayout >
+</FrameLayout>

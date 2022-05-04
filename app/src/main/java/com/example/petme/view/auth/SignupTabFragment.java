@@ -4,48 +4,42 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.petme.R;
+import com.example.petme.base.BaseFragment;
+import com.example.petme.databinding.SignupTabFragmentBinding;
 
-public class SignupTabFragment extends Fragment {
+public class SignupTabFragment extends BaseFragment<SignupTabFragmentBinding> {
 
-    TextView email;
-    TextView name;
-    TextView editTextPhone;
-    TextView pass;
-    TextView confirmPass;
-    Button signup;
-    float v = 0;
-
-
+    @NonNull
     @Override
-    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle saveInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.signup_tab_fragment, container, false);
+    public SignupTabFragmentBinding getBind(@NonNull LayoutInflater inflater, @Nullable ViewGroup container){
+        return SignupTabFragmentBinding.inflate(inflater, container, false);
+    }
 
-        email = root.findViewById(R.id.email);
-        name = root.findViewById(R.id.name);
-        editTextPhone = root.findViewById(R.id.phoneNumber);
-        pass = root.findViewById(R.id.signupPass);
-        confirmPass = root.findViewById(R.id.confirmPass);
-        signup = root.findViewById(R.id.signup);
+    float v = 0;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        email.setAlpha(v);
-        name.setAlpha(v);
-        editTextPhone.setAlpha(v);
-        pass.setAlpha(v);
-        confirmPass.setAlpha(v);
-        signup.setAlpha(v);
+        bind.email.setAlpha(v);
+        bind.name.setAlpha(v);
+        bind.phoneNumber.setAlpha(v);
+        bind.signupPass.setAlpha(v);
+        bind.confirmPass.setAlpha(v);
+        bind.signup.setAlpha(v);
 
-        email.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        name.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        editTextPhone.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        pass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        confirmPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
-        signup.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
-        return root;
+        bind.email.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+        bind.name.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
+        bind.phoneNumber.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        bind.signupPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
+        bind.confirmPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+        bind.signup.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+
+
     }
 }
