@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.petme.databinding.FragmentSignUpBinding;
+import com.petme.app.databinding.FragmentSignUpBinding;
 import com.petme.app.base.BaseFragment;
 
 public class SignupFragment extends BaseFragment< FragmentSignUpBinding > {

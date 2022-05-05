@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.petme.databinding.FragmentHomeBinding;
+import com.petme.app.databinding.FragmentHomeBinding;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.controllers.HomeOptionsAdapter;
 import com.petme.app.view.custom.FadingTextView;

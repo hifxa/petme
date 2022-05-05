@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 
-import com.example.petme.R;
-import com.example.petme.databinding.FragmentLoginBinding;
+import com.petme.app.R;
+import com.petme.app.databinding.FragmentLoginBinding;
 import com.petme.app.base.BaseFragment;
 
 public class LoginFragment extends BaseFragment < FragmentLoginBinding > {

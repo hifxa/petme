@@ -10,8 +10,8 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.petme.R;
-import com.example.petme.databinding.ActivityDashBinding;
+import com.petme.app.R;
+import com.petme.app.databinding.ActivityDashBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashActivity extends AppCompatActivity implements NavController.OnDestinationChangedListener {

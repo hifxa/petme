@@ -7,18 +7,18 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import com.example.petme.R;
+import com.petme.app.R;
+import com.petme.app.databinding.ActivitySplashBinding;
 import com.petme.app.view.dash.DashActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    com.example.petme.databinding.ActivitySplashBinding bind;
-	private Button button;
+    ActivitySplashBinding bind;
 
 	@Override
 	protected void onCreate ( Bundle savedInstanceState ) {
 		super.onCreate ( savedInstanceState );
-        bind = com.example.petme.databinding.ActivitySplashBinding.inflate ( getLayoutInflater () );
+        bind = ActivitySplashBinding.inflate ( getLayoutInflater () );
 		setContentView (bind.getRoot() );
 
 		getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.background ) );

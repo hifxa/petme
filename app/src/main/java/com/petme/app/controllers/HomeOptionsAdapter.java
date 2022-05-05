@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.petme.R;
-import com.example.petme.databinding.HomeItemCardBinding;
+import com.petme.app.R;
+import com.petme.app.databinding.HomeItemCardBinding;
 
 import java.util.List;
 

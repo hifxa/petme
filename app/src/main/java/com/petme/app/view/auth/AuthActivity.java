@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.petme.databinding.ActivityAuthBinding;
+import com.petme.app.databinding.ActivityAuthBinding;
 
 public class AuthActivity extends AppCompatActivity {
 

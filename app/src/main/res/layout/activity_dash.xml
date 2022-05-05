@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            android:padding="16dp"
+            android:padding="8dp"
             app:itemIconTint="@color/primary"
             app:labelVisibilityMode="selected"
             app:menu="@menu/menu" />

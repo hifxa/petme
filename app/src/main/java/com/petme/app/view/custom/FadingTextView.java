@@ -13,7 +13,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
 
-import com.example.petme.R;
+import com.petme.app.R;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

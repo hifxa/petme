@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.petme.R;
+import com.petme.app.R;
 
 public class ProfileFragment extends Fragment {
 
