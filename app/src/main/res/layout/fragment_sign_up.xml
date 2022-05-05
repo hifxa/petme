@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".view.auth.SignupTabFragment">
+    tools:context="com.petme.app.view.auth.SignupFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

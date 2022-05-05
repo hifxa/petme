@@ -11,4 +11,14 @@
 	<string name = "login_failed" >"Login failed"</string >
 	<!-- TODO: Remove or change this placeholder text -->
 	<string name = "hello_blank_fragment" >Hello blank fragment</string >
+
+	<string-array name = "examples" >
+		<item >An animal’s eyes have the power to speak a great language</item >
+		<item >Dogs are our link to paradise. They don’t know evil or jealousy or discontent.</item >
+		<item >Until one has loved an animal, a part of one’s soul remains unawakened.</item >
+		<item >Time spent with cats is never wasted.</item >
+		<item >You cannot look at a sleeping cat and feel tense</item >
+		<item >Dogs are not our whole life, but they make our lives whole</item >
+	</string-array >
+
 </resources >

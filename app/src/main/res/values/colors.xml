@@ -13,7 +13,7 @@
     <color name = "background">#ffffff</color>
     <color name = "onBackground">#121212</color>
 
-    <color name = "surface">#FFDCDD</color>
+    <color name = "surface">#FDE8E9</color>
     <color name = "onSurface">#121212</color>
 
     <color name="colorTransparentWhite">#cccccc</color>

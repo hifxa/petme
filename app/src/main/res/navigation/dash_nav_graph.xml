@@ -7,13 +7,13 @@
 
 	<fragment
 		android:id = "@+id/home"
-		android:name = "com.example.petme.view.dash.HomeFragment"
+		android:name = "com.petme.app.view.dash.HomeFragment"
 		android:label = "fragment_home"
 		tools:layout = "@layout/fragment_home" />
 
 	<fragment
 		android:id = "@+id/profile"
-		android:name = "com.example.petme.view.dash.ProfileFragment"
+		android:name = "com.petme.app.view.dash.ProfileFragment"
 		tools:layout = "@layout/fragment_profile"
 		android:label = "ProfileFragment" />
 

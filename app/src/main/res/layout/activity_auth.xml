@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".view.auth.AuthActivity">
+    tools:context="com.petme.app.view.auth.AuthActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_view"

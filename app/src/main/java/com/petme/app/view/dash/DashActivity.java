@@ -1,4 +1,4 @@
-package com.example.petme.view.dash;
+package com.petme.app.view.dash;
 
 import android.os.Bundle;
 
@@ -11,27 +11,27 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.petme.R;
+import com.example.petme.databinding.ActivityDashBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashActivity extends AppCompatActivity implements NavController.OnDestinationChangedListener {
 
-    BottomNavigationView navBar;
+    ActivityDashBinding bind;
     NavHostFragment navView;
     NavController ctrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dash);
 
-        navBar = findViewById(R.id.nav_bar);
+        bind = ActivityDashBinding.inflate ( getLayoutInflater () );
+        setContentView(bind.getRoot ());
+
         navView = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_view);
-
         ctrl = navView.getNavController();
-        NavigationUI.setupWithNavController(navBar, ctrl);
+
+        NavigationUI.setupWithNavController(bind.navBar, ctrl);
         ctrl.addOnDestinationChangedListener(this);
-
-
     }
 
     @Override
