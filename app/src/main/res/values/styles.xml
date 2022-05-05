@@ -31,4 +31,10 @@
 		<item name = "android:colorControlHighlight" >@color/primary</item >
 	</style >
 
+	<style name = "cardStyle">
+		<item name = "cardElevation">4dp</item>
+		<item name = "cardCornerRadius">16dp</item>
+		<item name = "cardBackgroundColor">@color/surface</item>
+	</style>
+
 </resources >

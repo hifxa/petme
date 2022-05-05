@@ -40,6 +40,13 @@
         <entry key="..\:/apps/petme/app/src/main/res/layout/signup_tab_fragment.xml" value="0.29786324786324786" />
         <entry key="..\:/apps/petme/app/src/main/res/menu/menu.xml" value="0.297990594271056" />
         <entry key="..\:/apps/petme/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.244" />
+        <entry key="..\:/petme/app/src/main/res/layout/activity_main.xml" value="0.2713541666666667" />
+        <entry key="..\:/petme/app/src/main/res/layout/activity_splash.xml" value="0.22" />
+        <entry key="..\:/petme/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/petme/app/src/main/res/layout/home_item_card.xml" value="0.5" />
+        <entry key="..\:/petme/app/src/main/res/layout/login_tab_fragment.xml" value="0.2713541666666667" />
+        <entry key="..\:/petme/app/src/main/res/layout/quotes_item_view.xml" value="0.2713541666666667" />
+        <entry key="..\:/petme/app/src/main/res/layout/signup_tab_fragment.xml" value="0.2713541666666667" />
       </map>
     </option>
   </component>

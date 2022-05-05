@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/loginTabFragment"
-        android:name="com.example.petme.view.auth.LoginTabFragment"
-        tools:layout="@layout/login_tab_fragment"
+        android:name="com.petme.app.view.auth.LoginFragment"
+        tools:layout="@layout/fragment_login"
         android:label="LoginTabFragment" >
         <action
             android:id="@+id/goToSignUp"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupTabFragment"
-        android:name="com.example.petme.view.auth.SignupTabFragment"
-        tools:layout="@layout/signup_tab_fragment"
+        android:name="com.petme.app.view.auth.SignupFragment"
+        tools:layout="@layout/fragment_sign_up"
         android:label="SignupTabFragment" />
 </navigation>

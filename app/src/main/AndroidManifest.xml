@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetMe" >
         <activity
-            android:name=".view.dash.DashActivity"
+            android:name="com.petme.app.view.dash.DashActivity"
             android:exported="false" />
         <activity
-            android:name=".view.auth.AuthActivity"
+            android:name="com.petme.app.view.auth.AuthActivity"
             android:exported="true" >
         </activity>
         <activity
-            android:name=".view.auth.MainActivity"
+            android:name="com.petme.app.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.petme.view.dash;
+package com.petme.app.view.dash;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

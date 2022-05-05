@@ -1,4 +1,4 @@
-package com.example.petme.view.auth;
+package com.petme.app.view.auth;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,19 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.petme.R;
-import com.example.petme.base.BaseFragment;
-import com.example.petme.databinding.SignupTabFragmentBinding;
+import com.example.petme.databinding.FragmentSignUpBinding;
+import com.petme.app.base.BaseFragment;
 
-public class SignupTabFragment extends BaseFragment<SignupTabFragmentBinding> {
+public class SignupFragment extends BaseFragment< FragmentSignUpBinding > {
 
     @NonNull
     @Override
-    public SignupTabFragmentBinding getBind(@NonNull LayoutInflater inflater, @Nullable ViewGroup container){
-        return SignupTabFragmentBinding.inflate(inflater, container, false);
+    public FragmentSignUpBinding getBind(@NonNull LayoutInflater inflater, @Nullable ViewGroup container){
+        return FragmentSignUpBinding.inflate(inflater, container, false);
     }
 
     float v = 0;
