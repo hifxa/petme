@@ -11,21 +11,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewbinding.ViewBinding;
 
-public abstract class BaseFragment<BIND extends ViewBinding > extends Fragment {
+import java.util.Locale;
+
+public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment {
 
 	protected BIND bind;
 	protected Context mCtx;
+	protected String TAG ="_TAG_";
 
 	@Nullable
 	@Override
 	public View onCreateView ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container , @Nullable Bundle savedInstanceState ) {
-		bind = getBind ( inflater, container );
-		mCtx = inflater.getContext ();
+		bind = getBind ( inflater , container );
+		mCtx = inflater.getContext ( );
 
-		return bind.getRoot ();
+		if ( getTag ( ) != null ) {
+			TAG = getTag ( ).toUpperCase ( Locale.ROOT );
+		}
+
+		return bind.getRoot ( );
 	}
 
 
-	public abstract BIND getBind(@NonNull LayoutInflater inflater , @Nullable ViewGroup container );
+	public abstract BIND getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container );
 
 }

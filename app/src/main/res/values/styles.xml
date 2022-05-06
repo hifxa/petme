@@ -4,7 +4,10 @@
 	<style name = "inputBoxOutline" parent = "Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 		<item name = "android:textSize" >13sp</item >
 		<item name = "android:textColorHint" >@color/onBackground</item >
-		<item name = "android:textColor" >@color/black</item >
+		<item name="android:textAppearance">@style/Body2</item>
+		<item name="android:textColor">@color/onBackground</item>
+		<item name="android:maxLines">1</item>
+		<item name="maxLines">1</item>
 
 		<!--TEXT BOX STYLE-->
 		<item name = "boxBackgroundColor" >@color/background</item >

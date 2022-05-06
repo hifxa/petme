@@ -5,4 +5,8 @@
 		<attr name="timeout" format="integer" />
 		<attr name="shuffle" format="boolean" />
 	</declare-styleable>
+
+	<declare-styleable name = "LoaderView" >
+
+	</declare-styleable >
 </resources>

@@ -3,6 +3,7 @@
     package="com.petme.app" >
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"

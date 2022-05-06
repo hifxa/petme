@@ -1,26 +1,26 @@
 package com.petme.app.view.auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.util.PatternsCompat;
 import androidx.navigation.Navigation;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 import com.petme.app.R;
-import com.petme.app.databinding.FragmentLoginBinding;
 import com.petme.app.base.BaseFragment;
-
-import java.util.regex.Pattern;
+import com.petme.app.databinding.FragmentLoginBinding;
+import com.petme.app.utils.Alerts;
+import com.petme.app.utils.Prefs;
+import com.petme.app.view.dash.DashActivity;
 
 public class LoginFragment extends BaseFragment < FragmentLoginBinding > {
 
@@ -49,40 +49,72 @@ public class LoginFragment extends BaseFragment < FragmentLoginBinding > {
 		bind.dontHaveAcc.animate ( ).translationX ( 0 ).alpha ( 1 ).setDuration ( 800 ).setStartDelay ( 700 ).start ( );
 		bind.signupLink.animate ( ).translationX ( 0 ).alpha ( 1 ).setDuration ( 800 ).setStartDelay ( 700 ).start ( );
 
-		bind.login.setOnClickListener(view1 -> signUp());
+		bind.login.setOnClickListener ( view1 -> {
+			String email = bind.username.getText ( ).toString ( ).trim ( );
+			String password = bind.loginPass.getText ( ).toString ( ).trim ( );
+
+			if ( email.isEmpty ( ) ) {
+				Alerts.error ( mCtx , "Email should not be empty" );
+			}
+			else if ( ! PatternsCompat.EMAIL_ADDRESS.matcher ( email ).matches ( ) ) {
+				Alerts.error ( mCtx , "Invalid Email Id" );
+			}
+			else if ( password.isEmpty ( ) ) {
+				Alerts.error ( mCtx , "Password should not be empty" );
+			}
+			else {
+				loginUser ( email , password );
+			}
+		} );
 
 		bind.signupLink.setOnClickListener ( view1 -> Navigation.findNavController ( view1 ).navigate ( R.id.goToSignUp ) );
 
-		mAuth = FirebaseAuth.getInstance();
+		mAuth = FirebaseAuth.getInstance ( );
 	}
 
 	@Override
-	public void onStart() {
-		super.onStart();
+	public void onStart ( ) {
+		super.onStart ( );
 	}
 
-	private void signUp(){
-
-		String email = bind.username.getText().toString().trim();
-		String password = bind.loginPass.getText().toString().trim();
-
-		if (email.isEmpty()){
-			Toast.makeText(mCtx, "Email should not be empty", Toast.LENGTH_SHORT).show();
-		}else if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
-			Toast.makeText(mCtx, "Enter a valid Email id", Toast.LENGTH_SHORT).show();
-		}else if (password.isEmpty()){
-			Toast.makeText(mCtx, "Password should not be empty", Toast.LENGTH_SHORT).show();
-		}else{
-			mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
-				Toast.makeText(mCtx, "User Signed In : "+task.getResult().getUser().getEmail(), Toast.LENGTH_SHORT).show();
-			}).addOnFailureListener(e -> {
-				e.printStackTrace();
-			});
-		}
+	private void loginUser ( String email , String password ) {
+		bind.loader.setVisibility ( View.VISIBLE );
+		mAuth.signInWithEmailAndPassword ( email , password ).addOnCompleteListener ( task -> {
+			if ( task.isSuccessful ( ) ) {
+				Alerts.log ( TAG , "User Logged In: " + task.getResult ( ).getUser ( ).getEmail ( ) );
+				onLoginSuccess ( task.getResult ( ).getUser ( ) );
+			}
+			else {
+				// here the exception is simple that the user added is invalid and doesn't exist so we'll just register that user and log them in
+				if ( task.getException ( ) instanceof FirebaseAuthInvalidUserException ) {
+					signIn ( email , password );
+				}
+			}
+		} ).addOnFailureListener ( e -> {
+			e.printStackTrace ( );
+		} );
 	}
 
-	private void login(){
-
+	private void signIn ( String email , String password ) {
+		mAuth.createUserWithEmailAndPassword ( email , password ).addOnCompleteListener ( task -> {
+			if ( task.isSuccessful ( ) ) {
+				Alerts.log ( TAG , "User Signed Up: " + task.getResult ( ).getUser ( ).getEmail ( ) );
+				loginUser ( email , password );
+			}
+		} ).addOnFailureListener ( e -> {
+			e.printStackTrace ( );
+		} );
 	}
 
+	private void onLoginSuccess ( FirebaseUser mUser ) {
+		bind.loader.setVisibility ( View.GONE );
+
+		Prefs mPref = new Prefs ( mCtx );
+		mPref.putString ( Prefs.USER_ID , mUser.getUid ( ) );
+		mPref.putString ( Prefs.USER_EMAIL , mUser.getEmail ( ) );
+		mPref.putString ( Prefs.USER_NAME , mUser.getDisplayName ( ) );
+
+		startActivity ( new Intent ( mCtx , DashActivity.class ).setFlags ( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP ) );
+		( ( AppCompatActivity ) mCtx ).finishAfterTransition ( );
+	}
 }

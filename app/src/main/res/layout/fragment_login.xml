@@ -1,135 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/primary"
-    tools:context="com.petme.app.view.auth.LoginFragment">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:app = "http://schemas.android.com/apk/res-auto"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:layout_width = "match_parent"
+	android:layout_height = "match_parent"
+	android:background = "@color/primary"
+	tools:context = "com.petme.app.view.auth.LoginFragment" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:weightSum="1">
+	<LinearLayout
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:gravity = "center_horizontal"
+		android:orientation = "vertical"
+		android:animateLayoutChanges="true"
+		android:weightSum = "1" >
 
 		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="@color/primary"
-			android:gravity="center"
-			android:orientation="horizontal"
-			android:padding="20dp"
-			android:weightSum="1">
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_weight="0.3"
+			android:background = "@color/primary"
+			android:gravity = "center"
+			android:orientation = "horizontal"
+			android:padding = "20dp"
+			android:weightSum = "1" >
+
 			<TextView
-				style="@style/Headline4"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/app_name"
-				android:textColor="@color/onPrimary" />
+				style = "@style/Headline3"
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:gravity = "center"
+				android:text = "@string/app_name"
+				android:textColor = "@color/onPrimary" />
+
 			<ImageView
-				android:layout_width="48dp"
-				android:layout_height="48dp"
-				android:padding="8dp"
-				android:scaleType="centerCrop"
-				android:src="@drawable/pet"
-				app:tint="@color/onPrimary" />
+				android:layout_width = "48dp"
+				android:layout_height = "48dp"
+				android:padding = "8dp"
+				android:rotation="25"
+				android:scaleType = "centerCrop"
+				android:src = "@drawable/pet"
+				app:tint = "@color/onPrimary" />
 
+		</LinearLayout >
 
-		</LinearLayout>
-
-		<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/curve_bg"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="24dp">
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/inputBoxOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/username"
-                    style="@style/Body1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Username"
-                    android:inputType="textPersonName"
-                    android:textColor="#191818" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/inputBoxOutline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/primary">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/loginPass"
-                    style="@style/Body1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:textColor="#191818"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/username" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:padding="18dp"
-                android:text="Login"
-                android:textAppearance="@style/Button"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:cornerRadius="32dp" />
-
+		<ScrollView
+			android:layout_width = "match_parent"
+			android:layout_height = "0dp"
+			android:layout_marginTop="16dp"
+			android:elevation="8dp"
+			android:layout_weight = "0.7"
+			android:background = "@drawable/curve_bg" >
 
 			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center">
-				<TextView
-					android:text="Dont have an account?"
-					android:id="@+id/dontHaveAcc"
-					style="@style/Body2"
-					android:padding="4dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"/>
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:gravity = "center"
+				android:orientation = "vertical"
+				android:padding = "24dp" >
 
 				<TextView
-					android:text="Sign Up here"
-					android:id="@+id/signupLink"
-					style="@style/Body2"
-					android:padding="4dp"
-					android:textStyle="bold"
-					android:textColor="@color/primary"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"/>
-		    </LinearLayout>
-        </LinearLayout>
+					style = "@style/Headline3"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "32dp"
+					android:layout_marginBottom = "32dp"
+					android:text = "Welcome!"
+					android:textColor = "@color/onBackground" />
 
-    </LinearLayout>
+				<com.google.android.material.textfield.TextInputLayout
+					style = "@style/inputBoxOutline"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					app:layout_constraintEnd_toEndOf = "parent"
+					app:layout_constraintStart_toStartOf = "parent"
+					app:layout_constraintTop_toTopOf = "parent" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+					<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/username"
+						style = "@style/inputBoxOutline"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:hint = "Username"
+						android:inputType = "textPersonName" />
+
+				</com.google.android.material.textfield.TextInputLayout >
+
+				<com.google.android.material.textfield.TextInputLayout
+					style = "@style/inputBoxOutline"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "16dp"
+					app:layout_constraintEnd_toEndOf = "parent"
+					app:layout_constraintStart_toStartOf = "parent"
+					app:layout_constraintTop_toTopOf = "parent"
+					app:passwordToggleEnabled = "true"
+					app:passwordToggleTint = "@color/primary" >
+
+					<com.google.android.material.textfield.TextInputEditText
+						android:id = "@+id/loginPass"
+						style = "@style/inputBoxOutline"
+						android:layout_width = "match_parent"
+						android:layout_height = "wrap_content"
+						android:hint = "Password"
+						android:inputType = "textPassword"
+						app:layout_constraintEnd_toEndOf = "parent"
+						app:layout_constraintStart_toStartOf = "parent"
+						app:layout_constraintTop_toBottomOf = "@+id/username" />
+
+				</com.google.android.material.textfield.TextInputLayout >
+
+				<com.google.android.material.button.MaterialButton
+					android:id = "@+id/login"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "24dp"
+					android:padding = "18dp"
+					android:text = "Login"
+					android:textAppearance = "@style/Button"
+					android:textColor = "@color/white"
+					android:textStyle = "bold"
+					app:cornerRadius = "32dp" />
+
+				<com.google.android.flexbox.FlexboxLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:layout_marginTop = "24dp"
+					app:alignItems = "center"
+					app:flexWrap = "wrap"
+					app:justifyContent = "center" >
+
+					<TextView
+						android:id = "@+id/dontHaveAcc"
+						style = "@style/Body2"
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:paddingStart = "0dp"
+						android:paddingTop = "8dp"
+						android:paddingEnd = "2dp"
+						android:paddingBottom = "8dp"
+						android:textColor="@color/onBackground"
+						android:text = "Dont have an account?" />
+
+					<TextView
+						android:id = "@+id/signupLink"
+						style = "@style/Body1"
+						android:layout_width = "wrap_content"
+						android:layout_height = "wrap_content"
+						android:paddingStart = "4dp"
+						android:paddingTop = "8dp"
+						android:paddingEnd = "4dp"
+						android:paddingBottom = "8dp"
+						android:text = "Sign Up"
+						android:textColor = "@color/primary"
+						android:textStyle = "bold" />
+
+				</com.google.android.flexbox.FlexboxLayout >
+
+			</LinearLayout >
+
+		</ScrollView >
+
+	</LinearLayout >
+
+	<com.petme.app.view.custom.Loader
+		android:id="@+id/loader"
+		android:visibility="gone"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout >
