@@ -47,4 +47,9 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.4.0' //don't update
 
+    implementation platform ('com.google.firebase:firebase-bom:29.3.1')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+
 }
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "338105709034",
+    "project_id": "petme-f7a2a",
+    "storage_bucket": "petme-f7a2a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338105709034:android:c05f09a6488d0dbf66c293",
+        "android_client_info": {
+          "package_name": "com.petme.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338105709034-fqiiv0v6sm3jbjnojg5usbe4ateotou0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.petme.app",
+            "certificate_hash": "23c9757232ef29f2014beb7b9fe48d66da7c1223"
+          }
+        },
+        {
+          "client_id": "338105709034-l1468hddt12c0qouhf41l8j7vp69ktef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUd4iTcm8v5PWd4lb-aLMMIMbhsCBmz5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338105709034-l1468hddt12c0qouhf41l8j7vp69ktef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

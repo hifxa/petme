@@ -71,5 +71,4 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 			this.bind = bind;
 		}
 	}
-
 }

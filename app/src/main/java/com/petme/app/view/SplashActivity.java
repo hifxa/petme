@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.petme.app.R;
+import com.petme.app.view.auth.AuthActivity;
 import com.petme.app.view.dash.DashActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -24,9 +25,8 @@ public class SplashActivity extends AppCompatActivity {
 		getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.surface ) );
 
 		bind.onboardingButton.setOnClickListener ( view -> {
-            Intent intent = new Intent ( this , DashActivity.class );
+            Intent intent = new Intent ( this , AuthActivity.class );
             startActivity ( intent );
         } );
 	}
-
 }
