@@ -1,48 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android = "http://schemas.android.com/apk/res/android"
-	xmlns:app = "http://schemas.android.com/apk/res-auto"
-	xmlns:tools = "http://schemas.android.com/tools"
-	android:id = "@+id/relativeLayout"
-	android:layout_width = "match_parent"
-	android:layout_height = "match_parent"
-	android:background = "@color/surface"
-	tools:context = "com.petme.app.view.SplashActivity" >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    tools:context="com.petme.app.view.SplashActivity">
 
-	<ImageView
-		android:id = "@+id/onboardingImage"
-		android:layout_width = "200dp"
-		android:layout_height = "200dp"
-		android:contentDescription = "welcome page image"
-		app:layout_constraintEnd_toEndOf = "parent"
-		app:layout_constraintStart_toStartOf = "parent"
-		app:layout_constraintTop_toTopOf = "parent"
-		app:srcCompat = "@drawable/onboarding_img_dog" />
+    <LinearLayout
+        android:id="@+id/onBoard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/surface"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="visible">
 
-	<TextView
-		android:id = "@+id/onboardingText"
-		style = "@style/Headline4"
-		android:layout_width = "wrap_content"
-		android:layout_height = "wrap_content"
-		android:alpha = "0.8"
-		android:padding = "16dp"
-		android:text = "Improve your work-life balance without compromising on the care your pet needs!"
-		android:textAlignment = "center"
-		android:textColor = "@color/onBackground"
-		app:layout_constraintEnd_toEndOf = "parent"
-		app:layout_constraintStart_toStartOf = "parent"
-		app:layout_constraintTop_toBottomOf = "@+id/onboardingImage" />
+        <ImageView
+            android:id="@+id/onboardingImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="welcome page image"
+            app:srcCompat="@drawable/splash_illus" />
 
-	<com.google.android.material.button.MaterialButton
-		android:id = "@+id/onboarding_button"
-		android:layout_width = "149dp"
-		android:layout_height = "54dp"
-		android:layout_marginBottom = "52dp"
-		android:text = "Login"
-		android:textAppearance = "@style/Button"
-		app:cornerRadius = "32dp"
-		app:layout_constraintBottom_toBottomOf = "parent"
-		app:layout_constraintEnd_toEndOf = "parent"
-		app:layout_constraintHorizontal_bias = "0.94"
-		app:layout_constraintStart_toStartOf = "parent" />
+        <TextView
+            android:id="@+id/onboardingText"
+            style="@style/Headline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="Improve your work-life balance without compromising on the care your pet needs!"
+            android:textAlignment="center"
+            android:textColor="@color/onBackground" />
 
-</androidx.constraintlayout.widget.ConstraintLayout >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/onboarding_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="Get Started"
+            android:textAppearance="@style/Headline6"
+            app:cornerRadius="32dp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/splash"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleX="1.8"
+        android:scaleY="1.8"
+        android:alpha="0"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/primary"
+        android:contentDescription="@string/splash" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
