@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.petme.app.R;
 import com.petme.app.databinding.HomeItemCardBinding;
+import com.petme.app.interfaces.RecyclerClicks;
 
 import java.util.List;
 
@@ -16,10 +17,12 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 
 	List < String > mList;
 	Context mCtx;
+	RecyclerClicks mClicks;
 
-	public HomeOptionsAdapter ( Context mCtx , List < String > mList ) {
+	public HomeOptionsAdapter ( Context mCtx , List < String > mList, RecyclerClicks mClicks ) {
 		this.mList = mList;
 		this.mCtx = mCtx;
+		this.mClicks = mClicks;
 	}
 
 	@NonNull
@@ -35,6 +38,7 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 		String option = mList.get ( position );
 
 		holder.bind.title.setText ( option.toUpperCase () );
+		holder.bind.click.setOnClickListener(view -> mClicks.onItemClick(position,option));
 
 		switch ( option ) {
 			case "vet":
@@ -46,7 +50,7 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 			case "tasks":
 				holder.bind.icon.setImageResource ( R.drawable.ic_task_square );
 				break;
-			case "lost":
+			case "lost/Found":
 				holder.bind.icon.setImageResource ( R.drawable.ic_note_2 );
 				break;
 			case "adopt":

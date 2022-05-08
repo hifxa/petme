@@ -38,14 +38,30 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
     public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
         switch (navDestination.getId()) {
             case R.id.home:
-
+                showHideBar(false);
                 break;
             case R.id.profile:
-
+                showHideBar(false);
+                break;
+            case R.id.vetFragment:
+                showHideBar(true);
+                break;
+            case R.id.taskFragment:
+                showHideBar(true);
                 break;
             default:
 
                 break;
+        }
+    }
+
+    private void showHideBar(boolean state){
+        if (state){
+            bind.navBar.animate().translationY(bind.navBar.getHeight()).setDuration(200);
+            bind.topBar.animate().translationY(-(bind.topBar.getHeight())).setDuration(200);
+        }else{
+            bind.navBar.animate().translationY(0).setDuration(200);
+            bind.topBar.animate().translationY(0).setDuration(200);
         }
     }
 }

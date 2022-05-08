@@ -33,4 +33,10 @@
 
 	</LinearLayout >
 
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/click"
+		android:background="?selectableItemBackgroundBorderless"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
 </com.google.android.material.card.MaterialCardView >

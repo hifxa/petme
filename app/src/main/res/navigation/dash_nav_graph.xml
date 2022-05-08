@@ -9,12 +9,29 @@
 		android:id = "@+id/home"
 		android:name = "com.petme.app.view.dash.HomeFragment"
 		android:label = "fragment_home"
-		tools:layout = "@layout/fragment_home" />
+		tools:layout = "@layout/fragment_home" >
+		<action
+			android:id="@+id/goToVetFragment"
+			app:destination="@id/vetFragment" />
+		<action
+			android:id="@+id/goToTaskFragment"
+			app:destination="@id/taskFragment" />
+	</fragment>
 
 	<fragment
 		android:id = "@+id/profile"
 		android:name = "com.petme.app.view.dash.ProfileFragment"
 		tools:layout = "@layout/fragment_profile"
 		android:label = "ProfileFragment" />
+	<fragment
+		android:id="@+id/vetFragment"
+		android:name="com.petme.app.view.dash.VetFragment"
+		android:label="fragment_vet"
+		tools:layout="@layout/fragment_vet" />
+	<fragment
+		android:id="@+id/taskFragment"
+		android:name="com.petme.app.view.dash.TaskFragment"
+		android:label="fragment_task"
+		tools:layout="@layout/fragment_task" />
 
 </navigation >

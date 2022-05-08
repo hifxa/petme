@@ -45,7 +45,7 @@
 				android:id = "@+id/optionsRecycler"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
-				android:layout_marginTop = "16dp"
+				android:layout_marginTop = "20dp"
 				app:layoutManager = "androidx.recyclerview.widget.GridLayoutManager"
 				app:spanCount = "2"
 				tools:itemCount = "6"

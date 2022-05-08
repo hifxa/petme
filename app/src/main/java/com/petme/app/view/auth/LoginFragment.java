@@ -97,6 +97,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Alerts.log(TAG, "User Signed Up: " + task.getResult().getUser().getEmail());
+
                 loginUser(email, password);
             }
         }).addOnFailureListener(e -> {
