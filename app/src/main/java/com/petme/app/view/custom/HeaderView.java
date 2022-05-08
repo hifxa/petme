@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.github.ybq.android.spinkit.SpinKitView;
 import com.petme.app.R;
 
 public class HeaderView extends LinearLayout {
@@ -40,8 +39,8 @@ public class HeaderView extends LinearLayout {
 		init ( );
 	}
 
-	ImageView back;
-	TextView title;
+	public static ImageView back;
+	public static TextView title;
 
 	private void init ( ) {
 		View view = inflate ( mCtx , R.layout.header_view , this );
@@ -49,4 +48,14 @@ public class HeaderView extends LinearLayout {
 		title = view.findViewById ( R.id.title );
 
 	}
+
+	public ImageView getBack(){
+		return back;
+	}
+
+	public TextView getTitle(){
+		return title;
+	}
+
+
 }
