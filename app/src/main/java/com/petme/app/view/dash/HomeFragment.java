@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding>  {
 
-    List<String> homeOptions = new ArrayList<>(Arrays.asList("vet", "shop", "tasks", "lost/Found", "adopt", "mating"));
+    List<String> homeOptions = new ArrayList<>(Arrays.asList("vet", "shop", "tasks", "lostFound", "adopt", "mating"));
     HomeOptionsAdapter mAdapter;
     DatabaseReference dbRef;
     List<String> quotesList = new ArrayList<>();

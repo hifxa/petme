@@ -50,7 +50,7 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 			case "tasks":
 				holder.bind.icon.setImageResource ( R.drawable.ic_task_square );
 				break;
-			case "lost/Found":
+			case "lostFound":
 				holder.bind.icon.setImageResource ( R.drawable.ic_note_2 );
 				break;
 			case "adopt":

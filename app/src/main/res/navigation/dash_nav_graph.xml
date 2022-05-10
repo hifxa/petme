@@ -16,6 +16,18 @@
 		<action
 			android:id="@+id/goToTaskFragment"
 			app:destination="@id/taskFragment" />
+		<action
+			android:id="@+id/goToShopsFragment"
+			app:destination="@id/shopsFragment" />
+		<action
+			android:id="@+id/goToAdoptFragment"
+			app:destination="@id/adoptFragment" />
+		<action
+			android:id="@+id/goToMatingFragment"
+			app:destination="@id/matingFragment" />
+		<action
+			android:id="@+id/goToLostFoundFragment"
+			app:destination="@id/lostFoundFragment" />
 	</fragment>
 
 	<fragment
@@ -33,5 +45,25 @@
 		android:name="com.petme.app.view.dash.TaskFragment"
 		android:label="fragment_task"
 		tools:layout="@layout/fragment_task" />
+	<fragment
+		android:id="@+id/shopsFragment"
+		android:name="com.petme.app.view.dash.ShopsFragment"
+		android:label="fragment_shops"
+		tools:layout="@layout/fragment_shops" />
+	<fragment
+		android:id="@+id/adoptFragment"
+		android:name="com.petme.app.view.dash.AdoptFragment"
+		android:label="fragment_adopt"
+		tools:layout="@layout/fragment_adopt" />
+	<fragment
+		android:id="@+id/matingFragment"
+		android:name="com.petme.app.view.dash.MatingFragment"
+		android:label="fragment_mating"
+		tools:layout="@layout/fragment_mating" />
+	<fragment
+		android:id="@+id/lostFoundFragment"
+		android:name="com.petme.app.view.dash.LostFoundFragment"
+		android:label="fragment_lost_found"
+		tools:layout="@layout/fragment_lost_found" />
 
 </navigation >

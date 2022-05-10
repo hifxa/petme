@@ -4,17 +4,18 @@
     xmlns:app = "http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.dash.VetFragment">
+    tools:context=".view.dash.MatingFragment">
 
     <com.petme.app.view.custom.HeaderView
-        android:id = "@+id/header"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        app:layout_constraintTop_toTopOf = "parent" />
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
-        android:layout_width = "match_parent"
-        android:layout_height = "0dp"
-        app:layout_constraintBottom_toTopOf = "@+id/header" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf = "@+id/header"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
