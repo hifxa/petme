@@ -37,7 +37,12 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 
 	@Override
 	public View onCreateView ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container , @Nullable Bundle savedInstanceState ) {
-		bind = getBind ( inflater , container );
+		try {
+			bind = getBind ( inflater , container );
+		} catch ( Exception e ) {
+			e.printStackTrace ( );
+		}
+
 		mCtx = inflater.getContext ( );
 
 		if ( getTag ( ) != null ) {
@@ -47,6 +52,7 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 		return bind.getRoot ( );
 	}
 
+	// this is just a helper method which we can call and pass a callback reference to check if the permissions needed by us are granted or not.
 	protected void requestPerms ( PermissionCallback func ) {
 		PermissionX.init ( requireActivity ( ) )
 				.permissions ( Consts.getPerms ( ) )
@@ -68,6 +74,7 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 				} );
 	}
 
+	// this is callback that tell us if the permissions are granted or not.
 	public interface PermissionCallback {
 		void onGranted ( boolean granted );
 	}

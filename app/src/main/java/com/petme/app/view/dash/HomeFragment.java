@@ -75,10 +75,12 @@ public class HomeFragment extends BaseFragment < FragmentHomeBinding > {
         dbRef.get ( ).addOnCompleteListener ( task -> {
             if ( task.isSuccessful ( ) ) {
                 DataSnapshot snap = task.getResult ( );
-                for ( DataSnapshot mData : snap.getChildren ( ) ) {
+
+	            for ( DataSnapshot mData : snap.getChildren ( ) ) {
                     quotesList.add ( mData.getValue ( ).toString ( ) );
                 }
-                bind.fadeText.setTexts ( quotesList.toArray ( new String[ 0 ] ) );
+
+	            bind.fadeText.setTexts ( quotesList.toArray ( new String[ 0 ] ) );
             }
         } ).addOnFailureListener ( e -> {
             e.printStackTrace ( );
