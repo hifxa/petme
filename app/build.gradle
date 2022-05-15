@@ -67,6 +67,12 @@ dependencies {
     implementation 'com.github.GrenderG:Toasty:1.5.2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'// custom toast
 
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.libraries.places:places:2.6.0'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

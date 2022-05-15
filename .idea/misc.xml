@@ -6,9 +6,11 @@
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/button_bg.xml" value="0.157" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/curve_bg.xml" value="0.152" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/edit_text_bg.xml" value="0.157" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.2545" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_heart_tick.xml" value="0.1805" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_house.xml" value="0.1805" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.194" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_location.xml" value="0.2545" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_lovely.xml" value="0.1805" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_note.xml" value="0.1805" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/drawable/ic_note_2.xml" value="0.1805" />
@@ -31,7 +33,7 @@
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_shops.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_sign_up.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_task.xml" value="0.20427350427350427" />
-        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_vet.xml" value="0.20427350427350427" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_vet.xml" value="0.2" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/header_view.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/home_item_card.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/loader_view.xml" value="0.19273504273504274" />
