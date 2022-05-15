@@ -8,9 +8,9 @@
 
     <application
         android:name=".App"
-        android:allowBackup="true"
-        android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
+        android:allowBackup = "true"
+        android:hardwareAccelerated = "true"
+        android:icon = "@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -46,7 +46,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        o
+
     </application>
 
 </manifest>

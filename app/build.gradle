@@ -45,32 +45,31 @@ allprojects {
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-
-    //NAVIGATION
     implementation "androidx.navigation:navigation-fragment:2.4.2"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.navigation:navigation-ui:2.4.2"
+    implementation 'androidx.appcompat:appcompat:1.4.1'
 
     implementation 'com.google.android.material:material:1.4.0' //don't update
     implementation 'com.google.android.flexbox:flexbox:3.0.0'
 
-    implementation platform ('com.google.firebase:firebase-bom:29.3.1')
-    implementation 'com.google.firebase:firebase-auth'
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
     implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-auth'
 
     //THIRD PARTY DEPENDENCIES
+    implementation 'com.guolindev.permissionx:permissionx:1.6.4'
     implementation "com.github.ybq:Android-SpinKit:1.4.0" // custom loaders
     implementation 'com.squareup.picasso:picasso:2.71828' //for image loading
-    implementation 'com.github.GrenderG:Toasty:1.5.2'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'// custom toast
+    implementation 'com.github.GrenderG:Toasty:1.5.2'// custom toast
 
-    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.google.android.libraries.places:places:2.6.0'
 
 }
