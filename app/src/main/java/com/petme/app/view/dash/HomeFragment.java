@@ -44,11 +44,14 @@ public class HomeFragment extends BaseFragment < FragmentHomeBinding > {
         mAdapter = new HomeOptionsAdapter ( mCtx , homeOptions , ( pos , type ) -> {
             switch ( type ) {
                 case "vet":
-                    requestPerms ( granted -> {
-                        if ( granted ) {
-                            Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToVetFragment );
+                    requestPerms (new PermissionCallback() {
+                        @Override
+                        public void onGranted(boolean granted) {
+                            if (granted) {
+                                Navigation.findNavController(bind.getRoot()).navigate(R.id.goToVetFragment);
+                            }
                         }
-                    } );
+                    });
                     break;
                 case "shop":
                     Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToShopsFragment );

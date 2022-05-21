@@ -40,4 +40,39 @@
 		<item name = "cardBackgroundColor">@color/surface</item>
 	</style>
 
+	<style name = "MaterialAlertDialogTheme" parent = "ThemeOverlay.MaterialComponents.MaterialAlertDialog" >
+		<item name = "android:layout_width" >match_parent</item >
+		<item name = "android:layout_height" >wrap_content</item >
+
+		<item name = "materialAlertDialogTitleTextStyle" >@style/Headline4</item >
+		<item name = "materialAlertDialogBodyTextStyle" >@style/Body1</item >
+		<item name="android:background">@drawable/card_round_16</item>
+		<item name="background">@drawable/card_round_16</item>
+
+		<item name = "buttonBarPositiveButtonStyle" >@style/Alert.Button.Positive</item >
+		<item name = "buttonBarNegativeButtonStyle" >@style/Alert.Button.Negative</item >
+		<item name = "buttonBarNeutralButtonStyle" >@style/Alert.Button.Neutral</item >
+	</style >
+
+	<style name = "Alert.Button.Positive" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
+		<item name = "rippleColor" >@color/successColor</item >
+		<item name = "android:textStyle" >bold</item >
+		<item name = "android:textAppearance" >@style/Body2</item >
+		<item name = "android:textColor" >@color/successColor</item >
+	</style >
+
+	<style name = "Alert.Button.Negative" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
+		<item name = "rippleColor" >@color/errorColor</item >
+		<item name = "android:textColor" >@color/errorColor</item >
+		<item name = "android:textStyle" >bold</item >
+		<item name = "android:textAppearance" >@style/Body2</item >
+	</style >
+
+	<style name = "Alert.Button.Neutral" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
+		<item name = "rippleColor" >@color/warningColor</item >
+		<item name = "android:textStyle" >bold</item >
+		<item name = "android:textColor" >@color/warningColor</item >
+		<item name = "android:textAppearance" >@style/Body2</item >
+	</style >
+
 </resources >

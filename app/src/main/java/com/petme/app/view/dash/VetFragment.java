@@ -1,11 +1,17 @@
 package com.petme.app.view.dash;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +34,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentVetBinding;
@@ -56,6 +63,37 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		SupportMapFragment supportMapFragment = ( SupportMapFragment ) getChildFragmentManager ( ).findFragmentById ( R.id.map );
 		supportMapFragment.getMapAsync ( this );
 
+        LocationManager lm = (LocationManager)mCtx.getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ex) {}
+
+        try {
+            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch(Exception ex) {}
+
+        if(!gps_enabled && !network_enabled) {
+            // notify user
+            new MaterialAlertDialogBuilder(mCtx)
+                    .setTitle("Oops!")
+                    .setMessage("Location is not enabled")
+                    .setPositiveButton("Enable", (paramDialogInterface, paramInt) -> {
+						mCtx.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+					})
+                    .setNegativeButton("Deny", (dialogInterface, i) -> {
+						Navigation.findNavController(bind.getRoot()).popBackStack();
+					})
+                    .show();
+        }
+
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
 		fetchLastLocation ( );
 	}
 

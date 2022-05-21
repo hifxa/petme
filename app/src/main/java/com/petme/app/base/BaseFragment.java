@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.transition.Slide;
 import androidx.viewbinding.ViewBinding;
 
 import com.google.android.material.transition.MaterialFadeThrough;
@@ -31,8 +32,9 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 	public void onCreate ( @Nullable Bundle savedInstanceState ) {
 		super.onCreate ( savedInstanceState );
 
-		setEnterTransition ( new MaterialFadeThrough ( ) );
+		setEnterTransition ( new MaterialFadeThrough( ) );
 		setExitTransition ( new MaterialFadeThrough ( ) );
+
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 			TAG = getTag ( ).toUpperCase ( Locale.ROOT );
 		}
 
-		return bind.getRoot ( );
+		return bind.getRoot( );
 	}
 
 	// this is just a helper method which we can call and pass a callback reference to check if the permissions needed by us are granted or not.
