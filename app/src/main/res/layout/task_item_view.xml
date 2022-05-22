@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android = "http://schemas.android.com/apk/res/android"
+	style = "@style/cardStyle"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:layout_margin = "8dp" >
+
+	<LinearLayout
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"
+		android:padding = "16dp" >
+
+		<TextView
+			android:id = "@+id/task_title"
+			style = "@style/Headline6"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:paddingBottom = "8dp"
+			android:text = "Title"
+			android:textColor = "@color/onBackground" />
+
+		<TextView
+			android:id = "@+id/pet_name"
+			style = "@style/Body2"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:paddingBottom = "8dp"
+			android:text = "Description"
+			android:textColor = "@color/onBackground" />
+
+		<TextView
+			android:id = "@+id/tassk_desc"
+			style = "@style/Body1"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:paddingBottom = "8dp"
+			android:text = "Description"
+			android:textColor = "@color/onBackground" />
+
+		<TextView
+			android:id = "@+id/task_time"
+			style = "@style/Caption"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:gravity = "end"
+			android:text = "11:70 PM"
+			android:textColor = "@color/onBackground" />
+
+	</LinearLayout >
+
+</com.google.android.material.card.MaterialCardView >

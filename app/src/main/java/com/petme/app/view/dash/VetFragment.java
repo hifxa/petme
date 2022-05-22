@@ -1,9 +1,7 @@
 package com.petme.app.view.dash;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -68,12 +66,18 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
         boolean network_enabled = false;
 
         try {
-            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        } catch(Exception ex) {}
+	        gps_enabled = lm.isProviderEnabled ( LocationManager.GPS_PROVIDER );
+        }
+        catch ( Exception ex ) {
+	        ex.printStackTrace ( );
+        }
 
-        try {
-            network_enabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        } catch(Exception ex) {}
+		try {
+			network_enabled = lm.isProviderEnabled ( LocationManager.NETWORK_PROVIDER );
+		}
+		catch ( Exception ex ) {
+			ex.printStackTrace ( );
+		}
 
         if(!gps_enabled && !network_enabled) {
             // notify user
@@ -127,7 +131,7 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 	private void updateCurrentLocation ( ) {
 		LatLng latLng = new LatLng ( currentLocation.getLatitude ( ) , currentLocation.getLongitude ( ) );
 
-		// this is the actual code to add the marked
+		// this is the actual code to add the marker
 		MarkerOptions markerOptions = new MarkerOptions ( ).position ( latLng ).title ( "Here I am!" ).icon ( vectorToBitmap ( R.drawable.pet , R.color.primary ) );
 		mMap.animateCamera ( CameraUpdateFactory.newLatLng ( latLng ) );
 		mMap.animateCamera ( CameraUpdateFactory.newLatLngZoom ( latLng , 16 ) );

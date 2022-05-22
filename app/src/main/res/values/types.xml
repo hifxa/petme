@@ -68,9 +68,10 @@
 	</style >
 
 	<style name = "Caption" parent = "TextAppearance.MaterialComponents.Caption" >
-		<item name = "fontFamily" >@font/poppins</item >
-		<item name = "android:fontFamily" >@font/poppins</item >
-		<item name = "android:textSize" >10sp</item >
+		<item name = "fontFamily" >@font/playfair_display</item >
+		<item name = "android:textStyle" >bold</item >
+		<item name = "android:fontFamily" >@font/playfair_display</item >
+		<item name = "android:textSize" >11sp</item >
 	</style >
 
 	<style name = "Overline" parent = "TextAppearance.MaterialComponents.Overline" >

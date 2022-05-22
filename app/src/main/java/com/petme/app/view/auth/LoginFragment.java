@@ -15,6 +15,8 @@ import androidx.navigation.Navigation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentLoginBinding;
@@ -22,98 +24,115 @@ import com.petme.app.utils.Alerts;
 import com.petme.app.utils.Prefs;
 import com.petme.app.view.dash.DashActivity;
 
-public class LoginFragment extends BaseFragment<FragmentLoginBinding> {
+import java.util.HashMap;
 
-    float v = 0;
-    private FirebaseAuth mAuth;
+public class LoginFragment extends BaseFragment < FragmentLoginBinding > {
 
-    @NonNull
-    @Override
-    public FragmentLoginBinding getBind(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        return FragmentLoginBinding.inflate(inflater, container, false);
-    }
+	private final DatabaseReference dbRef = FirebaseDatabase.getInstance ( ).getReference ( "users" );
+	float v = 0;
+	private FirebaseAuth mAuth;
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+	@NonNull
+	@Override
+	public FragmentLoginBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
+		return FragmentLoginBinding.inflate ( inflater , container , false );
+	}
 
-        bind.username.setAlpha(v);
-        bind.loginPass.setAlpha(v);
-        bind.login.setAlpha(v);
-        bind.dontHaveAcc.setAlpha(v);
-        bind.signupLink.setAlpha(v);
+	@Override
+	public void onViewCreated ( @NonNull View view , @Nullable Bundle savedInstanceState ) {
+		super.onViewCreated ( view , savedInstanceState );
 
-        bind.username.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(300).start();
-        bind.loginPass.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        bind.login.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(500).start();
-        bind.dontHaveAcc.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
-        bind.signupLink.animate().translationX(0).alpha(1).setDuration(800).setStartDelay(700).start();
+		bind.username.setAlpha ( v );
+		bind.loginPass.setAlpha ( v );
+		bind.login.setAlpha ( v );
+		bind.dontHaveAcc.setAlpha ( v );
+		bind.signupLink.setAlpha ( v );
 
-        bind.login.setOnClickListener(view1 -> {
-            String email = bind.username.getText().toString().trim();
-            String password = bind.loginPass.getText().toString().trim();
+		bind.username.animate ( ).translationX ( 0 ).alpha ( 1 ).setDuration ( 800 ).setStartDelay ( 300 ).start ( );
+		bind.loginPass.animate ( ).translationX ( 0 ).alpha ( 1 ).setDuration ( 800 ).setStartDelay ( 500 ).start ( );
+		bind.login.animate ( ).translationX ( 0 ).alpha ( 1 ).setDuration ( 800 ).setStartDelay ( 500 ).start ( );
+		bind.dontHaveAcc.animate ( ).translationX ( 0 ).alpha ( 1 ).setDuration ( 800 ).setStartDelay ( 700 ).start ( );
+		bind.signupLink.animate ( ).translationX ( 0 ).alpha ( 1 ).setDuration ( 800 ).setStartDelay ( 700 ).start ( );
 
-            if (email.isEmpty()) {
-                Alerts.error(mCtx, "Email should not be empty");
-            } else if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
-                Alerts.error(mCtx, "Invalid Email Id");
-            } else if (password.isEmpty()) {
-                Alerts.error(mCtx, "Password should not be empty");
-            } else {
-                loginUser(email, password);
-            }
-        });
+		bind.login.setOnClickListener ( view1 -> {
+			String email = bind.username.getText ( ).toString ( ).trim ( );
+			String password = bind.loginPass.getText ( ).toString ( ).trim ( );
 
-        bind.signupLink.setOnClickListener(view1 -> Navigation.findNavController(view1).navigate(R.id.goToSignUp));
+			if ( email.isEmpty ( ) ) {
+				Alerts.error ( mCtx , "Email should not be empty" );
+			}
+			else if ( ! PatternsCompat.EMAIL_ADDRESS.matcher ( email ).matches ( ) ) {
+				Alerts.error ( mCtx , "Invalid Email Id" );
+			}
+			else if ( password.isEmpty ( ) ) {
+				Alerts.error ( mCtx , "Password should not be empty" );
+			}
+			else {
+				loginUser ( email , password );
+			}
+		} );
 
-        mAuth = FirebaseAuth.getInstance();
-    }
+		bind.signupLink.setOnClickListener ( view1 -> Navigation.findNavController ( view1 ).navigate ( R.id.goToSignUp ) );
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
+		mAuth = FirebaseAuth.getInstance ( );
+	}
 
-    // this is called twice, once when user clicks the button, and then once a new user is added
-    private void loginUser(String email, String password) {
-        bind.loader.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Alerts.log(TAG, "User Logged In: " + task.getResult().getUser().getEmail());
-                onLoginSuccess(task.getResult().getUser());
-            } else {
-                // here the exception is simple that the user added is invalid and doesn't exist so we'll just register that user and log them in
-                if (task.getException() instanceof FirebaseAuthInvalidUserException) {
-                    signIn(email, password);
-                }
-            }
-        }).addOnFailureListener(e -> {
-            e.printStackTrace();
-        });
-    }
+	@Override
+	public void onStart ( ) {
+		super.onStart ( );
+	}
 
-    // if while logging in the user doesn't exist this is called to create the new user
-    private void signIn(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Alerts.log(TAG, "User Signed Up: " + task.getResult().getUser().getEmail());
+	// this is called twice, once when user clicks the button, and then once a new user is added
+	private void loginUser ( String email , String password ) {
+		bind.loader.setVisibility ( View.VISIBLE );
+		mAuth.signInWithEmailAndPassword ( email , password ).addOnCompleteListener ( task -> {
+			if ( task.isSuccessful ( ) ) {
+				Alerts.log ( TAG , "User Logged In: " + task.getResult ( ).getUser ( ).getEmail ( ) );
+				onLoginSuccess ( task.getResult ( ).getUser ( ) , email );
+			}
+			else {
+				// here the exception is simple that the user added is invalid and doesn't exist so we'll just register that user and log them in
+				if ( task.getException ( ) instanceof FirebaseAuthInvalidUserException ) {
+					signIn ( email , password );
+				}
+			}
+		} ).addOnFailureListener ( e -> {
+			e.printStackTrace ( );
+		} );
+	}
 
-                loginUser(email, password);
-            }
-        }).addOnFailureListener(e -> {
-            e.printStackTrace();
-        });
-    }
+	// if while logging in the user doesn't exist this is called to create the new user
+	private void signIn ( String email , String password ) {
+		mAuth.createUserWithEmailAndPassword ( email , password ).addOnCompleteListener ( task -> {
+			if ( task.isSuccessful ( ) ) {
+				Alerts.log ( TAG , "User Signed Up: " + task.getResult ( ).getUser ( ).getEmail ( ) );
 
-    // after a successful login, the user details are saved here.
-    private void onLoginSuccess(FirebaseUser mUser) {
-        bind.loader.setVisibility(View.GONE);
+				loginUser ( email , password );
+			}
+		} ).addOnFailureListener ( e -> {
+			e.printStackTrace ( );
+		} );
+	}
 
-        Prefs mPref = new Prefs(mCtx);
-        mPref.putString(Prefs.USER_ID, mUser.getUid());
-        mPref.putString(Prefs.USER_EMAIL, mUser.getEmail());
+	// after a successful login, the user details are saved here.
+	private void onLoginSuccess ( FirebaseUser mUser , String email ) {
+		bind.loader.setVisibility ( View.GONE );
 
-        startActivity(new Intent(mCtx, DashActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-        ((AppCompatActivity) mCtx).finishAfterTransition();
-    }
+		HashMap < String, String > userMap = new HashMap <> ( );
+		userMap.put ( "email" , email );
+		userMap.put ( "id" , mUser.getUid ( ) );
+		userMap.put ( "name" , "" );
+		userMap.put ( "image" , "" );
+
+		dbRef.child ( mUser.getUid ( ) ).setValue ( userMap ).addOnSuccessListener ( task -> {
+			Prefs mPref = new Prefs ( mCtx );
+			mPref.putString ( Prefs.USER_ID , mUser.getUid ( ) );
+			mPref.putString ( Prefs.USER_EMAIL , mUser.getEmail ( ) );
+
+			startActivity ( new Intent ( mCtx , DashActivity.class ).setFlags ( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP ) );
+			( ( AppCompatActivity ) mCtx ).finishAfterTransition ( );
+		} ).addOnFailureListener ( e ->
+				e.printStackTrace ( )
+		);
+	}
 }
