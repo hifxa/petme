@@ -12,7 +12,6 @@ import com.petme.app.databinding.AdoptItemViewBinding;
 import com.petme.app.databinding.TaskItemViewBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.AdoptModel;
-import com.petme.app.model.TaskModel;
 import com.petme.app.utils.Alerts;
 
 import java.text.SimpleDateFormat;
