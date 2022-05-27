@@ -2,6 +2,7 @@ package com.petme.app.view.dash;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -32,10 +33,11 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentVetBinding;
+import com.petme.app.interfaces.AlertClicks;
+import com.petme.app.utils.Alerts;
 
 @SuppressLint ( { "SetTextI18n" , "MissingPermission" , "StaticFieldLeak" } )
 public class VetFragment extends BaseFragment < FragmentVetBinding > implements OnMapReadyCallback {
@@ -43,6 +45,7 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 	private FusedLocationProviderClient fusedClient;
 	private Location currentLocation;
 	private GoogleMap mMap;
+	private LocationManager locationManager;
 
 	@Override
 	public FragmentVetBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
@@ -57,37 +60,12 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		bind.header.getTitle ( ).setText ( "Find Nearest Vet" );
 
 		fusedClient = LocationServices.getFusedLocationProviderClient ( getActivity ( ) );
+		locationManager = ( LocationManager ) mCtx.getSystemService ( Context.LOCATION_SERVICE );
 
 		SupportMapFragment supportMapFragment = ( SupportMapFragment ) getChildFragmentManager ( ).findFragmentById ( R.id.map );
 		supportMapFragment.getMapAsync ( this );
 
-		LocationManager lm = ( LocationManager ) mCtx.getSystemService ( Context.LOCATION_SERVICE );
-		boolean gps_enabled = false;
-		boolean network_enabled = false;
-
-		try {
-			gps_enabled = lm.isProviderEnabled ( LocationManager.GPS_PROVIDER );
-		}
-		catch ( Exception ex ) {
-			ex.printStackTrace ( );
-		}
-
-		try {
-			network_enabled = lm.isProviderEnabled ( LocationManager.NETWORK_PROVIDER );
-		}
-		catch ( Exception ex ) {
-			ex.printStackTrace ( );
-		}
-
-		if ( ! gps_enabled && ! network_enabled ) {
-			// notify user
-			new MaterialAlertDialogBuilder ( mCtx )
-					.setTitle ( "Oops!" )
-					.setMessage ( "Location is not enabled" )
-					.setPositiveButton ( "Enable" , ( paramDialogInterface , paramInt ) -> mCtx.startActivity ( new Intent ( Settings.ACTION_LOCATION_SOURCE_SETTINGS ) ) )
-					.setNegativeButton ( "Deny" , ( dialogInterface , i ) -> Navigation.findNavController ( bind.getRoot ( ) ).popBackStack ( ) )
-					.show ( );
-		}
+		checkIfLocationIsEnabled ( );
 	}
 
 	@Override
@@ -103,10 +81,42 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		mMap.getUiSettings ( ).setMyLocationButtonEnabled ( false );
 	}
 
+	private void checkIfLocationIsEnabled ( ) {
+		boolean gps_enabled = false;
+		boolean network_enabled = false;
+
+		try {
+			gps_enabled = locationManager.isProviderEnabled ( LocationManager.GPS_PROVIDER );
+		}
+		catch ( Exception ex ) {
+			ex.printStackTrace ( );
+		}
+
+		try {
+			network_enabled = locationManager.isProviderEnabled ( LocationManager.NETWORK_PROVIDER );
+		}
+		catch ( Exception ex ) {
+			ex.printStackTrace ( );
+		}
+
+		if ( ! gps_enabled && ! network_enabled ) {
+			Alerts.showAlert ( mCtx , "Oops!" , "Looks like location is not enabled." , false , true , new AlertClicks ( ) {
+				@Override
+				public void positiveClick ( DialogInterface alert ) {
+					mCtx.startActivity ( new Intent ( Settings.ACTION_LOCATION_SOURCE_SETTINGS ) );
+				}
+
+				@Override
+				public void negativeClick ( DialogInterface alert ) {
+					Navigation.findNavController ( bind.getRoot ( ) ).popBackStack ( );
+				}
+			} );
+		}
+	}
+
 	//this will fetch the most recent updated location of the device and save it as the current location
 	private void fetchLastLocation ( ) {
 
-		@SuppressLint ( "MissingPermission" )
 		Task < Location > task = fusedClient.getLastLocation ( );
 
 		task.addOnSuccessListener ( location -> {

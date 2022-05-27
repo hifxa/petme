@@ -4,10 +4,10 @@
 	<style name = "inputBoxOutline" parent = "Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 		<item name = "android:textSize" >13sp</item >
 		<item name = "android:textColorHint" >@color/onBackground</item >
-		<item name="android:textAppearance">@style/Body2</item>
-		<item name="android:textColor">@color/onBackground</item>
-		<item name="android:maxLines">1</item>
-		<item name="maxLines">1</item>
+		<item name = "android:textAppearance" >@style/Body2</item >
+		<item name = "android:textColor" >@color/onBackground</item >
+		<item name = "android:maxLines" >1</item >
+		<item name = "maxLines" >1</item >
 
 		<!--TEXT BOX STYLE-->
 		<item name = "boxBackgroundColor" >@color/background</item >
@@ -34,11 +34,11 @@
 		<item name = "android:colorControlHighlight" >@color/primary</item >
 	</style >
 
-	<style name = "cardStyle">
+	<style name = "cardStyle" >
 		<item name = "cardElevation" >2dp</item >
-		<item name = "cardCornerRadius">16dp</item>
-		<item name = "cardBackgroundColor">@color/surface</item>
-	</style>
+		<item name = "cardCornerRadius" >16dp</item >
+		<item name = "cardBackgroundColor" >@color/surface</item >
+	</style >
 
 	<style name = "MaterialAlertDialogTheme" parent = "ThemeOverlay.MaterialComponents.MaterialAlertDialog" >
 		<item name = "android:layout_width" >match_parent</item >
@@ -46,8 +46,14 @@
 
 		<item name = "materialAlertDialogTitleTextStyle" >@style/Headline4</item >
 		<item name = "materialAlertDialogBodyTextStyle" >@style/Body1</item >
-		<item name="android:background">@drawable/card_round_16</item>
-		<item name="background">@drawable/card_round_16</item>
+		<!--		<item name = "android:background" >@drawable/card_round_16</item >-->
+		<!--		<item name = "background" >@drawable/card_round_16</item >0-->
+
+		<item name = "colorPrimary" >@color/primary</item >
+		<item name = "colorOnPrimary" >@color/onSurface</item >
+		<item name = "colorSecondary" >@color/secondary</item >
+		<item name = "colorSurface" >@color/surface</item >
+		<item name = "colorOnSurface" >@color/onSurface</item >
 
 		<item name = "buttonBarPositiveButtonStyle" >@style/Alert.Button.Positive</item >
 		<item name = "buttonBarNegativeButtonStyle" >@style/Alert.Button.Negative</item >
@@ -55,21 +61,21 @@
 	</style >
 
 	<style name = "Alert.Button.Positive" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
-		<item name = "rippleColor" >@color/successColor</item >
+		<item name = "rippleColor" >#5680FF85</item >
 		<item name = "android:textStyle" >bold</item >
 		<item name = "android:textAppearance" >@style/Body2</item >
 		<item name = "android:textColor" >@color/successColor</item >
 	</style >
 
 	<style name = "Alert.Button.Negative" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
-		<item name = "rippleColor" >@color/errorColor</item >
+		<item name = "rippleColor" >#80FF5E5E</item >
 		<item name = "android:textColor" >@color/errorColor</item >
 		<item name = "android:textStyle" >bold</item >
 		<item name = "android:textAppearance" >@style/Body2</item >
 	</style >
 
 	<style name = "Alert.Button.Neutral" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
-		<item name = "rippleColor" >@color/warningColor</item >
+		<item name = "rippleColor" >#61FFA900</item >
 		<item name = "android:textStyle" >bold</item >
 		<item name = "android:textColor" >@color/warningColor</item >
 		<item name = "android:textAppearance" >@style/Body2</item >
