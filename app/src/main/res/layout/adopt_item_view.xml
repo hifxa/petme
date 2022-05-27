@@ -1,93 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android = "http://schemas.android.com/apk/res/android"
-    style = "@style/cardStyle"
-    android:layout_width = "match_parent"
-    android:layout_height = "wrap_content"
-    android:layout_margin = "8dp" >
+	style = "@style/cardStyle"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content"
+	android:layout_margin = "8dp" >
 
-    <LinearLayout
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        android:orientation = "vertical"
-        android:padding = "16dp" >
+	<LinearLayout
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"
+		android:padding = "16dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp">
+		<LinearLayout
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:gravity = "center_vertical"
+			android:orientation = "horizontal" >
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:layout_weight="1">
+			<LinearLayout
+				android:layout_width = "wrap_content"
+				android:layout_height = "wrap_content"
+				android:layout_weight = "1"
+				android:orientation = "vertical" >
 
-                <TextView
-                    android:id = "@+id/adopt_breed"
-                    style = "@style/Headline6"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "wrap_content"
-                    android:paddingBottom = "8dp"
-                    android:text = "Breed"
-                    android:textColor = "@color/onBackground" />
+				<TextView
+					android:id = "@+id/adopt_breed"
+					style = "@style/Headline6"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:paddingBottom = "12dp"
+					android:text = "Breed"
+					android:textColor = "@color/onBackground" />
 
-                <TextView
-                    android:id = "@+id/pet_name"
-                    style = "@style/Body2"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "wrap_content"
-                    android:paddingBottom = "8dp"
-                    android:text = "Name"
-                    android:textColor = "@color/onBackground" />
+				<TextView
+					android:id = "@+id/pet_name"
+					style = "@style/Body2"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:paddingBottom = "8dp"
+					android:text = "Name"
+					android:textColor = "@color/onBackground" />
 
-                <TextView
-                    android:id = "@+id/pet_age"
-                    style = "@style/Body2"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "wrap_content"
-                    android:paddingBottom = "8dp"
-                    android:text = "Age"
-                    android:textColor = "@color/onBackground" />
+				<TextView
+					android:id = "@+id/pet_age"
+					style = "@style/Body2"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:paddingBottom = "8dp"
+					android:text = "Age"
+					android:textColor = "@color/onBackground" />
 
-                <TextView
-                    android:id = "@+id/adopt_details"
-                    style = "@style/Body1"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "wrap_content"
-                    android:paddingBottom = "8dp"
-                    android:text = "Details"
-                    android:textColor = "@color/onBackground" />
+				<TextView
+					android:id = "@+id/adopt_details"
+					style = "@style/Body1"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:paddingBottom = "8dp"
+					android:text = "Details"
+					android:textColor = "@color/onBackground" />
 
-                <TextView
-                    android:id = "@+id/adopt_contact"
-                    style = "@style/Body1"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "wrap_content"
-                    android:paddingBottom = "8dp"
-                    android:text = "Contact Info"
-                    android:textColor = "@color/onBackground" />
-            </LinearLayout>
+				<TextView
+					android:id = "@+id/adopt_contact"
+					style = "@style/Body1"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:text = "Contact Info"
+					android:textColor = "@color/onBackground" />
+			</LinearLayout >
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="172dp"
-                android:layout_weight="1"
-                android:padding="16dp"
-                android:src="@drawable/pet" />
+			<androidx.appcompat.widget.AppCompatImageView
+				android:layout_width = "wrap_content"
+				android:layout_height = "152dp"
+				android:layout_weight = "1"
+				android:padding = "16dp"
+				android:src = "@drawable/pet" />
 
-        </LinearLayout>
+		</LinearLayout >
 
-        <TextView
-            android:id = "@+id/adopt_date"
-            style = "@style/Caption"
-            android:layout_width = "match_parent"
-            android:layout_height = "wrap_content"
-            android:gravity = "end"
-            android:text = "24/5/2022"
-            android:textColor = "@color/onBackground" />
+		<TextView
+			android:id = "@+id/adopt_date"
+			style = "@style/Caption"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:gravity = "end"
+			android:text = "24/5/2022"
+			android:textColor = "@color/onBackground" />
 
-    </LinearLayout >
+	</LinearLayout >
 
 </com.google.android.material.card.MaterialCardView >

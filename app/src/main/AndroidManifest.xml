@@ -5,7 +5,6 @@
 	<uses-permission android:name = "android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name = "android.permission.ACCESS_COARSE_LOCATION" />
 
-
 	<application
 		android:name = ".App"
 		android:allowBackup = "true"
@@ -43,7 +42,6 @@
 			android:name = "com.google.android.geo.API_KEY"
 			android:value = "AIzaSyBFnrnIv19pUfFw6ctqRzQvr8EU7yx4d1M" />
 		<!--AIzaSyAnWl4I_Fv_k5-SQcKoR62SjJUYztwlgFE-->
-
 
 		<meta-data
 			android:name = "preloaded_fonts"

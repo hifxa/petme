@@ -37,12 +37,12 @@ import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentVetBinding;
 
-@SuppressLint ( "SetTextI18n" )
+@SuppressLint ( { "SetTextI18n" , "MissingPermission" , "StaticFieldLeak" } )
 public class VetFragment extends BaseFragment < FragmentVetBinding > implements OnMapReadyCallback {
 
-	Location currentLocation;
-	private GoogleMap mMap;
 	private FusedLocationProviderClient fusedClient;
+	private Location currentLocation;
+	private GoogleMap mMap;
 
 	@Override
 	public FragmentVetBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
@@ -61,16 +61,16 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		SupportMapFragment supportMapFragment = ( SupportMapFragment ) getChildFragmentManager ( ).findFragmentById ( R.id.map );
 		supportMapFragment.getMapAsync ( this );
 
-        LocationManager lm = (LocationManager)mCtx.getSystemService(Context.LOCATION_SERVICE);
-        boolean gps_enabled = false;
-        boolean network_enabled = false;
+		LocationManager lm = ( LocationManager ) mCtx.getSystemService ( Context.LOCATION_SERVICE );
+		boolean gps_enabled = false;
+		boolean network_enabled = false;
 
-        try {
-	        gps_enabled = lm.isProviderEnabled ( LocationManager.GPS_PROVIDER );
-        }
-        catch ( Exception ex ) {
-	        ex.printStackTrace ( );
-        }
+		try {
+			gps_enabled = lm.isProviderEnabled ( LocationManager.GPS_PROVIDER );
+		}
+		catch ( Exception ex ) {
+			ex.printStackTrace ( );
+		}
 
 		try {
 			network_enabled = lm.isProviderEnabled ( LocationManager.NETWORK_PROVIDER );
@@ -79,39 +79,31 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 			ex.printStackTrace ( );
 		}
 
-        if(!gps_enabled && !network_enabled) {
-            // notify user
-            new MaterialAlertDialogBuilder(mCtx)
-                    .setTitle("Oops!")
-                    .setMessage("Location is not enabled")
-                    .setPositiveButton("Enable", (paramDialogInterface, paramInt) -> {
-						mCtx.startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-					})
-                    .setNegativeButton("Deny", (dialogInterface, i) -> {
-						Navigation.findNavController(bind.getRoot()).popBackStack();
-					})
-                    .show();
-        }
-
+		if ( ! gps_enabled && ! network_enabled ) {
+			// notify user
+			new MaterialAlertDialogBuilder ( mCtx )
+					.setTitle ( "Oops!" )
+					.setMessage ( "Location is not enabled" )
+					.setPositiveButton ( "Enable" , ( paramDialogInterface , paramInt ) -> mCtx.startActivity ( new Intent ( Settings.ACTION_LOCATION_SOURCE_SETTINGS ) ) )
+					.setNegativeButton ( "Deny" , ( dialogInterface , i ) -> Navigation.findNavController ( bind.getRoot ( ) ).popBackStack ( ) )
+					.show ( );
+		}
 	}
 
 	@Override
-	public void onStart() {
-		super.onStart();
+	public void onStart ( ) {
+		super.onStart ( );
 		fetchLastLocation ( );
 	}
 
 	@Override
 	public void onMapReady ( @NonNull GoogleMap googleMap ) {
 		mMap = googleMap;
-
 		mMap.getUiSettings ( ).setMapToolbarEnabled ( false );
 		mMap.getUiSettings ( ).setMyLocationButtonEnabled ( false );
 	}
 
-	/**
-	 * this will fetch the most recent updated location of the device and save it as the current location
-	 */
+	//this will fetch the most recent updated location of the device and save it as the current location
 	private void fetchLastLocation ( ) {
 
 		@SuppressLint ( "MissingPermission" )
