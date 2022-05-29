@@ -56,7 +56,7 @@ public class TaskAdapter extends RecyclerView.Adapter < TaskAdapter.TaskAdapterH
 
 	public String formatTime ( long timestamp ) {
 		try {
-			return new SimpleDateFormat ( "EEEE MMM,yyy hh:mm a" , Locale.getDefault ( ) ).format ( new Date ( timestamp ) );
+			return new SimpleDateFormat ( "EEEE dd MMM,yyyy hh:mm a" , Locale.getDefault ( ) ).format ( new Date ( timestamp ) );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace ( );

@@ -12,14 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.controllers.AdoptAdapter;
 import com.petme.app.databinding.AddAdoptSheetBinding;
 import com.petme.app.databinding.FragmentAdoptBinding;
 import com.petme.app.model.AdoptModel;
+import com.petme.app.model.TaskModel;
 import com.petme.app.utils.Alerts;
 import com.petme.app.utils.Prefs;
 
@@ -75,7 +79,26 @@ public class AdoptFragment extends BaseFragment<FragmentAdoptBinding> {
     public void onStart ( ) {
         super.onStart ( );
 
-        //show adv on start
+        getAds();
+    }
+
+    private void getAds ( ) {
+
+        mRef.addValueEventListener ( new ValueEventListener( ) {
+            @Override
+            public void onDataChange ( @NonNull DataSnapshot snap ) {
+                mList.clear ( );
+                for ( DataSnapshot mData : snap.getChildren ( ) ) {
+                    mList.add ( mData.getValue ( AdoptModel.class ) );
+                }
+                mAdapter.notifyDataSetChanged ( );
+            }
+
+            @Override
+            public void onCancelled ( @NonNull DatabaseError error ) {
+
+            }
+        } );
     }
 
    public void createAdoptAdv (String name, String breed, String age, String details, String contact ) {
@@ -88,7 +111,7 @@ public class AdoptFragment extends BaseFragment<FragmentAdoptBinding> {
        adoptMap.put("timestamp", ""+ System.currentTimeMillis());
 
        String pushKey = mRef.push().getKey();
-       mRef.child ( new Prefs( mCtx ).getUserId ( ) ).child ( pushKey ).setValue ( adoptMap , (error , ref ) -> {
+       mRef.child ( pushKey ).setValue ( adoptMap , (error , ref ) -> {
            if ( error == null ) {
                Alerts.success ( mCtx , "Task Added Successfully!" );
            }
