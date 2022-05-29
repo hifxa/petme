@@ -24,4 +24,16 @@
 	<color name = "white_50" >#80FFFFFF</color >
 	<color name = "black" >#121212</color >
 	<color name = "black_50" >#33121212</color >
+
+	<color name = "ucrop_color_toolbar" >@color/primary</color >
+	<color name = "ucrop_color_statusbar" >@color/primary</color >
+	<color name = "ucrop_color_widget_active" >@color/surface</color >
+	<color name = "ucrop_color_active_controls_color" >@color/primary</color >
+	<color name = "ucrop_color_inactive_controls_color" >@color/onSurface</color >
+	<color name = "ucrop_color_widget_rotate_mid_line" >@color/surface</color >
+	<color name = "ucrop_color_active_aspect_ratio" >@color/primary</color >
+	<color name = "ucrop_color_widget_text" >@color/primary</color >
+	<color name = "ucrop_color_widget_background" >@color/surface</color >
+
+
 </resources >

@@ -56,14 +56,19 @@
 		android:label="fragment_adopt"
 		tools:layout="@layout/fragment_adopt" />
 	<fragment
-		android:id="@+id/matingFragment"
-		android:name="com.petme.app.view.dash.MatingFragment"
-		android:label="fragment_mating"
-		tools:layout="@layout/fragment_mating" />
+		android:id = "@+id/matingFragment"
+		android:name = "com.petme.app.view.dash.MatingFragment"
+		android:label = "fragment_mating"
+		tools:layout = "@layout/fragment_mating" />
 	<fragment
-		android:id="@+id/lostFoundFragment"
-		android:name="com.petme.app.view.dash.LostFoundFragment"
-		android:label="fragment_lost_found"
-		tools:layout="@layout/fragment_lost_found" />
+		android:id = "@+id/lostFoundFragment"
+		android:name = "com.petme.app.view.dash.LostFoundFragment"
+		android:label = "fragment_lost_found"
+		tools:layout = "@layout/fragment_lost_found" />
+	<fragment
+		android:id = "@+id/createAdoptionFragment"
+		android:name = "com.petme.app.view.dash.CreateAdoptionFragment"
+		android:label = "create_adoption_fragment"
+		tools:layout = "@layout/fragment_create_adoption" />
 
 </navigation >

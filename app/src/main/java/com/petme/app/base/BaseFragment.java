@@ -1,6 +1,8 @@
 package com.petme.app.base;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +11,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.transition.Slide;
 import androidx.viewbinding.ViewBinding;
 
+import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.android.material.transition.MaterialFadeThrough;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.permissionx.guolindev.PermissionX;
 import com.petme.app.R;
 import com.petme.app.utils.Alerts;
@@ -32,7 +38,7 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 	public void onCreate ( @Nullable Bundle savedInstanceState ) {
 		super.onCreate ( savedInstanceState );
 
-		setEnterTransition ( new MaterialFadeThrough( ) );
+		setEnterTransition ( new MaterialFadeThrough ( ) );
 		setExitTransition ( new MaterialFadeThrough ( ) );
 
 	}
@@ -41,7 +47,8 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 	public View onCreateView ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container , @Nullable Bundle savedInstanceState ) {
 		try {
 			bind = getBind ( inflater , container );
-		} catch ( Exception e ) {
+		}
+		catch ( Exception e ) {
 			e.printStackTrace ( );
 		}
 
@@ -51,7 +58,25 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 			TAG = getTag ( ).toUpperCase ( Locale.ROOT );
 		}
 
-		return bind.getRoot( );
+		return bind.getRoot ( );
+	}
+
+	protected Intent getImagePicker ( boolean isCamera ) {
+		ImagePicker.Builder picker = ImagePicker.Companion.with ( ( Activity ) mCtx );
+		picker.cropSquare ( );
+
+		if ( isCamera ) {
+			picker.cameraOnly ( );
+		}
+		else {
+			picker.galleryOnly ( );
+			picker.galleryMimeTypes ( new String[] {
+					"image/png" ,
+					"image/jpg" ,
+					"image/jpeg" } );
+		}
+
+		return picker.createIntent ( );
 	}
 
 	// this is just a helper method which we can call and pass a callback reference to check if the permissions needed by us are granted or not.
@@ -69,7 +94,8 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 					if ( allGranted ) {
 						Alerts.log ( TAG , "GRANTED : $grantedList" );
 						func.onGranted ( true );
-					} else {
+					}
+					else {
 						Alerts.log ( TAG , "DENIED : $deniedList" );
 						func.onGranted ( false );
 					}
@@ -79,6 +105,18 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 	// this is callback that tell us if the permissions are granted or not.
 	public interface PermissionCallback {
 		void onGranted ( boolean granted );
+	}
+
+	public static class FireRef {
+		public static final StorageReference userProfileImageRef = FirebaseStorage.getInstance ( ).getReference ( "users_profile_images" );
+		public static final DatabaseReference userDbRef = FirebaseDatabase.getInstance ( ).getReference ( "users" );
+
+		public static final StorageReference adoptPetImageRef = FirebaseStorage.getInstance ( ).getReference ( "adopt_pet_images" );
+		public static final DatabaseReference adoptDbRef = FirebaseDatabase.getInstance ( ).getReference ( "adopt" );
+
+		public static final DatabaseReference taskDbRef = FirebaseDatabase.getInstance ( ).getReference ( "task" );
+
+		public static final DatabaseReference quotesDbRef = FirebaseDatabase.getInstance ( ).getReference ( "quotes" );
 	}
 
 }

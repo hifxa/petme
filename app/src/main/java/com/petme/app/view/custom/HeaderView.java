@@ -46,7 +46,6 @@ public class HeaderView extends LinearLayout {
 		View view = inflate ( mCtx , R.layout.header_view , this );
 		back = view.findViewById ( R.id.back );
 		title = view.findViewById ( R.id.title );
-
 	}
 
 	public ImageView getBack(){

@@ -63,6 +63,7 @@ dependencies {
 
     //THIRD PARTY DEPENDENCIES
     implementation 'com.guolindev.permissionx:permissionx:1.6.4'
+    implementation 'com.github.Drjacky:ImagePicker:2.1.15'// image picker
     implementation "com.github.ybq:Android-SpinKit:1.4.0" // custom loaders
     implementation 'com.squareup.picasso:picasso:2.71828' //for image loading
     implementation 'com.github.GrenderG:Toasty:1.5.2'// custom toast
@@ -71,6 +72,7 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.android.libraries.places:places:2.6.0'
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
 
 }
 

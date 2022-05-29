@@ -11,8 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.controllers.HomeOptionsAdapter;
@@ -26,70 +24,65 @@ import java.util.concurrent.TimeUnit;
 @SuppressLint ( "SetTextI18n" )
 public class HomeFragment extends BaseFragment < FragmentHomeBinding > {
 
-    List < String > homeOptions = new ArrayList <> ( Arrays.asList ( "vet" , "shop" , "tasks" , "lost/Found" , "adopt" , "mating" ) );
-    List < String > quotesList = new ArrayList <> ( );
-    HomeOptionsAdapter mAdapter;
-    DatabaseReference dbRef;
+	List < String > homeOptions = new ArrayList <> ( Arrays.asList ( "vet" , "shop" , "tasks" , "lost/Found" , "adopt" , "mating" ) );
+	List < String > quotesList = new ArrayList <> ( );
+	HomeOptionsAdapter mAdapter;
 
-    @Override
-    public FragmentHomeBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
-        return FragmentHomeBinding.inflate ( inflater , container , false );
-    }
+	@Override
+	public FragmentHomeBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
+		return FragmentHomeBinding.inflate ( inflater , container , false );
+	}
 
+	@Override
+	public void onViewCreated ( @NonNull View view , @Nullable Bundle savedInstanceState ) {
+		super.onViewCreated ( view , savedInstanceState );
 
-    @Override
-    public void onViewCreated ( @NonNull View view , @Nullable Bundle savedInstanceState ) {
-        super.onViewCreated ( view , savedInstanceState );
+		mAdapter = new HomeOptionsAdapter ( mCtx , homeOptions , ( pos , type ) -> {
+			switch ( type ) {
+				case "vet":
+					requestPerms ( new PermissionCallback ( ) {
+						@Override
+						public void onGranted ( boolean granted ) {
+							if ( granted ) {
+								Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToVetFragment );
+							}
+						}
+					} );
+					break;
+				case "shop":
+					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToShopsFragment );
+					break;
+				case "tasks":
+					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToTaskFragment );
+					break;
+				case "lost/Found":
+					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToLostFoundFragment );
+					break;
+				case "adopt":
+					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToAdoptFragment );
+					break;
+				case "mating":
+					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToMatingFragment );
+					break;
+			}
+		} );
 
-        mAdapter = new HomeOptionsAdapter ( mCtx , homeOptions , ( pos , type ) -> {
-            switch ( type ) {
-                case "vet":
-                    requestPerms (new PermissionCallback() {
-                        @Override
-                        public void onGranted(boolean granted) {
-                            if (granted) {
-                                Navigation.findNavController(bind.getRoot()).navigate(R.id.goToVetFragment);
-                            }
-                        }
-                    });
-                    break;
-                case "shop":
-                    Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToShopsFragment );
-                    break;
-                case "tasks":
-                    Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToTaskFragment );
-                    break;
-                case "lost/Found":
-                    Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToLostFoundFragment );
-                    break;
-                case "adopt":
-                    Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToAdoptFragment );
-                    break;
-                case "mating":
-                    Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToMatingFragment );
-                    break;
-            }
-        } );
+		bind.optionsRecycler.setAdapter ( mAdapter );
 
-        bind.optionsRecycler.setAdapter ( mAdapter );
+		FireRef.quotesDbRef.get ( ).addOnCompleteListener ( task -> {
+					if ( task.isSuccessful ( ) ) {
+						DataSnapshot snap = task.getResult ( );
 
-        dbRef = FirebaseDatabase.getInstance ( ).getReference ( "quotes" );
+						for ( DataSnapshot mData : snap.getChildren ( ) ) {
+							quotesList.add ( mData.getValue ( ).toString ( ) );
+						}
 
-        dbRef.get ( ).addOnCompleteListener ( task -> {
-            if ( task.isSuccessful ( ) ) {
-                DataSnapshot snap = task.getResult ( );
+						bind.fadeText.setTexts ( quotesList.toArray ( new String[ 0 ] ) );
+					}
+				} )
+				.addOnFailureListener ( e -> e.printStackTrace ( ) );
 
-	            for ( DataSnapshot mData : snap.getChildren ( ) ) {
-                    quotesList.add ( mData.getValue ( ).toString ( ) );
-                }
-
-	            bind.fadeText.setTexts ( quotesList.toArray ( new String[ 0 ] ) );
-            }
-        } ).addOnFailureListener ( e -> {
-            e.printStackTrace ( );
-        } );
-
-        bind.fadeText.setTimeout ( 5 , TimeUnit.SECONDS );
-    }
+		bind.fadeText.setTimeout ( 5 , TimeUnit.SECONDS );
+	}
 
 }

@@ -5,32 +5,41 @@
 	android:layout_width = "match_parent"
 	android:layout_height = "match_parent"
 	android:background = "@color/background"
-	tools:context = "com.petme.app.view.dash.ProfileFragment" >
+	android:orientation = "vertical"
+	tools:context = ".view.dash.CreateAdoptionFragment" >
 
-	<androidx.core.widget.NestedScrollView
+	<com.petme.app.view.custom.HeaderView
+		android:id = "@+id/header"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		app:layout_constraintTop_toTopOf = "parent" />
+
+	<ScrollView
 		android:layout_width = "match_parent"
 		android:layout_height = "0dp"
-		android:layout_marginBottom = "8dp"
-		app:layout_constraintBottom_toTopOf = "@+id/edit"
-		app:layout_constraintTop_toTopOf = "parent" >
+		app:layout_constraintBottom_toBottomOf = "parent"
+		app:layout_constraintTop_toBottomOf = "@id/header" >
 
 		<LinearLayout
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
-			android:gravity = "center_horizontal"
+			android:background = "@color/background"
 			android:orientation = "vertical"
 			android:padding = "18dp" >
 
 			<com.google.android.material.card.MaterialCardView
 				style = "@style/cardStyle"
-				android:layout_width = "150dp"
-				android:layout_height = "150dp"
-				android:layout_margin = "8dp"
-				app:cardCornerRadius = "100dp" >
+				android:layout_width = "164dp"
+				android:layout_height = "164dp"
+				android:layout_gravity = "center"
+				android:layout_marginBottom = "16dp"
+				app:cardCornerRadius = "111dp" >
 
-				<ImageView
+				<androidx.appcompat.widget.AppCompatImageView
+					android:id = "@+id/petImg"
 					android:layout_width = "match_parent"
 					android:layout_height = "match_parent"
+					android:scaleType = "centerCrop"
 					android:src = "@drawable/pet" />
 
 			</com.google.android.material.card.MaterialCardView >
@@ -40,105 +49,117 @@
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
 				android:layout_marginTop = "16dp"
-				app:layout_constraintEnd_toEndOf = "parent"
-				app:layout_constraintStart_toStartOf = "parent"
-				app:layout_constraintTop_toTopOf = "parent" >
-
-				<com.google.android.material.textfield.TextInputEditText
-					android:id = "@+id/name"
-					style = "@style/inputBoxOutline"
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:hint = "Name"
-					android:inputType = "textPersonName" />
-
-			</com.google.android.material.textfield.TextInputLayout >
-
-			<com.google.android.material.textfield.TextInputLayout
-				style = "@style/inputBoxOutline"
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content"
-				android:layout_marginTop = "16dp"
-				app:layout_constraintEnd_toEndOf = "parent"
-				app:layout_constraintStart_toStartOf = "parent"
-				app:layout_constraintTop_toTopOf = "parent" >
-
-				<com.google.android.material.textfield.TextInputEditText
-					android:id = "@+id/email"
-					style = "@style/inputBoxOutline"
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:hint = "Email"
-					android:inputType = "textPersonName" />
-
-			</com.google.android.material.textfield.TextInputLayout >
-
-			<com.google.android.material.textfield.TextInputLayout
-				style = "@style/inputBoxOutline"
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content"
-				android:layout_marginTop = "16dp"
-				app:layout_constraintEnd_toEndOf = "parent"
-				app:layout_constraintStart_toStartOf = "parent"
-				app:layout_constraintTop_toTopOf = "parent" >
-
-				<com.google.android.material.textfield.TextInputEditText
-					android:id = "@+id/phone"
-					style = "@style/inputBoxOutline"
-					android:layout_width = "match_parent"
-					android:layout_height = "wrap_content"
-					android:hint = "Phone"
-					android:inputType = "textPersonName" />
-
-			</com.google.android.material.textfield.TextInputLayout >
-
-			<LinearLayout
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content"
-				android:layout_marginTop = "16dp"
 				android:layout_marginBottom = "16dp"
-				android:orientation = "horizontal" >
+				app:layout_constraintEnd_toEndOf = "parent"
+				app:layout_constraintStart_toStartOf = "parent"
+				app:layout_constraintTop_toTopOf = "parent" >
 
-				<TextView
-					style = "@style/Headline6"
-					android:layout_width = "0dp"
+				<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/pet_name"
+					style = "@style/inputBoxOutline"
+					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
-					android:layout_marginEnd = "16dp"
-					android:layout_weight = "1"
-					android:text = "My Pets"
-					android:textColor = "@color/onBackground" />
+					android:hint = "Pet Name"
+					android:inputType = "textPersonName" />
 
-				<ImageView
-					android:id = "@+id/add_pet"
-					android:layout_width = "32dp"
-					android:layout_height = "32dp"
-					android:background = "@drawable/card_round_16"
-					android:backgroundTint = "@color/surface"
-					android:padding = "4dp"
-					android:rotation = "45"
-					android:src = "@drawable/ic_close"
-					app:tint = "@color/primary" />
+			</com.google.android.material.textfield.TextInputLayout >
 
-			</LinearLayout >
-
-			<androidx.recyclerview.widget.RecyclerView
-				android:id = "@+id/pets_recycler"
+			<com.google.android.material.textfield.TextInputLayout
+				style = "@style/inputBoxOutline"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
-				app:layoutManager = "androidx.recyclerview.widget.LinearLayoutManager"
-				tools:listitem = "@layout/task_item_view" />
+				android:layout_marginBottom = "16dp"
+				app:layout_constraintEnd_toEndOf = "parent"
+				app:layout_constraintStart_toStartOf = "parent"
+				app:layout_constraintTop_toTopOf = "parent" >
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/pet_breed"
+					style = "@style/inputBoxOutline"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "Breed"
+					android:inputType = "textPersonName" />
+
+			</com.google.android.material.textfield.TextInputLayout >
+
+			<com.google.android.material.textfield.TextInputLayout
+				style = "@style/inputBoxOutline"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginBottom = "16dp"
+				app:layout_constraintEnd_toEndOf = "parent"
+				app:layout_constraintStart_toStartOf = "parent"
+				app:layout_constraintTop_toTopOf = "parent" >
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/age"
+					style = "@style/inputBoxOutline"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:hint = "Age"
+					android:inputType = "textPersonName" />
+
+			</com.google.android.material.textfield.TextInputLayout >
+
+			<com.google.android.material.textfield.TextInputLayout
+				style = "@style/inputBoxOutline"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginBottom = "16dp"
+				app:layout_constraintEnd_toEndOf = "parent"
+				app:layout_constraintStart_toStartOf = "parent"
+				app:layout_constraintTop_toTopOf = "parent" >
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/misc_details"
+					style = "@style/inputBoxOutline"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:gravity = "top"
+					android:hint = "Other details like birthday, vaccination details, food preferences, etc."
+					android:inputType = "textMultiLine"
+					android:maxLines = "8"
+					android:minLines = "4" />
+
+			</com.google.android.material.textfield.TextInputLayout >
+
+			<com.google.android.material.textfield.TextInputLayout
+				style = "@style/inputBoxOutline"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginBottom = "16dp"
+				app:layout_constraintEnd_toEndOf = "parent"
+				app:layout_constraintStart_toStartOf = "parent"
+				app:layout_constraintTop_toTopOf = "parent" >
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id = "@+id/contact_info"
+					style = "@style/inputBoxOutline"
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:gravity = "top"
+					android:hint = "Contact Info (Phone number, name, address)"
+					android:inputType = "textMultiLine"
+					android:maxLines = "6"
+					android:minLines = "3"
+					/>
+
+			</com.google.android.material.textfield.TextInputLayout >
+
+			<com.google.android.material.button.MaterialButton
+				android:id = "@+id/addAdoptionAdv"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:padding = "18dp"
+				android:text = "Post Advertisement"
+				android:textAppearance = "@style/Button"
+				android:textColor = "@color/white"
+				android:textStyle = "bold"
+				app:cornerRadius = "32dp" />
 
 		</LinearLayout >
 
-	</androidx.core.widget.NestedScrollView >
-
-	<com.google.android.material.button.MaterialButton
-		android:id = "@+id/edit"
-		style = "@style/appBtn"
-		android:text = "Edit Profile"
-		android:layout_width = "match_parent"
-		android:layout_height = "wrap_content"
-		android:layout_margin = "16dp"
-		app:layout_constraintBottom_toBottomOf = "parent" />
+	</ScrollView >
 
 </androidx.constraintlayout.widget.ConstraintLayout >

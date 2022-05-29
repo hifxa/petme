@@ -40,6 +40,17 @@
 		<item name = "cardBackgroundColor" >@color/surface</item >
 	</style >
 
+	<style name = "appBtn" parent = "Widget.MaterialComponents.Button.UnelevatedButton" >
+		<item name = "enforceTextAppearance" >true</item >
+		<item name = "android:textAppearance" >@style/Button</item >
+		<item name = "android:insetTop" >0dp</item >
+		<item name = "android:insetBottom" >0dp</item >
+		<item name = "cornerRadius" >24dp</item >
+		<item name = "elevation" >4dp</item >
+		<item name = "rippleColor" >@color/primaryDark</item >
+		<item name = "backgroundTint" >@color/primary</item >
+	</style >
+
 	<style name = "MaterialAlertDialogTheme" parent = "ThemeOverlay.MaterialComponents.MaterialAlertDialog" >
 		<item name = "android:layout_width" >match_parent</item >
 		<item name = "android:layout_height" >wrap_content</item >

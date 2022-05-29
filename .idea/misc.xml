@@ -58,9 +58,12 @@
         <entry key="..\:/apps/petme/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.244" />
         <entry key="..\:/petme/app/src/main/res/drawable/pet.xml" value="0.3355" />
         <entry key="..\:/petme/app/src/main/res/layout/activity_dash.xml" value="0.29615384615384616" />
+        <entry key="..\:/petme/app/src/main/res/layout/add_adopt_sheet.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/add_task_sheet.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/adopt_item_view.xml" value="0.33" />
+        <entry key="..\:/petme/app/src/main/res/layout/create_adoption_fragment.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_adopt.xml" value="0.29615384615384616" />
+        <entry key="..\:/petme/app/src/main/res/layout/fragment_edit.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_home.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_mating.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_profile.xml" value="0.29615384615384616" />

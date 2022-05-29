@@ -66,7 +66,7 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
                 showHideBar ( true );
                 break;
             default:
-                showHideBar ( false );
+                showHideBar ( true );
                 break;
         }
     }

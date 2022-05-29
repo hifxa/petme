@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:app = "http://schemas.android.com/apk/res-auto"
 	style = "@style/cardStyle"
 	android:layout_width = "match_parent"
 	android:layout_height = "wrap_content"
@@ -24,7 +25,7 @@
 				android:orientation = "vertical" >
 
 				<TextView
-					android:id = "@+id/adopt_breed"
+					android:id = "@+id/pet_breed"
 					style = "@style/Headline6"
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
@@ -51,7 +52,7 @@
 					android:textColor = "@color/onBackground" />
 
 				<TextView
-					android:id = "@+id/adopt_details"
+					android:id = "@+id/pet_details"
 					style = "@style/Body1"
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
@@ -60,7 +61,7 @@
 					android:textColor = "@color/onBackground" />
 
 				<TextView
-					android:id = "@+id/adopt_contact"
+					android:id = "@+id/pet_contact"
 					style = "@style/Body1"
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
@@ -68,21 +69,30 @@
 					android:textColor = "@color/onBackground" />
 			</LinearLayout >
 
-			<androidx.appcompat.widget.AppCompatImageView
-				android:layout_width = "wrap_content"
-				android:layout_height = "152dp"
-				android:layout_weight = "1"
-				android:padding = "16dp"
-				android:src = "@drawable/pet" />
+			<com.google.android.material.card.MaterialCardView
+				style = "@style/cardStyle"
+				android:layout_width = "150dp"
+				android:layout_height = "150dp"
+				app:cardBackgroundColor = "@color/primary" >
+
+				<androidx.appcompat.widget.AppCompatImageView
+					android:id = "@+id/petImg"
+					android:layout_width = "match_parent"
+					android:layout_height = "match_parent"
+					android:layout_weight = "1"
+					android:src = "@drawable/pet" />
+
+			</com.google.android.material.card.MaterialCardView >
 
 		</LinearLayout >
 
 		<TextView
-			android:id = "@+id/adopt_date"
+			android:id = "@+id/pet_date"
 			style = "@style/Caption"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
 			android:gravity = "end"
+			android:paddingTop = "8dp"
 			android:text = "24/5/2022"
 			android:textColor = "@color/onBackground" />
 

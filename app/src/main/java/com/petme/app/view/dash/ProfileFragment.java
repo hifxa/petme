@@ -54,12 +54,8 @@ public class ProfileFragment extends BaseFragment < FragmentProfileBinding > {
 		setEnabled ( false );
 
 		bind.edit.setOnClickListener ( v -> {
-			setEnabled ( true );
-			bind.name.requestFocus ( );
-			bind.save.setVisibility ( View.VISIBLE );
-		} );
 
-		bind.save.setOnClickListener ( v -> updateProfile ( ) );
+		} );
 
 		bind.addPet.setOnClickListener ( v -> addNewPet ( ) );
 	}
@@ -100,10 +96,8 @@ public class ProfileFragment extends BaseFragment < FragmentProfileBinding > {
 
 		mRef.child ( new Prefs ( mCtx ).getUserId ( ) ).updateChildren ( userMap ).addOnSuccessListener ( task -> {
 			setEnabled ( false );
-			bind.save.setVisibility ( View.GONE );
 		} ).addOnFailureListener ( e -> {
 					setEnabled ( false );
-					bind.save.setVisibility ( View.GONE );
 					e.printStackTrace ( );
 				}
 		);

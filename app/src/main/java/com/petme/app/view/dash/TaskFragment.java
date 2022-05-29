@@ -12,8 +12,6 @@ import androidx.navigation.Navigation;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
@@ -28,9 +26,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@SuppressWarnings ( "ConstantConditions" )
 public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 
-	DatabaseReference mRef = FirebaseDatabase.getInstance ( ).getReference ( "Task" );
 	List < TaskModel > mList = new ArrayList <> ( );
 	TaskAdapter mAdapter;
 
@@ -57,7 +55,6 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 	@Override
 	public void onStart ( ) {
 		super.onStart ( );
-
 		getTasks ( );
 	}
 
@@ -66,7 +63,7 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 	 */
 	private void getTasks ( ) {
 
-		mRef.child ( new Prefs ( mCtx ).getUserId ( ) ).addValueEventListener ( new ValueEventListener ( ) {
+		FireRef.taskDbRef.child ( new Prefs ( mCtx ).getUserId ( ) ).addValueEventListener ( new ValueEventListener ( ) {
 			@Override
 			public void onDataChange ( @NonNull DataSnapshot snap ) {
 				mList.clear ( );
@@ -109,9 +106,9 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 		taskMap.put ( "timestamp" , "" + System.currentTimeMillis ( ) );
 		taskMap.put ( "status" , status );
 
-		String pushKey = mRef.push ( ).getKey ( );
+		String pushKey = FireRef.taskDbRef.push ( ).getKey ( );
 
-		mRef.child ( new Prefs ( mCtx ).getUserId ( ) ).child ( pushKey ).setValue ( taskMap , ( error , ref ) -> {
+		FireRef.taskDbRef.child ( new Prefs ( mCtx ).getUserId ( ) ).child ( pushKey ).setValue ( taskMap , ( error , ref ) -> {
 			if ( error == null ) {
 				Alerts.success ( mCtx , "Task Added Successfully!" );
 			}

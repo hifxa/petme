@@ -13,6 +13,7 @@ import com.petme.app.databinding.AdoptItemViewBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.AdoptModel;
 import com.petme.app.utils.Alerts;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,19 +39,21 @@ public class AdoptAdapter extends RecyclerView.Adapter < AdoptAdapter.AdoptAdapt
 		return new AdoptAdapter.AdoptAdapterHolder ( AdoptItemViewBinding.bind ( LayoutInflater.from ( mCtx ).inflate ( R.layout.adopt_item_view , parent , false ) ) );
 	}
 
-    @Override
+	@Override
 	public void onBindViewHolder ( @NonNull AdoptAdapterHolder holder , int position ) {
 		try {
 			AdoptModel adopt = mList.get ( position );
 
-			Alerts.log ( "TAGS" , "INSIDE RECYCLER " + adopt.getTimestamp ( ) );
+			Alerts.log ( "TAGS" , "INSIDE RECYCLER " + adopt.getAge ( ) );
 
-			holder.bind.petAge.setText ( adopt.getAge ( ) );
-			holder.bind.adoptBreed.setText ( adopt.getBreed ( ) );
-			holder.bind.adoptDetails.setText ( adopt.getDetails ( ) );
-			holder.bind.adoptContact.setText ( adopt.getContact ( ) );
+			holder.bind.petBreed.setText ( adopt.getBreed ( ) );
 			holder.bind.petName.setText ( "Pet: " + adopt.getName ( ) );
-			holder.bind.adoptDate.setText ( formatTime ( Long.parseLong ( adopt.getTimestamp ( ) ) ) );
+			holder.bind.petAge.setText ( adopt.getAge ( ) );
+			holder.bind.petDetails.setText ( adopt.getDetails ( ) );
+			holder.bind.petContact.setText ( adopt.getContact ( ) );
+			holder.bind.petDate.setText ( formatTime ( Long.parseLong ( adopt.getTimestamp ( ) ) ) );
+
+			Picasso.get ( ).load ( adopt.getImage ( ) ).placeholder ( R.drawable.pet ).error ( R.drawable.pet ).into ( holder.bind.petImg );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace ( );

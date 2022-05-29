@@ -4,15 +4,19 @@
 	xmlns:tools = "http://schemas.android.com/tools"
 	android:layout_width = "match_parent"
 	android:layout_height = "match_parent"
-	android:background = "@color/background"
-	tools:context = "com.petme.app.view.dash.ProfileFragment" >
+	tools:context = ".view.dash.EditProfileFragment" >
+
+	<com.petme.app.view.custom.HeaderView
+		android:id = "@+id/header"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		app:layout_constraintTop_toTopOf = "parent" />
 
 	<androidx.core.widget.NestedScrollView
 		android:layout_width = "match_parent"
 		android:layout_height = "0dp"
-		android:layout_marginBottom = "8dp"
-		app:layout_constraintBottom_toTopOf = "@+id/edit"
-		app:layout_constraintTop_toTopOf = "parent" >
+		app:layout_constraintBottom_toTopOf = "@+id/save"
+		app:layout_constraintTop_toBottomOf = "@id/header" >
 
 		<LinearLayout
 			android:layout_width = "match_parent"
@@ -23,14 +27,16 @@
 
 			<com.google.android.material.card.MaterialCardView
 				style = "@style/cardStyle"
-				android:layout_width = "150dp"
-				android:layout_height = "150dp"
+				android:layout_width = "164dp"
+				android:layout_height = "164dp"
 				android:layout_margin = "8dp"
 				app:cardCornerRadius = "100dp" >
 
-				<ImageView
+				<androidx.appcompat.widget.AppCompatImageView
+					android:id = "@+id/userImg"
 					android:layout_width = "match_parent"
 					android:layout_height = "match_parent"
+					android:scaleType = "centerCrop"
 					android:src = "@drawable/pet" />
 
 			</com.google.android.material.card.MaterialCardView >
@@ -92,53 +98,17 @@
 
 			</com.google.android.material.textfield.TextInputLayout >
 
-			<LinearLayout
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content"
-				android:layout_marginTop = "16dp"
-				android:layout_marginBottom = "16dp"
-				android:orientation = "horizontal" >
-
-				<TextView
-					style = "@style/Headline6"
-					android:layout_width = "0dp"
-					android:layout_height = "wrap_content"
-					android:layout_marginEnd = "16dp"
-					android:layout_weight = "1"
-					android:text = "My Pets"
-					android:textColor = "@color/onBackground" />
-
-				<ImageView
-					android:id = "@+id/add_pet"
-					android:layout_width = "32dp"
-					android:layout_height = "32dp"
-					android:background = "@drawable/card_round_16"
-					android:backgroundTint = "@color/surface"
-					android:padding = "4dp"
-					android:rotation = "45"
-					android:src = "@drawable/ic_close"
-					app:tint = "@color/primary" />
-
-			</LinearLayout >
-
-			<androidx.recyclerview.widget.RecyclerView
-				android:id = "@+id/pets_recycler"
-				android:layout_width = "match_parent"
-				android:layout_height = "wrap_content"
-				app:layoutManager = "androidx.recyclerview.widget.LinearLayoutManager"
-				tools:listitem = "@layout/task_item_view" />
-
 		</LinearLayout >
 
 	</androidx.core.widget.NestedScrollView >
 
 	<com.google.android.material.button.MaterialButton
-		android:id = "@+id/edit"
+		android:id = "@+id/save"
 		style = "@style/appBtn"
-		android:text = "Edit Profile"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
 		android:layout_margin = "16dp"
+		android:text = "Save Profile"
 		app:layout_constraintBottom_toBottomOf = "parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout >
