@@ -73,6 +73,7 @@
 				style = "@style/cardStyle"
 				android:layout_width = "150dp"
 				android:layout_height = "150dp"
+				app:cardElevation="0dp"
 				app:cardBackgroundColor = "@color/primary" >
 
 				<androidx.appcompat.widget.AppCompatImageView

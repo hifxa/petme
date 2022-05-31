@@ -107,7 +107,7 @@ public class EditProfileFragment extends BaseFragment < FragmentEditProfileBindi
 				.setContentType ( "image/jpg" )
 				.build ( );
 		String name = new Prefs ( mCtx ).getUserId ( ) + "_" + System.currentTimeMillis ( ) + ".jpeg";
-		StorageReference ref = FireRef.userProfileImageRef.child ( "rivers.jpg" );
+		StorageReference ref = FireRef.userProfileImageRef.child ( name );
 
 		ref.putFile ( uri , metadata ).continueWithTask ( task -> {
 			if ( ! task.isSuccessful ( ) ) {
@@ -131,10 +131,7 @@ public class EditProfileFragment extends BaseFragment < FragmentEditProfileBindi
 		userMap.put ( "phone" , bind.phone.getText ( ).toString ( ).trim ( ) );
 		userMap.put ( "id" , new Prefs ( mCtx ).getUserId ( ) );
 		userMap.put ( "name" , bind.name.getText ( ).toString ( ).trim ( ) );
-
-		if ( ! image.isEmpty ( ) ) {
-			userMap.put ( "image" , image );
-		}
+		userMap.put ( "image" , image );
 
 		FireRef.userDbRef.child ( new Prefs ( mCtx ).getUserId ( ) ).updateChildren ( userMap ).addOnSuccessListener ( task ->
 				Alerts.showAlert ( mCtx , "Success!" , "Your Profile has been updated Successfully" , false , false , new AlertClicks ( ) {

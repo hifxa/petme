@@ -104,11 +104,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 		adoptMap.put ( "age" , age );
 		adoptMap.put ( "details" , details );
 		adoptMap.put ( "contact" , contact );
-
-		if ( ! image.isEmpty ( ) ) {
-			adoptMap.put ( "image" , image );
-		}
-
+		adoptMap.put ( "image" , image );
 		adoptMap.put ( "timestamp" , "" + System.currentTimeMillis ( ) );
 
 		String pushKey = FireRef.adoptDbRef.push ( ).getKey ( );

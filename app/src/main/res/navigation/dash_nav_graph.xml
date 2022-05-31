@@ -64,11 +64,33 @@
 		android:id = "@+id/lostFoundFragment"
 		android:name = "com.petme.app.view.dash.LostFoundFragment"
 		android:label = "fragment_lost_found"
-		tools:layout = "@layout/fragment_lost_found" />
+		tools:layout = "@layout/fragment_lost_found" >
+		<action
+			android:id="@+id/goToFoundFragment"
+			app:destination="@id/foundFragment" />
+		<action
+			android:id="@+id/goToLostFragment"
+			app:destination="@id/lostFragment" />
+	</fragment>
 	<fragment
 		android:id = "@+id/createAdoptionFragment"
 		android:name = "com.petme.app.view.dash.CreateAdoptionFragment"
 		android:label = "create_adoption_fragment"
 		tools:layout = "@layout/fragment_create_adoption" />
+	<fragment
+		android:id="@+id/editProfileFragment"
+		android:name="com.petme.app.view.dash.EditProfileFragment"
+		android:label="fragment_edit_profile"
+		tools:layout="@layout/fragment_edit_profile" />
+	<fragment
+		android:id="@+id/foundFragment"
+		android:name="com.petme.app.view.dash.lostandfound.FoundFragment"
+		android:label="fragment_found"
+		tools:layout="@layout/fragment_found" />
+	<fragment
+		android:id="@+id/lostFragment"
+		android:name="com.petme.app.view.dash.lostandfound.LostFragment"
+		android:label="fragment_lost"
+		tools:layout="@layout/fragment_lost" />
 
 </navigation >

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
@@ -53,9 +54,7 @@ public class ProfileFragment extends BaseFragment < FragmentProfileBinding > {
 
 		setEnabled ( false );
 
-		bind.edit.setOnClickListener ( v -> {
-
-		} );
+		bind.edit.setOnClickListener ( v -> Navigation.findNavController(v).navigate(R.id.editProfileFragment));
 
 		bind.addPet.setOnClickListener ( v -> addNewPet ( ) );
 	}
