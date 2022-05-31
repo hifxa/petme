@@ -60,13 +60,12 @@
             app:navGraph="@navigation/dash_nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/nav_bar"
-            android:layout_width="match_parent"
+            android:id = "@+id/nav_bar"
+            style = "@style/bottomNavigationStyle"
+            android:layout_width = "match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
             android:padding="8dp"
-            app:itemIconTint="@color/primary"
-            app:labelVisibilityMode="selected"
             app:menu="@menu/menu" />
 
     </LinearLayout>

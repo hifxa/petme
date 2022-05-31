@@ -2,19 +2,40 @@
 <resources >
 
 	<color name = "primary" >#F77D82</color >
-	<color name = "onPrimary" >#F4F4F4</color >
-	<color name = "primaryDark" >#D36A6E</color >
-	<color name = "colorAccent" >#FFFFFF</color >
+	<color name = "onPrimary" >#FFFFFF</color >
+	<color name = "primaryContainer" >#FFDADB</color >
+	<color name = "onPrimaryContainer" >#F77D82</color >
 
-	<color name = "secondary" >#9BFDFF</color >
-	<color name = "onSecondary" >#121212</color >
-	<color name = "secondaryDark" >#4AA6A8</color >
+	<color name = "secondary" >#625B71</color >
+	<color name = "onSecondary" >#FFFFFF</color >
+	<color name = "secondaryContainer" >#E8DEF8</color >
+	<color name = "onSecondaryContainer" >#1D192B</color >
 
-	<color name = "background" >#ffffff</color >
-	<color name = "onBackground" >#121212</color >
+	<color name = "tertiary" >#9C414A</color >
+	<color name = "onTertiary" >#FFFFFF</color >
+	<color name = "tertiaryContainer" >#FFDADC</color >
+	<color name = "onTertiaryContainer" >#40000B</color >
 
-	<color name = "surface" >#FDE8E9</color >
-	<color name = "onSurface" >#121212</color >
+	<color name = "error" >#B3261E</color >
+	<color name = "errorContainer" >#F9DEDC</color >
+	<color name = "onError" >#FFFFFF</color >
+	<color name = "onErrorContainer" >#410E0B</color >
+
+	<color name = "background" >#FFFFFF</color >
+	<color name = "onBackground" >#1C1B1F</color >
+
+	<color name = "surface" >#FFFBFE</color >
+	<color name = "onSurface" >#1C1B1F</color >
+	<color name = "surfaceVariant" >#E7E0EC</color >
+	<color name = "onSurfaceVariant" >#49454F</color >
+
+	<color name = "outline" >#79747E</color >
+	<color name = "inverseOnSurface" >#F4EFF4</color >
+	<color name = "inverseSurface" >#313033</color >
+	<color name = "inversePrimary" >#FFB3B5</color >
+
+	<color name = "shadow" >#000000</color >
+	<color name = "primaryInverse" >#FFB3B5</color >
 
 	<color name = "colorTransparentWhite" >#cccccc</color >
 	<color name = "colorGray" >#FFFFFFFF</color >

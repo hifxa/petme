@@ -29,8 +29,8 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		android:layout_margin="16dp"
-		android:src="@drawable/ic_note_2"
-		app:tint="@color/onSecondary"
-		app:elevation="2dp"/>
+		android:src = "@drawable/ic_note_2"
+		app:tint = "@color/onPrimaryContainer"
+		app:elevation = "2dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

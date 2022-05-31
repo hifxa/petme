@@ -46,10 +46,10 @@ public class Alerts {
 			if ( dialog.isShowing ( ) ) {
 				dialog.dismiss ( );
 			}
+			dialog.show ( );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace ( );
 		}
-		dialog.show ( );
 	}
 }

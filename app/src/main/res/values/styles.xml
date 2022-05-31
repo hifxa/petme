@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources >
 
-	<style name = "inputBoxOutline" parent = "Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
+	<style name = "inputBoxOutline" parent = "Widget.Material3.TextInputLayout.OutlinedBox" >
 		<item name = "android:textSize" >13sp</item >
 		<item name = "android:textColorHint" >@color/onBackground</item >
 		<item name = "android:textAppearance" >@style/Body2</item >
@@ -34,29 +34,29 @@
 		<item name = "android:colorControlHighlight" >@color/primary</item >
 	</style >
 
-	<style name = "cardStyle" >
+	<style name = "cardStyle" parent = "Widget.Material3.CardView.Filled" >
 		<item name = "cardElevation" >2dp</item >
 		<item name = "cardCornerRadius" >16dp</item >
 		<item name = "cardBackgroundColor" >@color/surface</item >
 	</style >
 
-	<style name = "appBtn" parent = "Widget.MaterialComponents.Button.UnelevatedButton" >
+	<style name = "appBtn" parent = "Widget.Material3.Button.UnelevatedButton" >
 		<item name = "enforceTextAppearance" >true</item >
 		<item name = "android:textAppearance" >@style/Button</item >
 		<item name = "android:insetTop" >0dp</item >
 		<item name = "android:insetBottom" >0dp</item >
 		<item name = "cornerRadius" >24dp</item >
 		<item name = "elevation" >4dp</item >
-		<item name = "rippleColor" >@color/primaryDark</item >
+		<item name = "rippleColor" >@color/primaryContainer</item >
 		<item name = "backgroundTint" >@color/primary</item >
 	</style >
 
-	<style name = "MaterialAlertDialogTheme" parent = "ThemeOverlay.MaterialComponents.MaterialAlertDialog" >
+	<style name = "MaterialAlertDialogTheme" parent = "ThemeOverlay.Material3.MaterialAlertDialog" >
 		<item name = "android:layout_width" >match_parent</item >
 		<item name = "android:layout_height" >wrap_content</item >
 
 		<item name = "materialAlertDialogTitleTextStyle" >@style/Headline4</item >
-		<item name = "materialAlertDialogBodyTextStyle" >@style/Body1</item >
+		<item name = "materialAlertDialogBodyTextStyle" >@style/Subtitle1</item >
 		<!--		<item name = "android:background" >@drawable/card_round_16</item >-->
 		<!--		<item name = "background" >@drawable/card_round_16</item >0-->
 
@@ -66,30 +66,55 @@
 		<item name = "colorSurface" >@color/surface</item >
 		<item name = "colorOnSurface" >@color/onSurface</item >
 
+		<item name = "android:textColor" >#000000</item >
+		<item name = "android:textColorPrimary" >#000000</item >
+		<item name = "android:colorAccent" >#1b5e20</item >
+
 		<item name = "buttonBarPositiveButtonStyle" >@style/Alert.Button.Positive</item >
 		<item name = "buttonBarNegativeButtonStyle" >@style/Alert.Button.Negative</item >
 		<item name = "buttonBarNeutralButtonStyle" >@style/Alert.Button.Neutral</item >
 	</style >
 
-	<style name = "Alert.Button.Positive" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
+	<style name = "Alert.Button.Positive" parent = "Widget.Material3.Button.TextButton.Dialog" >
 		<item name = "rippleColor" >#5680FF85</item >
 		<item name = "android:textStyle" >bold</item >
 		<item name = "android:textAppearance" >@style/Body2</item >
 		<item name = "android:textColor" >@color/successColor</item >
 	</style >
 
-	<style name = "Alert.Button.Negative" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
+	<style name = "Alert.Button.Negative" parent = "Widget.Material3.Button.TextButton.Dialog" >
 		<item name = "rippleColor" >#80FF5E5E</item >
 		<item name = "android:textColor" >@color/errorColor</item >
 		<item name = "android:textStyle" >bold</item >
 		<item name = "android:textAppearance" >@style/Body2</item >
 	</style >
 
-	<style name = "Alert.Button.Neutral" parent = "Widget.MaterialComponents.Button.TextButton.Dialog" >
+	<style name = "Alert.Button.Neutral" parent = "Widget.Material3.Button.TextButton.Dialog" >
 		<item name = "rippleColor" >#61FFA900</item >
 		<item name = "android:textStyle" >bold</item >
 		<item name = "android:textColor" >@color/warningColor</item >
 		<item name = "android:textAppearance" >@style/Body2</item >
+	</style >
+
+
+	<style name = "bottomNavigationStyle" parent = "Widget.Material3.BottomNavigationView" >
+		<item name = "labelVisibilityMode" >selected</item >
+		<item name = "background" >@color/background</item >
+		<item name = "android:background" >@color/background</item >
+		<item name = "itemTextAppearanceActive" >@style/Body2</item >
+		<item name = "itemActiveIndicatorStyle" >@style/bottomNavIndicator</item >
+		<item name = "itemIconTint" >@color/bottom_nav_color_state</item >
+		<item name = "itemRippleColor" >@color/bottom_nav_colored_ripple_color</item >
+		<item name = "itemTextColor" >@color/bottom_nav_color_state</item >
+		<item name = "itemIconSize" >28dp</item >
+	</style >
+
+	<style name = "bottomNavIndicator" parent = "@style/Widget.Material3.BottomNavigationView.ActiveIndicator" >
+		<item name = "android:width" >64dp</item >
+		<item name = "android:height" >40dp</item >
+		<item name = "marginHorizontal" >0dp</item >
+		<item name = "shapeAppearance" >@style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator</item >
+		<item name = "android:color" >@color/primaryContainer</item >
 	</style >
 
 </resources >
