@@ -1,7 +1,9 @@
 package com.petme.app.view.auth;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.core.util.PatternsCompat;
 import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentLoginBinding;
+import com.petme.app.interfaces.AlertClicks;
 import com.petme.app.utils.Alerts;
 import com.petme.app.utils.Prefs;
 import com.petme.app.view.dash.DashActivity;
@@ -97,6 +101,20 @@ public class LoginFragment extends BaseFragment < FragmentLoginBinding > {
 				}
 			}
 		} ).addOnFailureListener ( e -> {
+			bind.loader.setVisibility ( View.GONE );
+
+			Alerts.showAlert ( mCtx , "Oops!" , e.getLocalizedMessage ( ) , true , false , new AlertClicks ( ) {
+				@Override
+				public void positiveClick ( DialogInterface alert ) {
+					Navigation.findNavController ( bind.getRoot ( ) ).popBackStack ( );
+				}
+
+				@Override
+				public void negativeClick ( DialogInterface alert ) {
+					Navigation.findNavController ( bind.getRoot ( ) ).popBackStack ( );
+				}
+			} );
+
 			e.printStackTrace ( );
 		} );
 	}

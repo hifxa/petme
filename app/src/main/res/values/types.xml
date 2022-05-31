@@ -65,6 +65,7 @@
 		<item name = "fontFamily" >@font/poppins</item >
 		<item name = "android:fontFamily" >@font/poppins</item >
 		<item name = "android:textSize" >14sp</item >
+		<item name = "android:textStyle" >bold</item >
 	</style >
 
 	<style name = "Caption" parent = "TextAppearance.MaterialComponents.Caption" >

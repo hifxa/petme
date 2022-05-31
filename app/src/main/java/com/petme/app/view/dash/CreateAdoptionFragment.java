@@ -2,6 +2,7 @@ package com.petme.app.view.dash;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,8 +22,8 @@ import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentCreateAdoptionBinding;
+import com.petme.app.interfaces.AlertClicks;
 import com.petme.app.utils.Alerts;
-import com.petme.app.utils.Prefs;
 
 import java.util.HashMap;
 
@@ -30,11 +31,10 @@ import java.util.HashMap;
 public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptionBinding > {
 
 	Uri petImgUri;
-
 	ActivityResultLauncher < Intent > launcher = registerForActivityResult ( new ActivityResultContracts.StartActivityForResult ( ) , ( ActivityResult result ) -> {
 		if ( result.getResultCode ( ) == RESULT_OK ) {
 			petImgUri = result.getData ( ).getData ( );
-			// Use the uri to load the image
+
 			bind.petImg.setImageURI ( petImgUri );
 		}
 		else if ( result.getResultCode ( ) == ImagePicker.RESULT_ERROR ) {
@@ -76,25 +76,27 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 		String name = System.currentTimeMillis ( ) + ".jpeg";
 		StorageReference ref = FireRef.adoptPetImageRef.child ( name );
 
-		ref.putFile ( uri , metadata ).continueWithTask ( task -> {
-			if ( ! task.isSuccessful ( ) ) {
-				throw task.getException ( );
-			}
-			return ref.getDownloadUrl ( );
-		} ).addOnCompleteListener ( task -> {
-			String downloadUri = "";
-			if ( task.isSuccessful ( ) ) {
-				downloadUri = task.getResult ( ).toString ( );
-			}
+		ref.putFile ( uri , metadata )
+				.continueWithTask ( task -> {
+					if ( ! task.isSuccessful ( ) ) {
+						throw task.getException ( );
+					}
+					return ref.getDownloadUrl ( );
+				} )
+				.addOnCompleteListener ( task -> {
+					String downloadUri = "";
+					if ( task.isSuccessful ( ) ) {
+						downloadUri = task.getResult ( ).toString ( );
+					}
 
-			createAdoptAdv (
-					bind.petName.getText ( ).toString ( ).trim ( ) ,
-					bind.petBreed.getText ( ).toString ( ).trim ( ) ,
-					bind.age.getText ( ).toString ( ).trim ( ) ,
-					bind.miscDetails.getText ( ).toString ( ).trim ( ) ,
-					bind.contactInfo.getText ( ).toString ( ).trim ( ) ,
-					downloadUri );
-		} );
+					createAdoptAdv (
+							bind.petName.getText ( ).toString ( ).trim ( ) ,
+							bind.petBreed.getText ( ).toString ( ).trim ( ) ,
+							bind.age.getText ( ).toString ( ).trim ( ) ,
+							bind.miscDetails.getText ( ).toString ( ).trim ( ) ,
+							bind.contactInfo.getText ( ).toString ( ).trim ( ) ,
+							downloadUri );
+				} );
 	}
 
 	private void createAdoptAdv ( String name , String breed , String age , String details , String contact , String image ) {
@@ -110,7 +112,17 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 		String pushKey = FireRef.adoptDbRef.push ( ).getKey ( );
 		FireRef.adoptDbRef.child ( pushKey ).setValue ( adoptMap , ( error , ref ) -> {
 			if ( error == null ) {
-				Alerts.success ( mCtx , "Task Added Successfully!" );
+				Alerts.showAlert ( mCtx , "Success!" , "Adoption Ad Created!" , false , false , new AlertClicks ( ) {
+					@Override
+					public void positiveClick ( DialogInterface alert ) {
+						Navigation.findNavController ( bind.getRoot ( ) ).popBackStack ( );
+					}
+
+					@Override
+					public void negativeClick ( DialogInterface alert ) {
+						Navigation.findNavController ( bind.getRoot ( ) ).popBackStack ( );
+					}
+				} );
 			}
 			else {
 				error.toException ( ).printStackTrace ( );
