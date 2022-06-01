@@ -11,14 +11,27 @@
 		android:orientation = "vertical"
 		android:padding = "16dp" >
 
-		<TextView
-			android:id = "@+id/task_title"
-			style = "@style/Headline6"
-			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:paddingBottom = "8dp"
-			android:text = "Title"
-			android:textColor = "@color/onBackground" />
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal">
+
+			<TextView
+				android:id = "@+id/task_title"
+				style = "@style/Headline6"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:paddingBottom = "8dp"
+				android:text = "Title"
+				android:layout_weight="1"
+				android:textColor = "@color/onBackground" />
+			<CheckBox
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="false"
+				android:id="@+id/taskCheckBox"/>
+
+		</LinearLayout>
 
 		<TextView
 			android:id = "@+id/pet_name"

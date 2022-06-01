@@ -91,7 +91,15 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 
 		sBind.addTask.setOnClickListener ( view1 -> {
 			mSheet.dismiss ( );
-			createTask ( sBind.petName.getText ( ).toString ( ).trim ( ) , sBind.taskTitle.getText ( ).toString ( ).trim ( ) , sBind.desc.getText ( ).toString ( ).trim ( ) , "pending" );
+			if(sBind.petName.getText().toString().isEmpty()){
+				Alerts.error(mCtx, "Your pet's name please!");
+			}
+			else if(sBind.taskTitle.getText().toString().isEmpty() || sBind.desc.getText().toString().isEmpty()){
+				Alerts.error(mCtx, "You haven't added a task!");
+			}
+			else{
+				createTask ( sBind.petName.getText ( ).toString ( ).trim ( ) , sBind.taskTitle.getText ( ).toString ( ).trim ( ) , sBind.desc.getText ( ).toString ( ).trim ( ) , "pending" );
+			}
 		} );
 
 		sBind.close.setOnClickListener ( v -> mSheet.dismiss ( ) );
@@ -110,11 +118,15 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 
 		FireRef.taskDbRef.child ( new Prefs ( mCtx ).getUserId ( ) ).child ( pushKey ).setValue ( taskMap , ( error , ref ) -> {
 			if ( error == null ) {
-				Alerts.success ( mCtx , "Task Added Successfully!" );
+					Alerts.success ( mCtx , "Task Added Successfully!" );
 			}
 			else {
 				error.toException ( ).printStackTrace ( );
 			}
 		} );
+	}
+
+	public void onCheckBoxClicked(View view) {
+
 	}
 }

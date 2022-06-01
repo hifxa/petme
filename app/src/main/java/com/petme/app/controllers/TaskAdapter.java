@@ -3,6 +3,7 @@ package com.petme.app.controllers;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,10 +49,19 @@ public class TaskAdapter extends RecyclerView.Adapter < TaskAdapter.TaskAdapterH
 			holder.bind.tasskDesc.setText ( task.getDesc ( ) );
 			holder.bind.petName.setText ( "Pet: " + task.getName ( ) );
 			holder.bind.taskTime.setText ( formatTime ( Long.parseLong ( task.getTimestamp ( ) ) ) );
+			holder.bind.taskCheckBox.setOnCheckedChangeListener(task.isCheck());
 		}
 		catch ( Exception e ) {
 			e.printStackTrace ( );
 		}
+	}
+
+
+	public void onCheckChanged (CompoundButton buttonView, boolean isChecked) {
+		TaskModel task = mList.get(getItemCount());
+		mList.add(mList.remove(getItemCount()));
+		notifyDataSetChanged();
+
 	}
 
 	public String formatTime ( long timestamp ) {

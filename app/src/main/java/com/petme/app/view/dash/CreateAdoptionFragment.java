@@ -59,6 +59,15 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 			if ( petImgUri != null ) {
 				uploadImage ( petImgUri );
 			}
+			else if(bind.petName.getText().toString().isEmpty()){
+				Alerts.error(mCtx, "Add a pet name");
+			}
+			else if(bind.petBreed.getText().toString().isEmpty()){
+				Alerts.error(mCtx, "Add your pet's breed");
+			}
+			else if(bind.contactInfo.getText().toString().isEmpty()){
+				Alerts.error(mCtx, "Contact info is required!");
+			}
 			else {
 				createAdoptAdv (
 						bind.petName.getText ( ).toString ( ).trim ( ) ,
@@ -112,6 +121,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 		String pushKey = FireRef.adoptDbRef.push ( ).getKey ( );
 		FireRef.adoptDbRef.child ( pushKey ).setValue ( adoptMap , ( error , ref ) -> {
 			if ( error == null ) {
+
 				Alerts.showAlert ( mCtx , "Success!" , "Adoption Ad Created!" , false , false , new AlertClicks ( ) {
 					@Override
 					public void positiveClick ( DialogInterface alert ) {
