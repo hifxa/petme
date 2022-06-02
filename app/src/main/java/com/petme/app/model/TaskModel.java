@@ -1,7 +1,5 @@
 package com.petme.app.model;
 
-import android.widget.CompoundButton;
-
 public class TaskModel {
 
 	String task;
@@ -10,8 +8,8 @@ public class TaskModel {
 	String timestamp;
 	String status;
 
-	public CompoundButton.OnCheckedChangeListener isCheck() {
-		return check;
+	public int isCheck() {
+		return 0;
 	}
 
 	public void setCheck(boolean check) {

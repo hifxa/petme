@@ -49,7 +49,7 @@ public class TaskAdapter extends RecyclerView.Adapter < TaskAdapter.TaskAdapterH
 			holder.bind.tasskDesc.setText ( task.getDesc ( ) );
 			holder.bind.petName.setText ( "Pet: " + task.getName ( ) );
 			holder.bind.taskTime.setText ( formatTime ( Long.parseLong ( task.getTimestamp ( ) ) ) );
-			holder.bind.taskCheckBox.setOnCheckedChangeListener(task.isCheck());
+			//holder.bind.taskCheckBox.setOnCheckedChangeListener(task.isCheck());
 		}
 		catch ( Exception e ) {
 			e.printStackTrace ( );

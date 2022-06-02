@@ -48,7 +48,7 @@ public class FoundFragment extends BaseFragment<FragmentFoundBinding> {
         super.onViewCreated ( view , savedInstanceState );
 
 
-        bind.newFoundButton.setOnClickListener ( view1 -> Navigation.findNavController ( view1 ).navigate ( R.id.createAdoptionFragment ) );
+        bind.newFoundButton.setOnClickListener ( view1 -> Navigation.findNavController ( view1 ).navigate ( R.id.createFoundFragment ) );
 
         mAdapter = new FoundAdapter( mCtx , mList , (pos , type ) -> {
         } );
@@ -84,7 +84,7 @@ public class FoundFragment extends BaseFragment<FragmentFoundBinding> {
     }
 
     private void fetchAdoptions ( ) {
-        FireRef.adoptDbRef.addValueEventListener ( new ValueEventListener ( ) {
+        FireRef.foundDbRef.addValueEventListener ( new ValueEventListener ( ) {
             @Override
             public void onDataChange ( @NonNull DataSnapshot snap ) {
                 mList.clear ( );

@@ -60,7 +60,7 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundAdapter
 
     private String formatTime(long parseLong) {
         try {
-            return new SimpleDateFormat("dd MM,yyyy\nhh:mm a", Locale.getDefault()).format(new Date(parseLong));
+            return new SimpleDateFormat("dd MM,yyyy, hh:mm a", Locale.getDefault()).format(new Date(parseLong));
         } catch (Exception e) {
             e.printStackTrace();
         }
