@@ -117,6 +117,9 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 		public static final DatabaseReference taskDbRef = FirebaseDatabase.getInstance ( ).getReference ( "task" );
 
 		public static final DatabaseReference quotesDbRef = FirebaseDatabase.getInstance ( ).getReference ( "quotes" );
+
+		public static final StorageReference foundPetImageRef = FirebaseStorage.getInstance ( ).getReference ( "adopt_pet_images" );
+		public static final DatabaseReference foundDbRef = FirebaseDatabase.getInstance ( ).getReference ( "found" );
 	}
 
 }
