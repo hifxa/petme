@@ -6,7 +6,7 @@
     android:layout_height = "match_parent"
     android:background = "@color/background"
     android:orientation = "vertical"
-    tools:context = ".view.dash.CreateFoundFragment" >
+    tools:context = ".view.dash.lostandfound.CreateFoundFragment" >
 
     <com.petme.app.view.custom.HeaderView
         android:id = "@+id/header"

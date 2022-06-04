@@ -27,4 +27,5 @@ public class LostFragment extends BaseFragment<FragmentLostBinding> {
     public FragmentLostBinding getBind(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
         return FragmentLostBinding.inflate(inflater,container,false);
     }
+
 }
