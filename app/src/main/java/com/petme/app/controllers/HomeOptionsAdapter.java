@@ -1,6 +1,7 @@
 package com.petme.app.controllers;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -20,7 +21,7 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 	Context mCtx;
 	RecyclerClicks mClicks;
 
-	public HomeOptionsAdapter ( Context mCtx , List < String > mList, RecyclerClicks mClicks ) {
+	public HomeOptionsAdapter ( Context mCtx , List < String > mList , RecyclerClicks mClicks ) {
 		this.mList = mList;
 		this.mCtx = mCtx;
 		this.mClicks = mClicks;
@@ -38,28 +39,36 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 	public void onBindViewHolder ( @NonNull HomeOptionsAdapterHolder holder , int position ) {
 		String option = mList.get ( position );
 
-		holder.bind.title.setText ( option.toUpperCase () );
-		holder.bind.click.setOnClickListener(view -> mClicks.onItemClick(position,option));
+		holder.bind.title.setText ( option.toUpperCase ( ) );
+		holder.bind.click.setOnClickListener ( view -> mClicks.onItemClick ( position , option ) );
 
 		switch ( option ) {
 			case "vet":
 				holder.bind.icon.setImageResource ( R.drawable.ic_heart_tick );
-				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.shop));
 				break;
 			case "shop":
 				holder.bind.icon.setImageResource ( R.drawable.ic_shop );
+				holder.bind.title.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onShopContainer ) );
+				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onShopContainer ) ) );
+				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.shopContainer ) );
 				break;
 			case "tasks":
 				holder.bind.icon.setImageResource ( R.drawable.ic_task_square );
-				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.task));
+				holder.bind.title.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onTaskContainer ) );
+				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onTaskContainer ) ) );
+				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.taskContainer ) );
 				break;
-			case "lostFound":
+			case "lost/Found":
 				holder.bind.icon.setImageResource ( R.drawable.ic_note_2 );
-				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.lostFound));
+				holder.bind.title.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onLostFoundContainer ) );
+				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onLostFoundContainer ) ) );
+				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.lostFoundContainer ) );
 				break;
 			case "adopt":
 				holder.bind.icon.setImageResource ( R.drawable.ic_house );
-				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.adopt));
+				holder.bind.title.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onAdoptContainer ) );
+				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onAdoptContainer ) ) );
+				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.adoptContainer ) );
 				break;
 			case "mating":
 				holder.bind.icon.setImageResource ( R.drawable.ic_lovely );
