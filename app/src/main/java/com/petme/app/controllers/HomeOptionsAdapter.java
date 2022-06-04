@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.petme.app.R;
@@ -43,18 +44,22 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 		switch ( option ) {
 			case "vet":
 				holder.bind.icon.setImageResource ( R.drawable.ic_heart_tick );
+				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.shop));
 				break;
 			case "shop":
 				holder.bind.icon.setImageResource ( R.drawable.ic_shop );
 				break;
 			case "tasks":
 				holder.bind.icon.setImageResource ( R.drawable.ic_task_square );
+				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.task));
 				break;
 			case "lostFound":
 				holder.bind.icon.setImageResource ( R.drawable.ic_note_2 );
+				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.lostFound));
 				break;
 			case "adopt":
 				holder.bind.icon.setImageResource ( R.drawable.ic_house );
+				holder.bind.card.setCardBackgroundColor(ContextCompat.getColor(mCtx,R.color.adopt));
 				break;
 			case "mating":
 				holder.bind.icon.setImageResource ( R.drawable.ic_lovely );

@@ -59,13 +59,13 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 			if ( petImgUri != null ) {
 				uploadImage ( petImgUri );
 			}
-			else if(bind.petName.getText().toString().isEmpty()){
+			else if(bind.petName.getText().toString().trim().isEmpty()){
 				Alerts.error(mCtx, "Add a pet name");
 			}
-			else if(bind.petBreed.getText().toString().isEmpty()){
+			else if(bind.petBreed.getText().toString().trim().isEmpty()){
 				Alerts.error(mCtx, "Add your pet's breed");
 			}
-			else if(bind.contactInfo.getText().toString().isEmpty()){
+			else if(bind.contactInfo.getText().toString().trim().isEmpty()){
 				Alerts.error(mCtx, "Contact info is required!");
 			}
 			else {

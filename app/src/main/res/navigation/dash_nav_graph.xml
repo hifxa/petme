@@ -92,5 +92,9 @@
 		android:name="com.petme.app.view.dash.lostandfound.LostFragment"
 		android:label="fragment_lost"
 		tools:layout="@layout/fragment_lost" />
+	<fragment
+		android:id="@+id/createFoundFragment"
+		android:name="com.petme.app.view.dash.lostandfound.CreateFoundFragment"
+		android:label="CreateFoundFragment" />
 
 </navigation >

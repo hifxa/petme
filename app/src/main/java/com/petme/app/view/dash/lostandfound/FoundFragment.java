@@ -59,29 +59,12 @@ public class FoundFragment extends BaseFragment<FragmentFoundBinding> {
     @Override
     public void onStart ( ) {
         super.onStart();
-        getAds();
+
 
         fetchAdoptions();
     }
 
-    private void getAds ( ) {
 
-        FireRef.adoptDbRef.addValueEventListener ( new ValueEventListener( ) {
-            @Override
-            public void onDataChange ( @NonNull DataSnapshot snap ) {
-                mList.clear ( );
-                for ( DataSnapshot mData : snap.getChildren ( ) ) {
-                    mList.add ( mData.getValue ( FoundModel.class ) );
-                }
-                mAdapter.notifyDataSetChanged ( );
-            }
-
-            @Override
-            public void onCancelled ( @NonNull DatabaseError error ) {
-
-            }
-        } );
-    }
 
     private void fetchAdoptions ( ) {
         FireRef.foundDbRef.addValueEventListener ( new ValueEventListener ( ) {
