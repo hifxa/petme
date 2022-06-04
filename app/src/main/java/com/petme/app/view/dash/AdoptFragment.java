@@ -10,17 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
 
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.ValueEventListener;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.controllers.AdoptAdapter;
 import com.petme.app.databinding.FragmentAdoptBinding;
 import com.petme.app.model.AdoptModel;
-import com.petme.app.model.TaskModel;
 import com.petme.app.utils.Alerts;
 
 import java.util.ArrayList;
@@ -43,7 +39,12 @@ public class AdoptFragment extends BaseFragment < FragmentAdoptBinding > {
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
 		bind.header.getTitle ( ).setText ( "Adopt" );
 
-		bind.newAdoptButton.setOnClickListener ( view1 -> Navigation.findNavController ( view1 ).navigate ( R.id.createAdoptionFragment ) );
+		bind.newAdoptButton.setOnClickListener ( v -> {
+			Bundle mBundle = new Bundle ( );
+			mBundle.putString ( "from" , "adopt" );
+
+			Navigation.findNavController ( v ).navigate ( R.id.createAdoptionFragment , mBundle );
+		} );
 
 		mAdapter = new AdoptAdapter ( mCtx , mList , ( pos , type ) -> {
 		} );

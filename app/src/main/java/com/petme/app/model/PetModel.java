@@ -2,9 +2,26 @@ package com.petme.app.model;
 
 public class PetModel {
 	String name;
-	String type;
+	String age;
+	String color;
 	String image;
 	String breed;
+
+	public String getAge ( ) {
+		return age;
+	}
+
+	public void setAge ( String age ) {
+		this.age = age;
+	}
+
+	public String getColor ( ) {
+		return color;
+	}
+
+	public void setColor ( String color ) {
+		this.color = color;
+	}
 
 	public String getName ( ) {
 		return name;
@@ -12,14 +29,6 @@ public class PetModel {
 
 	public void setName ( String name ) {
 		this.name = name;
-	}
-
-	public String getType ( ) {
-		return type;
-	}
-
-	public void setType ( String type ) {
-		this.type = type;
 	}
 
 	public String getImage ( ) {

@@ -16,6 +16,7 @@
 
 	<ScrollView
 		android:layout_width = "match_parent"
+		android:scrollbarSize = "0dp"
 		android:layout_height = "0dp"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintTop_toBottomOf = "@id/header" >
@@ -32,8 +33,9 @@
 				android:layout_width = "164dp"
 				android:layout_height = "164dp"
 				android:layout_gravity = "center"
+				android:layout_marginTop = "8dp"
 				android:layout_marginBottom = "16dp"
-				app:cardCornerRadius = "111dp" >
+				app:cardCornerRadius = "100dp" >
 
 				<androidx.appcompat.widget.AppCompatImageView
 					android:id = "@+id/petImg"
@@ -93,7 +95,7 @@
 				app:layout_constraintTop_toTopOf = "parent" >
 
 				<com.google.android.material.textfield.TextInputEditText
-					android:id = "@+id/age"
+					android:id = "@+id/pet_age"
 					style = "@style/inputBoxOutline"
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
@@ -102,7 +104,45 @@
 
 			</com.google.android.material.textfield.TextInputLayout >
 
+			<com.google.android.material.card.MaterialCardView
+				android:id = "@+id/color_view"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content"
+				android:layout_marginBottom = "16dp"
+				app:cardBackgroundColor = "@color/background"
+				app:cardCornerRadius = "100dp" >
+
+				<LinearLayout
+					android:layout_width = "match_parent"
+					android:layout_height = "wrap_content"
+					android:gravity = "center_vertical"
+					android:paddingStart = "0dp"
+					android:paddingEnd = "6dp" >
+
+					<TextView
+						style = "@style/Body1"
+						android:layout_width = "0dp"
+						android:layout_height = "wrap_content"
+						android:layout_weight = "1"
+						android:paddingStart = "16dp"
+						android:paddingEnd = "16dp"
+						android:text = "Choose Color" />
+
+					<com.google.android.material.card.MaterialCardView
+						android:id = "@+id/pet_color"
+						style = "@style/cardStyle"
+						android:layout_width = "32dp"
+						android:layout_height = "32dp"
+						android:layout_margin = "8dp"
+						app:cardCornerRadius = "100dp"
+						app:cardElevation = "1dp" />
+
+				</LinearLayout >
+
+			</com.google.android.material.card.MaterialCardView >
+
 			<com.google.android.material.textfield.TextInputLayout
+				android:id = "@+id/misc_view"
 				style = "@style/inputBoxOutline"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
@@ -117,7 +157,7 @@
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
 					android:gravity = "top"
-					android:hint = "Other details like birthday, vaccination details, food preferences, etc."
+					android:hint = "Other Details like Birthday, Vaccination Details, Food Preferences, etc."
 					android:inputType = "textMultiLine"
 					android:maxLines = "8"
 					android:minLines = "4" />
@@ -125,6 +165,7 @@
 			</com.google.android.material.textfield.TextInputLayout >
 
 			<com.google.android.material.textfield.TextInputLayout
+				android:id = "@+id/contact_view"
 				style = "@style/inputBoxOutline"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
@@ -139,7 +180,7 @@
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
 					android:gravity = "top"
-					android:hint = "Contact Info (Phone number, name, address)"
+					android:hint = "Contact Info"
 					android:inputType = "textMultiLine"
 					android:maxLines = "6"
 					android:minLines = "3"

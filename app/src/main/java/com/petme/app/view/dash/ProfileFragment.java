@@ -54,9 +54,14 @@ public class ProfileFragment extends BaseFragment < FragmentProfileBinding > {
 
 		setEnabled ( false );
 
-		bind.edit.setOnClickListener ( v -> Navigation.findNavController(v).navigate(R.id.editProfileFragment));
+		bind.edit.setOnClickListener ( v -> Navigation.findNavController ( v ).navigate ( R.id.editProfileFragment ) );
 
-		bind.addPet.setOnClickListener ( v -> addNewPet ( ) );
+		bind.addPet.setOnClickListener ( v -> {
+			Bundle mBundle = new Bundle ( );
+			mBundle.putString ( "from" , "pet" );
+
+			Navigation.findNavController ( v ).navigate ( R.id.createAdoptionFragment , mBundle );
+		} );
 	}
 
 	@Override
@@ -82,24 +87,6 @@ public class ProfileFragment extends BaseFragment < FragmentProfileBinding > {
 
 			}
 		} );
-	}
-
-	private void updateProfile ( ) {
-
-		HashMap < String, Object > userMap = new HashMap <> ( );
-		userMap.put ( "email" , bind.email.getText ( ).toString ( ).trim ( ) );
-		userMap.put ( "phone" , bind.phone.getText ( ).toString ( ).trim ( ) );
-		userMap.put ( "id" , new Prefs ( mCtx ).getUserId ( ) );
-		userMap.put ( "name" , bind.name.getText ( ).toString ( ).trim ( ) );
-		userMap.put ( "image" , "" );
-
-		mRef.child ( new Prefs ( mCtx ).getUserId ( ) ).updateChildren ( userMap ).addOnSuccessListener ( task -> {
-			setEnabled ( false );
-		} ).addOnFailureListener ( e -> {
-					setEnabled ( false );
-					e.printStackTrace ( );
-				}
-		);
 	}
 
 	private void getPets ( ) {

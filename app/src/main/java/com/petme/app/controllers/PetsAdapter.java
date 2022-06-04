@@ -1,23 +1,23 @@
 package com.petme.app.controllers;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.petme.app.R;
-import com.petme.app.databinding.TaskItemViewBinding;
+import com.petme.app.databinding.PetItemBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.PetModel;
+import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
+@SuppressLint ( "SetTextI18n" )
 public class PetsAdapter extends RecyclerView.Adapter < PetsAdapter.PetsAdapterHolder > {
 
 	private final List < PetModel > mList;
@@ -33,7 +33,7 @@ public class PetsAdapter extends RecyclerView.Adapter < PetsAdapter.PetsAdapterH
 	@NonNull
 	@Override
 	public PetsAdapterHolder onCreateViewHolder ( @NonNull ViewGroup parent , int viewType ) {
-		return new PetsAdapterHolder ( TaskItemViewBinding.bind ( LayoutInflater.from ( mCtx ).inflate ( R.layout.task_item_view , parent , false ) ) );
+		return new PetsAdapterHolder ( PetItemBinding.bind ( LayoutInflater.from ( mCtx ).inflate ( R.layout.pet_item , parent , false ) ) );
 	}
 
 	@Override
@@ -42,25 +42,17 @@ public class PetsAdapter extends RecyclerView.Adapter < PetsAdapter.PetsAdapterH
 		try {
 			PetModel task = mList.get ( position );
 
-			holder.bind.taskTitle.setText ( "Pet Name: " + task.getName ( ) );
-			holder.bind.tasskDesc.setText ( "Breed: " + task.getBreed ( ) );
+			holder.bind.petName.setText ( "Pet Name: " + task.getName ( ) );
+			holder.bind.petBreed.setText ( "Breed: " + task.getBreed ( ) );
+			holder.bind.petAge.setText ( "Age: " + task.getAge ( ) );
 
-			holder.bind.taskTime.setVisibility ( View.GONE );
-			holder.bind.petName.setVisibility ( View.GONE );
+			holder.bind.getRoot ( ).setCardBackgroundColor ( Color.parseColor ( task.getColor ( ) ) );
+
+			Picasso.get ( ).load ( task.getImage ( ) ).placeholder ( R.drawable.pet ).error ( R.drawable.pet ).into ( holder.bind.petImg );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace ( );
 		}
-	}
-
-	public String formatTime ( long timestamp ) {
-		try {
-			return new SimpleDateFormat ( "EEEE MMM,yyy hh:mm a" , Locale.getDefault ( ) ).format ( new Date ( timestamp ) );
-		}
-		catch ( Exception e ) {
-			e.printStackTrace ( );
-		}
-		return "";
 	}
 
 	@Override
@@ -69,9 +61,9 @@ public class PetsAdapter extends RecyclerView.Adapter < PetsAdapter.PetsAdapterH
 	}
 
 	static class PetsAdapterHolder extends RecyclerView.ViewHolder {
-		TaskItemViewBinding bind;
+		PetItemBinding bind;
 
-		public PetsAdapterHolder ( @NonNull TaskItemViewBinding bind ) {
+		public PetsAdapterHolder ( @NonNull PetItemBinding bind ) {
 			super ( bind.getRoot ( ) );
 			this.bind = bind;
 		}

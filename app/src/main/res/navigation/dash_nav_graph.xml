@@ -83,14 +83,18 @@
 		android:label="fragment_edit_profile"
 		tools:layout="@layout/fragment_edit_profile" />
 	<fragment
-		android:id="@+id/foundFragment"
-		android:name="com.petme.app.view.dash.lostandfound.FoundFragment"
-		android:label="fragment_found"
-		tools:layout="@layout/fragment_found" />
+		android:id = "@+id/foundFragment"
+		android:name = "com.petme.app.view.dash.lostandfound.FoundFragment"
+		android:label = "fragment_found"
+		tools:layout = "@layout/fragment_found" />
 	<fragment
-		android:id="@+id/lostFragment"
-		android:name="com.petme.app.view.dash.lostandfound.LostFragment"
-		android:label="fragment_lost"
-		tools:layout="@layout/fragment_lost" />
+		android:id = "@+id/lostFragment"
+		android:name = "com.petme.app.view.dash.lostandfound.LostFragment"
+		android:label = "fragment_lost"
+		tools:layout = "@layout/fragment_lost" />
+	<fragment
+		android:id = "@+id/createFoundFragment"
+		android:name = "com.petme.app.view.dash.lostandfound.CreateFoundFragment"
+		android:label = "CreateFoundFragment" />
 
 </navigation >
