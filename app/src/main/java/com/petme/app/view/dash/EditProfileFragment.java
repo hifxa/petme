@@ -129,7 +129,6 @@ public class EditProfileFragment extends BaseFragment < FragmentEditProfileBindi
 		HashMap < String, Object > userMap = new HashMap <> ( );
 		userMap.put ( "email" , bind.email.getText ( ).toString ( ).trim ( ) );
 		userMap.put ( "phone" , bind.phone.getText ( ).toString ( ).trim ( ) );
-		userMap.put ( "id" , new Prefs ( mCtx ).getUserId ( ) );
 		userMap.put ( "name" , bind.name.getText ( ).toString ( ).trim ( ) );
 		userMap.put ( "image" , image );
 

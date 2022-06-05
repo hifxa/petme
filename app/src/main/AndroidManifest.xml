@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android = "http://schemas.android.com/apk/res/android"
-	package = "com.petme.app">
+	package = "com.petme.app" >
 
 	<uses-permission android:name = "android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name = "android.permission.ACCESS_COARSE_LOCATION" />
@@ -14,39 +14,35 @@
 		android:largeHeap = "true"
 		android:roundIcon = "@mipmap/ic_launcher_round"
 		android:supportsRtl = "true"
-		android:theme = "@style/Theme.PetMe">
-
+		android:theme = "@style/Theme.PetMe" >
 		<activity
-			android:name = "com.petme.app.view.dash.DashActivity"
+			android:name = ".view.ChatActivity"
 			android:exported = "false" />
-
 		<activity
-			android:name = "com.petme.app.view.auth.AuthActivity"
+			android:name = ".view.dash.DashActivity"
 			android:exported = "false" />
-
 		<activity
-			android:name = "com.petme.app.view.SplashActivity"
-			android:exported = "true">
-			<intent-filter>
+			android:name = ".view.auth.AuthActivity"
+			android:exported = "false" />
+		<activity
+			android:name = ".view.SplashActivity"
+			android:exported = "true" >
+			<intent-filter >
 				<action android:name = "android.intent.action.MAIN" />
 
 				<category android:name = "android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
+			</intent-filter >
+		</activity >
 
 		<meta-data
 			android:name = "com.google.android.gms.version"
 			android:value = "@integer/google_play_services_version" />
-
 		<meta-data
 			android:name = "com.google.android.geo.API_KEY"
-			android:value = "AIzaSyBFnrnIv19pUfFw6ctqRzQvr8EU7yx4d1M" />
-		<!--AIzaSyAnWl4I_Fv_k5-SQcKoR62SjJUYztwlgFE-->
-
+			android:value = "AIzaSyBFnrnIv19pUfFw6ctqRzQvr8EU7yx4d1M" /> <!-- AIzaSyAnWl4I_Fv_k5-SQcKoR62SjJUYztwlgFE -->
 		<meta-data
 			android:name = "preloaded_fonts"
 			android:resource = "@array/preloaded_fonts" />
+	</application >
 
-	</application>
-
-</manifest>
+</manifest >

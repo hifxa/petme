@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 
 public class Prefs {
 	public static final String USER_ID = "user_id";
+	public static final String ID = "id";
 	public static final String USER_EMAIL = "user_email";
+	public static final String USER_NAME = "user_email";
 
 	Context mCtx;
 	SharedPreferences mPrefs;
@@ -25,6 +27,14 @@ public class Prefs {
 
 	public String getUserId ( ) {
 		return mPrefs.getString ( USER_ID , "" );
+	}
+
+	public String getId ( ) {
+		return mPrefs.getString ( ID , "" );
+	}
+
+	public String getName ( ) {
+		return mPrefs.getString ( USER_NAME , "" );
 	}
 
 	public void nukeThemAll ( ) {

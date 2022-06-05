@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:tools = "http://schemas.android.com/tools"
+	style = "@style/cardStyle"
+	android:layout_margin = "8dp"
+	android:layout_width = "match_parent"
+	android:layout_height = "wrap_content" >
+
+	<LinearLayout
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:orientation = "vertical"
+		android:padding = "16dp" >
+
+		<TextView
+			android:id = "@+id/sender_name"
+			style = "@style/Subtitle1"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:paddingBottom = "12dp"
+			tools:text = "Username" />
+
+		<TextView
+			android:id = "@+id/message"
+			style = "@style/Body1"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:paddingBottom = "8dp"
+			tools:text = "Chat message" />
+
+		<TextView
+			android:id = "@+id/date"
+			style = "@style/Caption"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:gravity = "end"
+			tools:text = "Data" />
+
+	</LinearLayout >
+
+</com.google.android.material.card.MaterialCardView >

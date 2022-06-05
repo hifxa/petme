@@ -71,6 +71,9 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 			case R.id.profile:
 				showHideBar ( false );
 				break;
+			case R.id.chat:
+				showHideBar ( false );
+				break;
 			case R.id.vetFragment:
 				showHideBar ( true );
 				break;

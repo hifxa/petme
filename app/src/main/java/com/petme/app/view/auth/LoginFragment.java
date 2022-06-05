@@ -3,7 +3,6 @@ package com.petme.app.view.auth;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +14,11 @@ import androidx.core.util.PatternsCompat;
 import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentLoginBinding;
@@ -32,8 +31,8 @@ import java.util.HashMap;
 
 public class LoginFragment extends BaseFragment < FragmentLoginBinding > {
 
-	private final DatabaseReference dbRef = FirebaseDatabase.getInstance ( ).getReference ( "users" );
 	float v = 0;
+	private String id = "0";
 	private FirebaseAuth mAuth;
 
 	@NonNull
@@ -134,23 +133,42 @@ public class LoginFragment extends BaseFragment < FragmentLoginBinding > {
 
 	// after a successful login, the user details are saved here.
 	private void onLoginSuccess ( FirebaseUser mUser , String email ) {
-		bind.loader.setVisibility ( View.GONE );
 
-		HashMap < String, String > userMap = new HashMap <> ( );
-		userMap.put ( "email" , email );
-		userMap.put ( "id" , mUser.getUid ( ) );
-		userMap.put ( "name" , "" );
-		userMap.put ( "image" , "" );
+		FireRef.userDbRef.addListenerForSingleValueEvent ( new ValueEventListener ( ) {
+			@Override
+			public void onDataChange ( @NonNull DataSnapshot snapshot ) {
+				id = "" + snapshot.getChildrenCount ( );
 
-		dbRef.child ( mUser.getUid ( ) ).setValue ( userMap ).addOnSuccessListener ( task -> {
-			Prefs mPref = new Prefs ( mCtx );
-			mPref.putString ( Prefs.USER_ID , mUser.getUid ( ) );
-			mPref.putString ( Prefs.USER_EMAIL , mUser.getEmail ( ) );
+				Alerts.log ( TAG , "COUNT: " + snapshot.getChildrenCount ( ) );
 
-			startActivity ( new Intent ( mCtx , DashActivity.class ).setFlags ( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP ) );
-			( ( AppCompatActivity ) mCtx ).finishAfterTransition ( );
-		} ).addOnFailureListener ( e ->
-				e.printStackTrace ( )
-		);
+				bind.loader.setVisibility ( View.GONE );
+
+				HashMap < String, Object > userMap = new HashMap <> ( );
+				userMap.put ( "email" , email );
+				userMap.put ( "user_id" , mUser.getUid ( ) );
+				userMap.put ( "id" , id );
+				userMap.put ( "name" , mUser.getDisplayName ( ) != null ? mUser.getDisplayName ( ) : "" + email.split ( "@" )[ 0 ] );
+				userMap.put ( "image" , "" );
+
+				FireRef.userDbRef.child ( mUser.getUid ( ) ).updateChildren ( userMap ).addOnSuccessListener ( task -> {
+					Prefs mPref = new Prefs ( mCtx );
+					mPref.putString ( Prefs.USER_ID , mUser.getUid ( ) );
+					mPref.putString ( Prefs.ID , id );
+					mPref.putString ( Prefs.USER_NAME , mUser.getDisplayName ( ) != null ? mUser.getDisplayName ( ) : "" + email.split ( "@" )[ 0 ] );
+					mPref.putString ( Prefs.USER_EMAIL , mUser.getEmail ( ) );
+
+					startActivity ( new Intent ( mCtx , DashActivity.class ).setFlags ( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP ) );
+					( ( AppCompatActivity ) mCtx ).finishAfterTransition ( );
+				} ).addOnFailureListener ( e ->
+						e.printStackTrace ( )
+				);
+			}
+
+			@Override
+			public void onCancelled ( @NonNull DatabaseError error ) {
+
+			}
+		} );
+
 	}
 }

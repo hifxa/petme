@@ -15,12 +15,16 @@ import androidx.viewbinding.ViewBinding;
 
 import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.android.material.transition.MaterialFadeThrough;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.permissionx.guolindev.PermissionX;
 import com.petme.app.R;
+import com.petme.app.model.UserModel;
 import com.petme.app.utils.Alerts;
 import com.petme.app.utils.Consts;
 
@@ -79,6 +83,24 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 		return picker.createIntent ( );
 	}
 
+	protected UserModel getUserById ( String id ) {
+		final UserModel[] model = { null };
+
+		FireRef.userDbRef.child ( id ).addValueEventListener ( new ValueEventListener ( ) {
+			@Override
+			public void onDataChange ( @NonNull DataSnapshot snap ) {
+				model[ 0 ] = snap.getValue ( UserModel.class );
+			}
+
+			@Override
+			public void onCancelled ( @NonNull DatabaseError error ) {
+
+			}
+		} );
+
+		return model[ 0 ];
+	}
+
 	// this is just a helper method which we can call and pass a callback reference to check if the permissions needed by us are granted or not.
 	protected void requestPerms ( PermissionCallback func ) {
 		PermissionX.init ( requireActivity ( ) )
@@ -120,6 +142,9 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 
 		public static final StorageReference foundPetImageRef = FirebaseStorage.getInstance ( ).getReference ( "adopt_pet_images" );
 		public static final DatabaseReference foundDbRef = FirebaseDatabase.getInstance ( ).getReference ( "found" );
+
+		public static final DatabaseReference chatListRef = FirebaseDatabase.getInstance ( ).getReference ( "chat_list" );
+		public static final DatabaseReference chatRef = FirebaseDatabase.getInstance ( ).getReference ( "chats" );
 	}
 
 }

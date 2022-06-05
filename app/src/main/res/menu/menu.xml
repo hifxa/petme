@@ -12,8 +12,8 @@
 		app:showAsAction ="always"
 		android:title = "Profile" />
 	<item
-		android:id = "@+id/social"
-		android:icon="@drawable/global"
-		app:showAsAction ="always"
-		android:title = "Social" />
+		android:id = "@+id/chat"
+		android:icon = "@drawable/message"
+		app:showAsAction = "always"
+		android:title = "Chats" />
 </menu >

@@ -96,5 +96,10 @@
 		android:id = "@+id/createFoundFragment"
 		android:name = "com.petme.app.view.dash.lostandfound.CreateFoundFragment"
 		android:label = "CreateFoundFragment" />
+	<fragment
+		android:id = "@+id/chat"
+		android:name = "com.petme.app.view.dash.ChatListFragment"
+		android:label = "fragment_chat_list"
+		tools:layout = "@layout/fragment_chat_list" />
 
 </navigation >
