@@ -56,20 +56,20 @@
 	<color name = "ucrop_color_widget_text" >@color/primary</color >
 	<color name = "ucrop_color_widget_background" >@color/surface</color >
 
-	<color name = "shop" >#FFCA28</color >
-	<color name = "onShop" >#412d00</color >
-	<color name = "shopContainer" >#FFECB3</color >
-	<color name = "onShopContainer" >#FFC107</color >
+	<color name = "shop" >#FF8A65</color >
+	<color name = "onShop" >#F4511E</color >
+	<color name = "shopContainer" >#FFCCBC</color >
+	<color name = "onShopContainer" >#FF7043</color >
 
 	<color name = "adopt" >#4CAF70</color >
 	<color name = "onAdopt" >#003918</color >
 	<color name = "adoptContainer" >#C8E6C9</color >
 	<color name = "onAdoptContainer" >#4CAF50</color >
 
-	<color name = "lostFound" >#ffade4</color >
-	<color name = "onLostFound" >#71175F</color >
-	<color name = "lostFoundContainer" >#F8BBDD</color >
-	<color name = "onLostFoundContainer" >#FF33AD</color >
+	<color name = "lostFound" >#BA68C8</color >
+	<color name = "onLostFound" >#8E24AA</color >
+	<color name = "lostFoundContainer" >#E1BEE7</color >
+	<color name = "onLostFoundContainer" >#AB47BC</color >
 
 	<color name = "task" >#4DD0E1</color >
 	<color name = "onTask" >#143951</color >

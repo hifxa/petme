@@ -85,13 +85,13 @@ public class CreateFoundFragment extends BaseFragment <FragmentCreateFoundBindin
         HashMap<String, String> foundMap = new HashMap<>();
         foundMap.put("name", animal);
         foundMap.put("breed", breed);
-        foundMap.put("age", foundLoc);
-        foundMap.put("details", currentlyAt);
+        foundMap.put("foundLocation", foundLoc);
+        foundMap.put("currentLocation", currentlyAt);
         foundMap.put("contact", contact);
         foundMap.put("image", image);
         foundMap.put("timestamp", "" + System.currentTimeMillis());
 
-        String pushKey = FireRef.adoptDbRef.push ( ).getKey ( );
+        String pushKey = FireRef.foundDbRef.push ( ).getKey ( );
         FireRef.foundDbRef.child ( pushKey ).setValue ( foundMap , ( error , ref ) -> {
             if ( error == null ) {
 

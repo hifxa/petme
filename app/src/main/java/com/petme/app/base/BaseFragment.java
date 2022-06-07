@@ -28,6 +28,7 @@ import com.petme.app.model.UserModel;
 import com.petme.app.utils.Alerts;
 import com.petme.app.utils.Consts;
 
+import java.util.ArrayDeque;
 import java.util.Locale;
 
 public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment {
@@ -140,11 +141,15 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 
 		public static final DatabaseReference quotesDbRef = FirebaseDatabase.getInstance ( ).getReference ( "quotes" );
 
-		public static final StorageReference foundPetImageRef = FirebaseStorage.getInstance ( ).getReference ( "adopt_pet_images" );
+		public static final StorageReference foundPetImageRef = FirebaseStorage.getInstance ( ).getReference ( "found_pet_images" );
 		public static final DatabaseReference foundDbRef = FirebaseDatabase.getInstance ( ).getReference ( "found" );
 
 		public static final DatabaseReference chatListRef = FirebaseDatabase.getInstance ( ).getReference ( "chat_list" );
 		public static final DatabaseReference chatRef = FirebaseDatabase.getInstance ( ).getReference ( "chats" );
-	}
+
+		public static final StorageReference lostPetImageRef = FirebaseStorage.getInstance ( ).getReference ( "lost_pet_images" );
+		public static final DatabaseReference lostDbRef = FirebaseDatabase.getInstance ( ).getReference ( "found" );
+
+    }
 
 }

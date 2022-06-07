@@ -128,7 +128,8 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 								bind.petBreed.getText ( ).toString ( ).trim ( ) ,
 								bind.petAge.getText ( ).toString ( ).trim ( ) ,
 								bind.miscDetails.getText ( ).toString ( ).trim ( ) ,
-								bind.contactInfo.getText ( ).toString ( ).trim ( ) , "" );
+								bind.contactInfo.getText ( ).toString ( ).trim ( ) ,
+								"" );
 					}
 					else {
 						addPet (

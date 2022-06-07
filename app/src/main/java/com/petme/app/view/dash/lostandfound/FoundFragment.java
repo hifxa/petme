@@ -61,12 +61,12 @@ public class FoundFragment extends BaseFragment<FragmentFoundBinding> {
         super.onStart();
 
 
-        fetchAdoptions();
+        fetchFoundAds();
     }
 
 
 
-    private void fetchAdoptions ( ) {
+    private void fetchFoundAds ( ) {
         FireRef.foundDbRef.addValueEventListener ( new ValueEventListener ( ) {
             @Override
             public void onDataChange ( @NonNull DataSnapshot snap ) {
