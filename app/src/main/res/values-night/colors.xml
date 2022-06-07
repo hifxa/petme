@@ -26,7 +26,7 @@
 
 	<color name = "surface" >#FFFBFE</color >
 	<color name = "onSurface" >#1C1B1F</color >
-	<color name = "surfaceVariant" >#E7E0EC</color >
+	<color name = "surfaceVariant" >#EFEFEF</color >
 	<color name = "onSurfaceVariant" >#49454F</color >
 
 	<color name = "outline" >#79747E</color >
