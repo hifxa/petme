@@ -29,12 +29,24 @@
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
 				android:padding = "8dp"
+				tools:itemCount = "2"
 				app:layoutManager = "androidx.recyclerview.widget.LinearLayoutManager"
 				tools:listitem = "@layout/chat_list_item" />
 
 		</LinearLayout >
 
 	</androidx.core.widget.NestedScrollView >
+
+	<include
+		android:id = "@+id/no_data"
+		layout = "@layout/no_data_view"
+		android:layout_width = "0dp"
+		android:layout_height = "0dp"
+		android:layout_marginBottom = "70dp"
+		app:layout_constraintBottom_toBottomOf = "parent"
+		app:layout_constraintEnd_toEndOf = "parent"
+		app:layout_constraintStart_toStartOf = "parent"
+		app:layout_constraintTop_toTopOf = "parent" />
 
 	<com.google.android.material.floatingactionbutton.FloatingActionButton
 		android:id = "@+id/chat"

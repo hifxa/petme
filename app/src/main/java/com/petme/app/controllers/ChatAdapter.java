@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.petme.app.R;
@@ -14,7 +15,7 @@ import com.petme.app.databinding.ChatItemBinding;
 import com.petme.app.interfaces.ChatSelection;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.ChatModel;
-import com.petme.app.utils.Alerts;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,27 +63,73 @@ public class ChatAdapter extends RecyclerView.Adapter < ChatAdapter.ChatItemHold
 
 		ChatModel model = chatList.get ( position );
 
-		Alerts.log ( "TAG" , "ADAPTER: " + model.toString ( ) );
-
 		if ( model.getSender_id ( ).equals ( senderId ) ) {
 			holder.bind.receiver.getRoot ( ).setVisibility ( View.GONE );
 			holder.bind.sender.getRoot ( ).setVisibility ( View.VISIBLE );
 
 			holder.bind.sender.message.setText ( model.getMessage ( ) );
 			holder.bind.sender.time.setText ( formatTime ( Long.parseLong ( model.getTimestamp ( ) ) ) );
+
+			if ( model.getType ( ).equals ( "image" ) ) {
+				holder.bind.sender.card.setVisibility ( View.VISIBLE );
+				holder.bind.sender.message.setVisibility ( View.GONE );
+				Picasso.get ( ).load ( model.getMessage ( ) ).placeholder ( R.drawable.pet ).error ( R.drawable.pet ).into ( holder.bind.sender.image );
+			}
+			else {
+				holder.bind.sender.card.setVisibility ( View.GONE );
+				holder.bind.sender.message.setVisibility ( View.VISIBLE );
+			}
+
+			holder.bind.sender.getRoot ( ).setOnLongClickListener ( v -> {
+				select.onLongCLick ( position , chatList.get ( position ) , v );
+				return true;
+			} );
+
+			holder.bind.sender.getRoot ( ).setOnClickListener ( v -> select.onCLick ( position , chatList.get ( position ) , v ) );
 		}
 		else {
 			holder.bind.receiver.getRoot ( ).setVisibility ( View.VISIBLE );
 			holder.bind.sender.getRoot ( ).setVisibility ( View.GONE );
 
+			if ( model.getType ( ).equals ( "image" ) ) {
+				holder.bind.receiver.card.setVisibility ( View.VISIBLE );
+				holder.bind.receiver.message.setVisibility ( View.GONE );
+				Picasso.get ( ).load ( model.getMessage ( ) ).placeholder ( R.drawable.pet ).error ( R.drawable.pet ).into ( holder.bind.receiver.image );
+			}
+			else {
+				holder.bind.receiver.card.setVisibility ( View.GONE );
+				holder.bind.receiver.message.setVisibility ( View.VISIBLE );
+			}
+
 			holder.bind.receiver.message.setText ( model.getMessage ( ) );
 			holder.bind.receiver.time.setText ( formatTime ( Long.parseLong ( model.getTimestamp ( ) ) ) );
 		}
+		setSelectionView ( position , holder );
 	}
 
 	@Override
 	public int getItemCount ( ) {
 		return chatList.size ( );
+	}
+
+	private void setSelectionView ( int pos , ChatItemHolder holder ) {
+		if ( mSelectedData.contains ( chatList.get ( pos ) ) ) {
+
+			for ( ChatModel mSelectedDatum : mSelectedData ) {
+				if ( mSelectedDatum == chatList.get ( pos ) ) {
+					if ( mSelectedDatum.getSender_id ( ).equals ( senderId ) ) {
+						holder.bind.sender.getRoot ( ).setBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.inversePrimary ) );
+					}
+					else {
+						holder.bind.receiver.getRoot ( ).setBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.inversePrimary ) );
+					}
+				}
+			}
+		}
+		else {
+			holder.bind.sender.getRoot ( ).setBackgroundColor ( ContextCompat.getColor ( mCtx , android.R.color.transparent ) );
+			holder.bind.receiver.getRoot ( ).setBackgroundColor ( ContextCompat.getColor ( mCtx , android.R.color.transparent ) );
+		}
 	}
 
 	private String formatTime ( long parseLong ) {
@@ -130,7 +177,7 @@ public class ChatAdapter extends RecyclerView.Adapter < ChatAdapter.ChatItemHold
 		currentSelectedId = - 1;
 	}
 
-	ChatModel getItem ( int position ) {
+	public ChatModel getItem ( int position ) {
 		return chatList.get ( position );
 	}
 

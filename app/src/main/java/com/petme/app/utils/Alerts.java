@@ -5,7 +5,9 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.viewbinding.ViewBinding;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.petme.app.BuildConfig;
 import com.petme.app.interfaces.AlertClicks;
@@ -52,4 +54,13 @@ public class Alerts {
 			e.printStackTrace ( );
 		}
 	}
+
+	public static BottomSheetDialog appSheet ( Context mCtx , ViewBinding bind , boolean canCancel ) {
+		BottomSheetDialog sheet = new BottomSheetDialog ( mCtx );
+		sheet.setContentView ( bind.getRoot ( ) );
+		sheet.setCancelable ( canCancel );
+		sheet.setCanceledOnTouchOutside ( canCancel );
+		return sheet;
+	}
+
 }

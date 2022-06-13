@@ -1,26 +1,22 @@
 package com.petme.app.view.dash.lostandfound;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
-import com.petme.app.controllers.FoundAdapter;
 import com.petme.app.controllers.LostAdapter;
 import com.petme.app.databinding.FragmentLostBinding;
-import com.petme.app.model.FoundModel;
 import com.petme.app.model.LostModel;
 import com.petme.app.utils.Alerts;
 
@@ -69,11 +65,20 @@ public class LostFragment extends BaseFragment<FragmentLostBinding> {
             public void onDataChange ( @NonNull DataSnapshot snap ) {
                 mList.clear ( );
                 for ( DataSnapshot mData : snap.getChildren ( ) ) {
-
                     Alerts.log ( TAG , "DATA: " + mData.getValue ( ) );
-
                     mList.add ( mData.getValue ( LostModel.class ) );
                 }
+
+                if ( mList.isEmpty ( ) ) {
+                    bind.noData.getRoot ( ).setVisibility ( View.VISIBLE );
+                    bind.LostRecycler.setVisibility ( View.GONE );
+                }
+                else {
+                    bind.noData.getRoot ( ).setVisibility ( View.GONE );
+                    bind.LostRecycler.setVisibility ( View.VISIBLE );
+                }
+
+
                 mAdapter.notifyDataSetChanged ( );
             }
 

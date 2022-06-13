@@ -51,6 +51,19 @@
 		<item name = "backgroundTint" >@color/primary</item >
 	</style >
 
+	<style name = "appBtnTonal" parent = "Widget.Material3.Button.TonalButton.Icon" >
+		<item name = "enforceTextAppearance" >true</item >
+		<item name = "android:textAppearance" >@style/Button</item >
+		<item name = "android:insetTop" >0dp</item >
+		<item name = "android:insetBottom" >0dp</item >
+		<item name = "cornerRadius" >24dp</item >
+		<item name = "elevation" >4dp</item >
+		<item name = "android:textColor" >@color/primary</item >
+		<item name = "rippleColor" >@color/primary</item >
+		<item name = "iconTint" >@color/primary</item >
+		<item name = "backgroundTint" >@color/primaryContainer</item >
+	</style >
+
 	<style name = "MaterialAlertDialogTheme" parent = "ThemeOverlay.Material3.MaterialAlertDialog" >
 		<item name = "android:layout_width" >match_parent</item >
 		<item name = "android:layout_height" >wrap_content</item >
@@ -96,17 +109,16 @@
 		<item name = "android:textAppearance" >@style/Body2</item >
 	</style >
 
-
 	<style name = "bottomNavigationStyle" parent = "Widget.Material3.BottomNavigationView" >
 		<item name = "labelVisibilityMode" >selected</item >
 		<item name = "background" >@color/background</item >
 		<item name = "android:background" >@color/background</item >
-		<item name = "itemTextAppearanceActive" >@style/Body2</item >
+		<item name = "itemTextAppearanceActive" >@style/Caption</item >
 		<item name = "itemActiveIndicatorStyle" >@style/bottomNavIndicator</item >
 		<item name = "itemIconTint" >@color/bottom_nav_color_state</item >
 		<item name = "itemRippleColor" >@color/bottom_nav_colored_ripple_color</item >
 		<item name = "itemTextColor" >@color/bottom_nav_color_state</item >
-		<item name = "itemIconSize" >26dp</item >
+		<item name = "itemIconSize" >24dp</item >
 	</style >
 
 	<style name = "bottomNavIndicator" parent = "@style/Widget.Material3.BottomNavigationView.ActiveIndicator" >
@@ -125,6 +137,19 @@
 	<style name = "popupMenuStyle" parent = "Widget.Material3.PopupMenu" >
 		<item name = "actionMenuTextColor" >@color/primary</item >
 		<item name = "colorControlNormal" >@color/surface</item >
+	</style >
+
+	<style name = "actionModeTextStyle" parent = "Headline6" >
+		<item name = "android:textColor" >@color/onPrimary</item >
+	</style >
+
+	<style name = "ActionModeStyle" parent = "Widget.Material3.ActionMode" >
+		<item name = "titleTextStyle" >@style/actionModeTextStyle</item >
+		<item name = "subtitleTextStyle" >@style/actionModeTextStyle</item >
+		<item name = "background" >@color/primary</item >
+		<item name = "android:layout_height" >wrap_content</item >
+		<item name = "closeItemLayout" >@layout/abc_action_mode_close_item_material</item >
+		<item name = "closeIconTint" >@color/onPrimary</item >
 	</style >
 
 </resources >

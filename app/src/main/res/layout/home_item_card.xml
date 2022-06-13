@@ -7,14 +7,15 @@
 
 	<com.google.android.material.card.MaterialCardView
 		style = "@style/cardStyle"
-		android:id="@+id/card"
+		android:id = "@+id/card"
 		android:layout_width = "match_parent"
-		android:layout_height = "130dp"
+		android:layout_height = "0dp"
+		app:layout_constraintDimensionRatio = "1:1"
 		android:layout_margin = "12dp"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"
 		app:layout_constraintStart_toStartOf = "parent"
-		app:layout_constraintTop_toTopOf = "parent">
+		app:layout_constraintTop_toTopOf = "parent" >
 
 		<LinearLayout
 			android:layout_width = "match_parent"
@@ -28,12 +29,12 @@
 				android:layout_width = "match_parent"
 				android:layout_height = "0dp"
 				android:layout_weight = "1"
-				android:padding = "16dp"
+				android:padding = "24dp"
 				android:src = "@drawable/ic_house" />
 
 			<TextView
 				android:id = "@+id/title"
-				style = "@style/Headline6"
+				style = "@style/Headline5"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
 				android:gravity = "center"

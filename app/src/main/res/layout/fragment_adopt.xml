@@ -27,14 +27,25 @@
 		app:layout_constraintTop_toBottomOf = "@id/header"
 		tools:listitem = "@layout/adopt_item_view" />
 
+	<include
+		android:id = "@+id/no_data"
+		layout = "@layout/no_data_view"
+		android:layout_width = "0dp"
+		android:layout_height = "0dp"
+		android:layout_marginBottom = "70dp"
+		app:layout_constraintBottom_toBottomOf = "parent"
+		app:layout_constraintEnd_toEndOf = "parent"
+		app:layout_constraintStart_toStartOf = "parent"
+		app:layout_constraintTop_toBottomOf = "@id/header" />
+
 	<com.google.android.material.floatingactionbutton.FloatingActionButton
 		android:id = "@+id/newAdoptButton"
 		android:layout_width = "wrap_content"
 		android:layout_height = "wrap_content"
 		android:layout_margin = "16dp"
 		android:src = "@drawable/ic_note_2"
-		app:elevation = "2dp"
 		app:backgroundTint = "@color/primary"
+		app:elevation = "2dp"
 		app:fabCustomSize = "50dp"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"

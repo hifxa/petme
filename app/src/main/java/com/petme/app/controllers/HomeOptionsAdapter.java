@@ -43,10 +43,7 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 		holder.bind.click.setOnClickListener ( view -> mClicks.onItemClick ( position , option ) );
 
 		switch ( option ) {
-			case "vet":
-				holder.bind.icon.setImageResource ( R.drawable.ic_heart_tick );
-				break;
-			case "shop":
+			case "Shops / Vet":
 				holder.bind.icon.setImageResource ( R.drawable.ic_shop );
 				holder.bind.title.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onShopContainer ) );
 				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onShopContainer ) ) );
@@ -58,7 +55,7 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onTaskContainer ) ) );
 				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.taskContainer ) );
 				break;
-			case "lost/Found":
+			case "Lost / Found":
 				holder.bind.icon.setImageResource ( R.drawable.ic_note_2 );
 				holder.bind.title.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onLostFoundContainer ) );
 				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onLostFoundContainer ) ) );
@@ -70,15 +67,12 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onAdoptContainer ) ) );
 				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.adoptContainer ) );
 				break;
-			case "mating":
-				holder.bind.icon.setImageResource ( R.drawable.ic_lovely );
-				break;
 		}
 	}
 
 	@Override
 	public int getItemCount ( ) {
-		return 6;
+		return mList.size ( );
 	}
 
 	static class HomeOptionsAdapterHolder extends RecyclerView.ViewHolder {

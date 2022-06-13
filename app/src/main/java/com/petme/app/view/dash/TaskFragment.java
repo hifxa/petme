@@ -70,6 +70,16 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 				for ( DataSnapshot mData : snap.getChildren ( ) ) {
 					mList.add ( mData.getValue ( TaskModel.class ) );
 				}
+
+				if ( mList.isEmpty ( ) ) {
+					bind.noData.getRoot ( ).setVisibility ( View.VISIBLE );
+					bind.taskRecycler.setVisibility ( View.GONE );
+				}
+				else {
+					bind.noData.getRoot ( ).setVisibility ( View.GONE );
+					bind.taskRecycler.setVisibility ( View.VISIBLE );
+				}
+
 				mAdapter.notifyDataSetChanged ( );
 			}
 

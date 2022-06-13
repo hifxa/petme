@@ -32,8 +32,17 @@
 		<item name = "android:navigationBarColor" >@color/background</item >
 		<item name = "android:windowLightNavigationBar" >true</item >
 		<item name = "android:windowLightStatusBar" >false</item >
+		<item name = "windowActionModeOverlay" >true</item >
+		<item name = "actionModeStyle" >@style/ActionModeStyle</item >
+		<item name = "actionModeCloseDrawable" >@drawable/ic_close</item >
+		<item name = "actionBarTheme" >@style/ActionBar</item >
 
 		<item name = "materialAlertDialogTheme" >@style/MaterialAlertDialogTheme</item >
+	</style >
+
+	<style name = "ActionBar" parent = "ThemeOverlay.MaterialComponents.Dark.ActionBar" >
+		<item name = "colorControlNormal" >@color/onPrimary</item >
+		<item name = "searchViewStyle" >@style/Widget.AppCompat.SearchView.ActionBar</item >
 	</style >
 
 </resources >

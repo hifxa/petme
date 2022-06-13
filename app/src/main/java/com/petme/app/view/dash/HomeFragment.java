@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @SuppressLint ( "SetTextI18n" )
 public class HomeFragment extends BaseFragment < FragmentHomeBinding > {
 
-	List < String > homeOptions = new ArrayList <> ( Arrays.asList ( "vet" , "shop" , "tasks" , "lost/Found" , "adopt" , "mating" ) );
+	List < String > homeOptions = new ArrayList <> ( Arrays.asList ( "Shops / Vet" , "tasks" , "Lost / Found" , "adopt" ) );
 	List < String > quotesList = new ArrayList <> ( );
 	HomeOptionsAdapter mAdapter;
 
@@ -39,30 +39,21 @@ public class HomeFragment extends BaseFragment < FragmentHomeBinding > {
 
 		mAdapter = new HomeOptionsAdapter ( mCtx , homeOptions , ( pos , type ) -> {
 			switch ( type ) {
-				case "vet":
-					requestPerms ( new PermissionCallback ( ) {
-						@Override
-						public void onGranted ( boolean granted ) {
-							if ( granted ) {
-								Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToVetFragment );
-							}
+				case "Shops / Vet":
+					requestPerms ( granted -> {
+						if ( granted ) {
+							Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToVetFragment );
 						}
 					} );
-					break;
-				case "shop":
-					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToShopsFragment );
 					break;
 				case "tasks":
 					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToTaskFragment );
 					break;
-				case "lost/Found":
+				case "Lost / Found":
 					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToLostFoundFragment );
 					break;
 				case "adopt":
 					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToAdoptFragment );
-					break;
-				case "mating":
-					Navigation.findNavController ( bind.getRoot ( ) ).navigate ( R.id.goToMatingFragment );
 					break;
 			}
 		} );

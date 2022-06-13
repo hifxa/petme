@@ -126,8 +126,15 @@
 				android:id = "@+id/pets_recycler"
 				android:layout_width = "match_parent"
 				android:layout_height = "wrap_content"
+				tools:itemCount = "1"
 				app:layoutManager = "androidx.recyclerview.widget.LinearLayoutManager"
 				tools:listitem = "@layout/pet_item" />
+
+			<include
+				android:id = "@+id/no_data"
+				layout = "@layout/no_data_view"
+				android:layout_width = "match_parent"
+				android:layout_height = "wrap_content" />
 
 		</LinearLayout >
 
