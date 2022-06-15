@@ -47,6 +47,7 @@
 		app:backgroundTint = "@color/primary"
 		app:elevation = "2dp"
 		app:fabCustomSize = "50dp"
+		app:rippleColor="@color/adoptContainer"
 		android:backgroundTint="@color/adopt"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"

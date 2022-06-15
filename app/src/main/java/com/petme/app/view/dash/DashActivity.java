@@ -40,6 +40,7 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 		NavigationUI.setupWithNavController ( bind.navBar , ctrl );
 		ctrl.addOnDestinationChangedListener ( this );
 
+
 		bind.topBar.setOnMenuItemClickListener ( item -> {
 			switch ( item.getItemId ( ) ) {
 				case R.id.about:

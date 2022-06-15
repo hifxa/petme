@@ -45,6 +45,7 @@
 		android:src = "@drawable/ic_note_2"
 		app:elevation = "2dp"
 		app:backgroundTint = "@color/task"
+		app:rippleColor="@color/taskContainer"
 		app:fabCustomSize = "50dp"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"

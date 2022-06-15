@@ -33,6 +33,7 @@
 		android:layout_margin = "16dp"
 		android:src = "@drawable/ic_note_2"
 		app:elevation = "2dp"
+		app:rippleColor="@color/lostFoundContainer"
 		android:backgroundTint="@color/lostFound"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"
