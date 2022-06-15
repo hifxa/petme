@@ -42,7 +42,8 @@
 					android:layout_width = "match_parent"
 					android:layout_height = "match_parent"
 					android:scaleType = "centerCrop"
-					android:src = "@drawable/pet" />
+					android:src = "@drawable/pet"
+					android:tint="@color/adoptContainer"/>
 
 			</com.google.android.material.card.MaterialCardView >
 
@@ -195,8 +196,10 @@
 				android:padding = "18dp"
 				android:text = "Post Advertisement"
 				android:textAppearance = "@style/Button"
-				android:textColor = "@color/white"
+				android:textColor = "@color/onAdopt"
 				android:textStyle = "bold"
+				android:backgroundTint="@color/adopt"
+
 				app:cornerRadius = "32dp" />
 
 		</LinearLayout >

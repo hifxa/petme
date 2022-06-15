@@ -47,8 +47,9 @@
 		app:backgroundTint = "@color/primary"
 		app:elevation = "2dp"
 		app:fabCustomSize = "50dp"
+		android:backgroundTint="@color/adopt"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"
-		app:tint = "@color/onPrimary" />
+		app:tint = "@color/onAdopt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout >

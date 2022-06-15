@@ -17,6 +17,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.Navigation;
 
 import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog;
@@ -25,6 +26,7 @@ import com.github.dhaval2404.colorpicker.model.ColorSwatch;
 import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
+import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
 import com.petme.app.databinding.FragmentCreateAdoptionBinding;
 import com.petme.app.interfaces.AlertClicks;
@@ -69,6 +71,10 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 			bind.colorView.setVisibility ( View.GONE );
 			bind.header.getTitle ( ).setText ( "Adopt Ads" );
 			bind.addAdoptionAdv.setText ( "Post Adoption" );
+			bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx, R.color.adopt));
+			bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
+			bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
+
 		}
 		else {
 			bind.miscView.setVisibility ( View.GONE );

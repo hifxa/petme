@@ -33,8 +33,9 @@
 		android:layout_margin = "16dp"
 		android:src = "@drawable/ic_note_2"
 		app:elevation = "2dp"
+		android:backgroundTint="@color/lostFound"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"
-		app:tint = "@color/black" />
+		app:tint = "@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout >

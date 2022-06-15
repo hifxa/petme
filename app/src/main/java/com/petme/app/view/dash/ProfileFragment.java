@@ -75,6 +75,7 @@ public class ProfileFragment extends BaseFragment < FragmentProfileBinding > {
 				bind.name.setText ( user.getName ( ) );
 				bind.email.setText ( user.getEmail ( ) );
 				bind.phone.setText ( user.getPhone ( ) );
+
 			}
 
 			@Override

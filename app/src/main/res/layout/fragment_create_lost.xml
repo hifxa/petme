@@ -40,6 +40,7 @@
                     android:layout_width = "match_parent"
                     android:layout_height = "match_parent"
                     android:scaleType = "centerCrop"
+                    android:tint="@color/lostFoundContainer"
                     android:src = "@drawable/pet" />
 
             </com.google.android.material.card.MaterialCardView >
@@ -159,6 +160,7 @@
                 android:textAppearance = "@style/Button"
                 android:textColor = "@color/white"
                 android:textStyle = "bold"
+                android:backgroundTint="@color/lostFound"
                 app:cornerRadius = "32dp" />
 
         </LinearLayout >

@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
@@ -67,33 +68,51 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 		switch ( navDestination.getId ( ) ) {
 			case R.id.home:
 				showHideBar ( false );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.primary));
 				break;
 			case R.id.profile:
 				showHideBar ( false );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.primary));
 				break;
 			case R.id.chat:
 				showHideBar ( false );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.primary));
 				break;
 			case R.id.vetFragment:
 				showHideBar ( true );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.shop));
 				break;
 			case R.id.lostFoundFragment:
 				showHideBar ( true );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lostFound));
 				break;
 			case R.id.taskFragment:
 				showHideBar ( true );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.task));
 				break;
 			case R.id.shopsFragment:
 				showHideBar ( true );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.shop));
 				break;
 			case R.id.adoptFragment:
 				showHideBar ( true );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.adopt));
 				break;
 			case R.id.matingFragment:
 				showHideBar ( true );
 				break;
+			case R.id.createAdoptionFragment:
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.adopt));
+				break;
+			case R.id.createLostFragment:
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lostFound));
+				break;
+			case R.id.createFoundFragment:
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lostFound));
+				break;
 			default:
 				showHideBar ( true );
+				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.primary));
 				break;
 		}
 	}

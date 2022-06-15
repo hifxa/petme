@@ -59,6 +59,10 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
 		bind.header.getTitle ( ).setText ( "Find Nearest Vet" );
 
+		bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx,R.color.shop));
+		bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.white));
+		bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.white));
+
 		fusedClient = LocationServices.getFusedLocationProviderClient ( getActivity ( ) );
 		locationManager = ( LocationManager ) mCtx.getSystemService ( Context.LOCATION_SERVICE );
 
@@ -134,7 +138,7 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		LatLng latLng = new LatLng ( currentLocation.getLatitude ( ) , currentLocation.getLongitude ( ) );
 
 		// this is the actual code to add the marker
-		MarkerOptions markerOptions = new MarkerOptions ( ).position ( latLng ).title ( "Here I am!" ).icon ( vectorToBitmap ( R.drawable.pet , R.color.primary ) );
+		MarkerOptions markerOptions = new MarkerOptions ( ).position ( latLng ).title ( "Here I am!" ).icon ( vectorToBitmap ( R.drawable.pet , R.color.onShop ) );
 		mMap.animateCamera ( CameraUpdateFactory.newLatLng ( latLng ) );
 		mMap.animateCamera ( CameraUpdateFactory.newLatLngZoom ( latLng , 16 ) );
 		mMap.addMarker ( markerOptions );

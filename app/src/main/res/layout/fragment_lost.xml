@@ -18,6 +18,7 @@
 	<include
 		android:id = "@+id/no_data"
 		layout = "@layout/no_data_view"
+
 		android:layout_width = "0dp"
 		android:layout_height = "0dp"
 		android:layout_marginBottom = "70dp"
@@ -35,6 +36,7 @@
 		app:elevation = "2dp"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"
-		app:tint = "@color/black" />
+		android:backgroundTint="@color/lostFound"
+		app:tint = "@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout >

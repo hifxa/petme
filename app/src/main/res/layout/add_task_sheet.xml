@@ -33,7 +33,7 @@
 			android:backgroundTint = "@color/surface"
 			android:padding = "4dp"
 			android:src = "@drawable/ic_close"
-			app:tint = "@color/primary" />
+			app:tint = "@color/task" />
 
 	</LinearLayout >
 
@@ -104,9 +104,10 @@
 		android:layout_height = "wrap_content"
 		android:layout_marginTop = "24dp"
 		android:padding = "18dp"
+		android:backgroundTint="@color/task"
 		android:text = "Add Task"
 		android:textAppearance = "@style/Button"
-		android:textColor = "@color/white"
+		android:textColor = "@color/onTask"
 		android:textStyle = "bold"
 		app:cornerRadius = "32dp" />
 

@@ -56,7 +56,7 @@ public class HomeOptionsAdapter extends RecyclerView.Adapter < HomeOptionsAdapte
 				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.taskContainer ) );
 				break;
 			case "Lost / Found":
-				holder.bind.icon.setImageResource ( R.drawable.ic_note_2 );
+				holder.bind.icon.setImageResource (R.drawable.ic_note_2);
 				holder.bind.title.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onLostFoundContainer ) );
 				holder.bind.icon.setImageTintList ( ColorStateList.valueOf ( ContextCompat.getColor ( mCtx , R.color.onLostFoundContainer ) ) );
 				holder.bind.card.setCardBackgroundColor ( ContextCompat.getColor ( mCtx , R.color.lostFoundContainer ) );

@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -54,6 +55,10 @@ public class CreateFoundFragment extends BaseFragment <FragmentCreateFoundBindin
 
         bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
         bind.header.getTitle ( ).setText ( "Found Pets" );
+
+        bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx,R.color.lostFound));
+        bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.white));
+        bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.white));
 
         bind.petImg.setOnClickListener ( v -> launcher.launch ( getImagePicker ( false ) ) );
 

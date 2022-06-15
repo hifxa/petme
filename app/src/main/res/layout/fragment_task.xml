@@ -4,10 +4,11 @@
 	xmlns:tools = "http://schemas.android.com/tools"
 	android:layout_width = "match_parent"
 	android:layout_height = "match_parent"
-	tools:context = ".view.dash.TaskFragment" >
+	tools:context = ".view.dash.TaskFragment">
 
 	<com.petme.app.view.custom.HeaderView
 		android:id = "@+id/header"
+		android:background="@color/taskContainer"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
 		app:layout_constraintTop_toTopOf = "parent" />
@@ -43,10 +44,10 @@
 		android:layout_margin = "16dp"
 		android:src = "@drawable/ic_note_2"
 		app:elevation = "2dp"
-		app:backgroundTint = "@color/primary"
+		app:backgroundTint = "@color/task"
 		app:fabCustomSize = "50dp"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"
-		app:tint = "@color/onPrimary" />
+		app:tint = "@color/onTask" />
 
 </androidx.constraintlayout.widget.ConstraintLayout >

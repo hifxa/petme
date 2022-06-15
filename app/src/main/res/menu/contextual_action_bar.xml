@@ -10,5 +10,4 @@
 		android:contentDescription = "Delete"
 		app:showAsAction = "ifRoom" />
 
-
 </menu >

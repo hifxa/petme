@@ -14,6 +14,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.view.ActionMode;
+import androidx.navigation.Navigation;
 
 import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -93,11 +94,14 @@ public class ChatActivity extends BaseActivity {
 		bind = ActivityChatBinding.inflate ( getLayoutInflater ( ) );
 		setContentView ( bind.getRoot ( ) );
 
-		bind.header.getBack ( ).setOnClickListener ( v -> finishAfterTransition ( ) );
-
 		senderId = new Prefs ( this ).getUserId ( );
 //		receiverId = getIntent ( ).getStringExtra ( "receiverId" );
 		setSupportActionBar ( bind.toolbar );
+
+		bind.header.getBack().setOnClickListener(view -> Navigation.findNavController(view).popBackStack());
+		bind.header.getTitle().setText(receiverId);
+
+		bind.header.getBack ( ).setOnClickListener ( v -> finishAfterTransition ( ) );
 
 		mCallback = new ActionModeCall ( );
 
@@ -125,6 +129,7 @@ public class ChatActivity extends BaseActivity {
 			attachSheet.dismiss ( );
 			launcher.launch ( getImagePicker ( false ) );
 		} );
+
 		aBind.cancel.setOnClickListener ( v -> {
 			attachSheet.dismiss ( );
 			attachSheet.dismiss ( );

@@ -104,6 +104,7 @@ public class ChatAdapter extends RecyclerView.Adapter < ChatAdapter.ChatItemHold
 			holder.bind.receiver.message.setText ( model.getMessage ( ) );
 			holder.bind.receiver.time.setText ( formatTime ( Long.parseLong ( model.getTimestamp ( ) ) ) );
 		}
+
 		setSelectionView ( position , holder );
 	}
 
