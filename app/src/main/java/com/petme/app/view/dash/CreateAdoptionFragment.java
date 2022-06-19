@@ -43,7 +43,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 	private final ActivityResultLauncher < Intent > launcher = registerForActivityResult ( new ActivityResultContracts.StartActivityForResult ( ) , ( ActivityResult result ) -> {
 		if ( result.getResultCode ( ) == RESULT_OK ) {
 			petImgUri = result.getData ( ).getData ( );
-
+			bind.petImg.setImageTintList ( null );
 			bind.petImg.setImageURI ( petImgUri );
 		}
 		else if ( result.getResultCode ( ) == ImagePicker.RESULT_ERROR ) {
@@ -74,7 +74,6 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 			bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx, R.color.adopt));
 			bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
 			bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
-
 		}
 		else {
 			bind.miscView.setVisibility ( View.GONE );
@@ -82,6 +81,10 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 			bind.colorView.setVisibility ( View.VISIBLE );
 			bind.header.getTitle ( ).setText ( "Add a Pet" );
 			bind.addAdoptionAdv.setText ( "Add Pet" );
+
+			bind.addAdoptionAdv.setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.primary ) );
+			bind.addAdoptionAdv.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onPrimary ) );
+			requireActivity ( ).getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( mCtx , R.color.primary ) );
 		}
 
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );

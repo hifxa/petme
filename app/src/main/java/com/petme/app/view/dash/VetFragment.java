@@ -59,9 +59,9 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
 		bind.header.getTitle ( ).setText ( "Find Nearest Vet" );
 
-		bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx,R.color.shop));
-		bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.white));
-		bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.white));
+		bind.header.getRootLayout ( ).setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.shop ) );
+		bind.header.getBack ( ).setImageTintList ( ContextCompat.getColorStateList ( mCtx , R.color.onShop ) );
+		bind.header.getTitle ( ).setTextColor ( ContextCompat.getColorStateList ( mCtx , R.color.onShop ) );
 
 		fusedClient = LocationServices.getFusedLocationProviderClient ( getActivity ( ) );
 		locationManager = ( LocationManager ) mCtx.getSystemService ( Context.LOCATION_SERVICE );

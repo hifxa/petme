@@ -103,13 +103,16 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 				showHideBar ( true );
 				break;
 			case R.id.createAdoptionFragment:
-				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.adopt));
+				showHideBar ( true );
+				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.adopt ) );
 				break;
 			case R.id.createLostFragment:
-				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lostFound));
+				showHideBar ( true );
+				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.lostFound ) );
 				break;
 			case R.id.createFoundFragment:
-				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.lostFound));
+				showHideBar ( true );
+				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.lostFound ) );
 				break;
 			default:
 				showHideBar ( true );
