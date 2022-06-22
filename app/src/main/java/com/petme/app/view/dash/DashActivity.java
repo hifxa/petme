@@ -81,7 +81,7 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 				break;
 			case R.id.vetFragment:
 				showHideBar ( true );
-				getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.shop));
+				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.onShopContainer ) );
 				break;
 			case R.id.lostFoundFragment:
 				showHideBar ( true );

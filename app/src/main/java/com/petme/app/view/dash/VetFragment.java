@@ -22,6 +22,9 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.navigation.Navigation;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,12 +36,16 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
 import com.petme.app.R;
 import com.petme.app.base.BaseFragment;
+import com.petme.app.controllers.MapsShopAdapter;
 import com.petme.app.databinding.FragmentVetBinding;
 import com.petme.app.interfaces.AlertClicks;
+import com.petme.app.model.PlacesResponse;
 import com.petme.app.utils.Alerts;
 
+@SuppressWarnings ( "ConstantConditions" )
 @SuppressLint ( { "SetTextI18n" , "MissingPermission" , "StaticFieldLeak" } )
 public class VetFragment extends BaseFragment < FragmentVetBinding > implements OnMapReadyCallback {
 
@@ -46,6 +53,7 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 	private Location currentLocation;
 	private GoogleMap mMap;
 	private LocationManager locationManager;
+	private MapsShopAdapter mAdapter;
 
 	@Override
 	public FragmentVetBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
@@ -59,9 +67,9 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
 		bind.header.getTitle ( ).setText ( "Find Nearest Vet" );
 
-		bind.header.getRootLayout ( ).setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.shop ) );
-		bind.header.getBack ( ).setImageTintList ( ContextCompat.getColorStateList ( mCtx , R.color.onShop ) );
-		bind.header.getTitle ( ).setTextColor ( ContextCompat.getColorStateList ( mCtx , R.color.onShop ) );
+		bind.header.getRootLayout ( ).setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.onShopContainer ) );
+		bind.header.getBack ( ).setImageTintList ( ContextCompat.getColorStateList ( mCtx , R.color.shopContainer ) );
+		bind.header.getTitle ( ).setTextColor ( ContextCompat.getColorStateList ( mCtx , R.color.shopContainer ) );
 
 		fusedClient = LocationServices.getFusedLocationProviderClient ( getActivity ( ) );
 		locationManager = ( LocationManager ) mCtx.getSystemService ( Context.LOCATION_SERVICE );
@@ -82,7 +90,9 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 	public void onMapReady ( @NonNull GoogleMap googleMap ) {
 		mMap = googleMap;
 		mMap.getUiSettings ( ).setMapToolbarEnabled ( false );
+		mMap.getUiSettings ( ).setCompassEnabled ( false );
 		mMap.getUiSettings ( ).setMyLocationButtonEnabled ( false );
+		mMap.setMapType ( GoogleMap.MAP_TYPE_NORMAL );
 	}
 
 	private void checkIfLocationIsEnabled ( ) {
@@ -126,23 +136,20 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		task.addOnSuccessListener ( location -> {
 			if ( location != null ) {
 				currentLocation = location;
-				updateCurrentLocation ( );
-				SupportMapFragment supportMapFragment = ( SupportMapFragment ) getChildFragmentManager ( ).findFragmentById ( R.id.map );
-				supportMapFragment.getMapAsync ( this );
+				LatLng latLng = new LatLng ( currentLocation.getLatitude ( ) , currentLocation.getLongitude ( ) );
+
+				// this is the actual code to add the marker
+				MarkerOptions markerOptions = new MarkerOptions ( ).position ( latLng ).title ( "Here I am!" ).icon ( vectorToBitmap ( R.drawable.pet , R.color.onShop ) );
+				mMap.animateCamera ( CameraUpdateFactory.newLatLng ( latLng ) );
+				mMap.animateCamera ( CameraUpdateFactory.newLatLngZoom ( latLng , 16 ) );
+				mMap.addMarker ( markerOptions );
+
+				getNearby ( mMap );
 			}
 		} );
 	}
 
 	//this is going to set a marker of the current location which is updated each and every time this is called
-	private void updateCurrentLocation ( ) {
-		LatLng latLng = new LatLng ( currentLocation.getLatitude ( ) , currentLocation.getLongitude ( ) );
-
-		// this is the actual code to add the marker
-		MarkerOptions markerOptions = new MarkerOptions ( ).position ( latLng ).title ( "Here I am!" ).icon ( vectorToBitmap ( R.drawable.pet , R.color.onShop ) );
-		mMap.animateCamera ( CameraUpdateFactory.newLatLng ( latLng ) );
-		mMap.animateCamera ( CameraUpdateFactory.newLatLngZoom ( latLng , 16 ) );
-		mMap.addMarker ( markerOptions );
-	}
 
 	private BitmapDescriptor vectorToBitmap ( @DrawableRes int id , int color ) {
 		Drawable vectorDrawable = ContextCompat.getDrawable ( mCtx , id );
@@ -154,4 +161,43 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		return BitmapDescriptorFactory.fromBitmap ( bitmap );
 	}
 
+	private void getNearby ( GoogleMap map ) {
+
+		String mLoc = currentLocation.getLatitude ( ) + "," + currentLocation.getLongitude ( );
+		String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json" +
+				"?location=" + mLoc +
+				"&radius=50000" +
+				"&types=pet_store" +
+				"&name=" + "pets" +
+				"&key=" + getResources ( ).getString ( R.string.api_key );
+
+		StringRequest mRequest = new StringRequest ( Request.Method.GET , url , response -> {
+			PlacesResponse mPlace = new Gson ( ).fromJson ( response , PlacesResponse.class );
+
+			for ( PlacesResponse.Results result : mPlace.results ) {
+				LatLng latLng = new LatLng ( result.geometry.location.lat , result.geometry.location.lng );
+
+				MarkerOptions mOptions = new MarkerOptions ( )
+						.position ( latLng )
+						.title ( result.name )
+						.icon ( vectorToBitmap ( R.drawable.ic_baseline_location_on_24 , R.color.primary ) );
+				map.addMarker ( mOptions );
+			}
+
+			mAdapter = new MapsShopAdapter ( mCtx , mPlace.results , ( pos , type1 ) -> {
+
+			} );
+			bind.shops.setAdapter ( mAdapter );
+
+//			new PagerSnapHelper ( ).attachToRecyclerView ( bind.shops );
+
+			bind.shops.setVisibility ( View.VISIBLE );
+		} , error -> {
+			error.printStackTrace ( );
+			Alerts.log ( TAG , "ERROR : " + error.getLocalizedMessage ( ) );
+		} );
+
+		Volley.newRequestQueue ( mCtx ).add ( mRequest );
+
+	}
 }

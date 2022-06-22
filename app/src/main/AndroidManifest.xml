@@ -39,7 +39,7 @@
 			android:value = "@integer/google_play_services_version" />
 		<meta-data
 			android:name = "com.google.android.geo.API_KEY"
-			android:value = "AIzaSyBFnrnIv19pUfFw6ctqRzQvr8EU7yx4d1M" /> <!-- AIzaSyAnWl4I_Fv_k5-SQcKoR62SjJUYztwlgFE -->
+			android:value = "@string/api_key" /> <!-- AIzaSyAnWl4I_Fv_k5-SQcKoR62SjJUYztwlgFE -->
 		<meta-data
 			android:name = "preloaded_fonts"
 			android:resource = "@array/preloaded_fonts" />
