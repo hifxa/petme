@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.petme.app"
-        minSdk 21
+        minSdk 24
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -72,7 +72,7 @@ dependencies {
     implementation 'com.github.Dhaval2404:ColorPicker:2.3'
     implementation 'com.github.Drjacky:ImagePicker:2.1.15'// image picker
     implementation 'com.github.ybq:Android-SpinKit:1.4.0' // custom loaders
-    implementation 'com.squareup.picasso:picasso:2.8' //for image loading
+    implementation 'com.squareup.picasso:picasso:2.71828' //for image loading
     implementation 'com.github.GrenderG:Toasty:1.5.2'// custom toast
 
     implementation 'com.google.android.gms:play-services-location:20.0.0'
@@ -80,6 +80,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
     implementation 'com.google.maps:google-maps-services:0.11.0'
 
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

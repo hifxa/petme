@@ -33,6 +33,7 @@
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_create_adoption.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_create_found.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_create_lost.xml" value="0.20436083796494228" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_feedback.xml" value="0.4" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_found.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_home.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/fragment_login.xml" value="0.20427350427350427" />
@@ -49,6 +50,7 @@
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/loader_view.xml" value="0.19273504273504274" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/login_tab_fragment.xml" value="0.264" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/lost_item_view.xml" value="0.4" />
+        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/map_item.xml" value="0.176" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/quotes_item_view.xml" value="0.25" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/receiver_chat_item.xml" value="0.20436083796494228" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/sender_chat_item.xml" value="0.20436083796494228" />
@@ -82,7 +84,6 @@
         <entry key="..\:/petme/app/src/main/res/layout/adopt_item_view.xml" value="0.33" />
         <entry key="..\:/petme/app/src/main/res/layout/attachment_view.xml" value="0.33" />
         <entry key="..\:/petme/app/src/main/res/layout/chat_item.xml" value="0.29628046173578454" />
-        <entry key="..\:/petme/app/src/main/res/layout/found_item_view.xml" value="0.29252849303503586" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_adopt.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_chat_list.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_create_adoption.xml" value="0.29628046173578454" />
@@ -93,10 +94,9 @@
         <entry key="..\:/petme/app/src/main/res/layout/fragment_mating.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_profile.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/fragment_task.xml" value="0.29615384615384616" />
-        <entry key="..\:/petme/app/src/main/res/layout/fragment_vet.xml" value="0.25" />
+        <entry key="..\:/petme/app/src/main/res/layout/fragment_vet.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/header_view.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/home_item_card.xml" value="0.29615384615384616" />
-        <entry key="..\:/petme/app/src/main/res/layout/map_item.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/no_data_view.xml" value="0.33" />
         <entry key="..\:/petme/app/src/main/res/layout/receiver_chat_item.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/sender_chat_item.xml" value="0.29628046173578454" />

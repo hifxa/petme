@@ -37,15 +37,15 @@ public class MapsShopAdapter extends RecyclerView.Adapter < MapsShopAdapter.Maps
 	@Override
 	public void onBindViewHolder ( @NonNull MapsAdapterHolder holder , int position ) {
 		try {
-			PlacesResponse.Results adopt = mList.get ( position );
+			PlacesResponse.Results mapData = mList.get ( position );
 
-			holder.bind.petBreed.setText ( adopt.name );
-			holder.bind.petName.setText ( "Status: " + adopt.businessStatus );
-			holder.bind.petAge.setText ( "Rating: " + adopt.rating );
-			holder.bind.petDetails.setText ( adopt.vicinity );
+			holder.bind.petBreed.setText ( mapData.name );
+			holder.bind.petName.setText ( "Status: " + mapData.businessStatus );
+			holder.bind.petAge.setText ( "Rating: " + mapData.rating );
+			holder.bind.petDetails.setText ( mapData.vicinity );
 
 			String type = "";
-			for ( String s : adopt.types ) {
+			for ( String s : mapData.types ) {
 				type = s + "|";
 			}
 			holder.bind.petContact.setText ( type );

@@ -11,14 +11,14 @@
 		android:layout_width = "match_parent"
 		android:layout_height = "0dp"
 		android:padding = "8dp"
+		app:layout_constraintTop_toTopOf="parent"
 		app:layoutManager = "androidx.recyclerview.widget.LinearLayoutManager"
-		app:layout_constraintBottom_toBottomOf = "parent"
+		app:layout_constraintBottom_toTopOf="@id/newLostButton"
 		tools:listitem = "@layout/lost_item_view" />
 
 	<include
 		android:id = "@+id/no_data"
 		layout = "@layout/no_data_view"
-
 		android:layout_width = "0dp"
 		android:layout_height = "0dp"
 		android:layout_marginBottom = "70dp"
@@ -34,6 +34,7 @@
 		android:layout_margin = "16dp"
 		android:src = "@drawable/ic_note_2"
 		app:elevation = "2dp"
+		app:fabCustomSize="50dp"
 		app:rippleColor="@color/lostFoundContainer"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"
