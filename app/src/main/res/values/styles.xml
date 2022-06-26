@@ -13,7 +13,7 @@
 		<item name = "boxBackgroundColor" >@color/white_50</item >
 		<item name = "boxStrokeColor" >@color/primary</item >
 		<item name = "errorEnabled" >false</item >
-		<item name = "hintEnabled" >false</item >
+		<item name = "hintEnabled" >true</item >
 		<item name = "boxStrokeWidth" >1dp</item >
 		<item name = "boxStrokeWidthFocused" >1dp</item >
 		<item name = "boxCornerRadiusBottomStart" >24dp</item >
@@ -44,6 +44,7 @@
 		<item name = "enforceTextAppearance" >true</item >
 		<item name = "android:textAppearance" >@style/Button</item >
 		<item name = "android:insetTop" >0dp</item >
+		<item name = "android:padding" >18dp</item >
 		<item name = "android:insetBottom" >0dp</item >
 		<item name = "cornerRadius" >24dp</item >
 		<item name = "elevation" >4dp</item >
@@ -122,16 +123,11 @@
 	</style >
 
 	<style name = "bottomNavIndicator" parent = "@style/Widget.Material3.BottomNavigationView.ActiveIndicator" >
-		<item name = "android:width" >56dp</item >
-		<item name = "android:height" >32dp</item >
+		<item name = "android:width" >50dp</item >
+		<item name = "android:height" >30dp</item >
 		<item name = "marginHorizontal" >0dp</item >
 		<item name = "shapeAppearance" >@style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator</item >
 		<item name = "android:color" >@color/primaryContainer</item >
-	</style >
-
-	<style name = "toolbarStyle" parent = "" >
-		<item name = "actionMenuTextColor" >@color/primary</item >
-		<item name = "colorControlNormal" >@color/surface</item >
 	</style >
 
 	<style name = "popupMenuStyle" parent = "Widget.Material3.PopupMenu" >
@@ -150,6 +146,8 @@
 		<item name = "android:layout_height" >wrap_content</item >
 		<item name = "closeItemLayout" >@layout/abc_action_mode_close_item_material</item >
 		<item name = "closeIconTint" >@color/onPrimary</item >
+		<item name = "closeIconTint" >@color/onPrimary</item >
+		<item name = "android:closeIcon" >@drawable/ic_close</item >
 	</style >
 
 </resources >

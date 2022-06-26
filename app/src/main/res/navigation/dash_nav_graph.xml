@@ -11,20 +11,20 @@
 		android:label = "fragment_home"
 		tools:layout = "@layout/fragment_home" >
 		<action
-			android:id="@+id/goToVetFragment"
-			app:destination="@id/vetFragment" />
+			android:id = "@+id/goToTaskFragment"
+			app:destination = "@id/taskFragment" />
 		<action
-			android:id="@+id/goToTaskFragment"
-			app:destination="@id/taskFragment" />
+			android:id = "@+id/goToVetFragment"
+			app:destination = "@id/vetFragment" />
 		<action
-			android:id="@+id/goToShopsFragment"
-			app:destination="@id/shopsFragment" />
+			android:id = "@+id/goToShopsFragment"
+			app:destination = "@id/shopsFragment" />
 		<action
-			android:id="@+id/goToAdoptFragment"
-			app:destination="@id/adoptFragment" />
+			android:id = "@+id/goToAdoptFragment"
+			app:destination = "@id/adoptFragment" />
 		<action
-			android:id="@+id/goToMatingFragment"
-			app:destination="@id/matingFragment" />
+			android:id = "@+id/goToMatingFragment"
+			app:destination = "@id/matingFragment" />
 		<action
 			android:id="@+id/goToLostFoundFragment"
 			app:destination="@id/lostFoundFragment" />
@@ -34,7 +34,11 @@
 		android:id = "@+id/profile"
 		android:name = "com.petme.app.view.dash.ProfileFragment"
 		tools:layout = "@layout/fragment_profile"
-		android:label = "ProfileFragment" />
+		android:label = "ProfileFragment" >
+		<action
+			android:id = "@+id/action_profile_to_createAdoptionFragment"
+			app:destination = "@id/createAdoptionFragment" />
+	</fragment >
 	<fragment
 		android:id="@+id/vetFragment"
 		android:name="com.petme.app.view.dash.VetFragment"
@@ -51,10 +55,14 @@
 		android:label="fragment_shops"
 		tools:layout="@layout/fragment_shops" />
 	<fragment
-		android:id="@+id/adoptFragment"
-		android:name="com.petme.app.view.dash.AdoptFragment"
-		android:label="fragment_adopt"
-		tools:layout="@layout/fragment_adopt" />
+		android:id = "@+id/adoptFragment"
+		android:name = "com.petme.app.view.dash.AdoptFragment"
+		android:label = "fragment_adopt"
+		tools:layout = "@layout/fragment_adopt" >
+		<action
+			android:id = "@+id/action_adoptFragment_to_createAdoptionFragment"
+			app:destination = "@id/createAdoptionFragment" />
+	</fragment >
 	<fragment
 		android:id = "@+id/matingFragment"
 		android:name = "com.petme.app.view.dash.MatingFragment"

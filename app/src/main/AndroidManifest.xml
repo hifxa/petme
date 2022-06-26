@@ -26,6 +26,7 @@
 			android:exported = "false" />
 		<activity
 			android:name = ".view.SplashActivity"
+			android:theme = "@style/Theme.Petme.Auth"
 			android:exported = "true" >
 			<intent-filter >
 				<action android:name = "android.intent.action.MAIN" />

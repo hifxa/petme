@@ -1,6 +1,5 @@
 package com.petme.app.view.dash;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -46,10 +44,6 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
 		bind.header.getTitle ( ).setText ( "My Tasks" );
-
-		bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx,R.color.task));
-		bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.onTask));
-		bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.onTask));
 
 		bind.newTaskButton.setOnClickListener ( view1 -> addNewTask ( ) );
 		mAdapter = new TaskAdapter ( mCtx , mList , ( pos , type ) -> {

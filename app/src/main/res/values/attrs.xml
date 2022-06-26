@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<declare-styleable name="FadingTextView">
-		<attr name="texts" format="reference" />
-		<attr name="timeout" format="integer" />
-		<attr name="shuffle" format="boolean" />
-	</declare-styleable>
+<resources >
+	<declare-styleable name = "FadingTextView" >
+		<attr name = "texts" format = "reference" />
+		<attr name = "timeout" format = "integer" />
+		<attr name = "shuffle" format = "boolean" />
+	</declare-styleable >
 
 	<declare-styleable name = "LoaderView" >
 
 	</declare-styleable >
-</resources>
+
+	<declare-styleable name = "HeaderView" >
+		<attr name = "bg_color" format = "reference" />
+		<attr name = "bg_on_color" format = "color" />
+	</declare-styleable >
+</resources >

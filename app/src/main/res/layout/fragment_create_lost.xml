@@ -9,10 +9,12 @@
     tools:context = ".view.dash.lostandfound.CreateFoundFragment" >
 
     <com.petme.app.view.custom.HeaderView
-        android:id = "@+id/header"
-        android:layout_width = "match_parent"
-        android:layout_height = "wrap_content"
-        app:layout_constraintTop_toTopOf = "parent" />
+	    android:id = "@+id/header"
+	    android:layout_width = "match_parent"
+	    android:layout_height = "wrap_content"
+	    app:bg_color = "@color/lostFound"
+	    app:bg_on_color = "@color/onLostFound"
+	    app:layout_constraintTop_toTopOf = "parent" />
 
     <ScrollView
         android:layout_width = "match_parent"
@@ -162,9 +164,9 @@
                 android:layout_height = "wrap_content"
                 android:padding = "18dp"
                 android:text = "Post Advertisement"
-                android:textAppearance = "@style/Button"
-                android:textColor = "@color/white"
-                android:textStyle = "bold"
+	            android:textAppearance = "@style/Button"
+	            android:textColor = "@color/onLostFound"
+	            android:textStyle = "bold"
                 android:backgroundTint="@color/lostFound"
                 app:cornerRadius = "32dp" />
 

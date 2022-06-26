@@ -1,4 +1,4 @@
-<resources >
+<resources xmlns:tools = "http://schemas.android.com/tools" >
 
 	<style name = "Theme.PetMe" parent = "Theme.Material3.Light.NoActionBar" >
 		<item name = "colorPrimary" >@color/primary</item >
@@ -30,8 +30,8 @@
 
 		<item name = "android:statusBarColor" >@color/primary</item >
 		<item name = "android:navigationBarColor" >@color/background</item >
-		<item name = "android:windowLightNavigationBar" >true</item >
-		<item name = "android:windowLightStatusBar" >false</item >
+		<item name = "android:windowLightNavigationBar" tools:targetApi = "o_mr1" >true</item >
+		<item name = "android:windowLightStatusBar" tools:targetApi = "m" >false</item >
 		<item name = "windowActionModeOverlay" >true</item >
 		<item name = "actionModeStyle" >@style/ActionModeStyle</item >
 		<item name = "actionModeCloseDrawable" >@drawable/ic_close</item >
@@ -39,6 +39,15 @@
 
 		<item name = "materialAlertDialogTheme" >@style/MaterialAlertDialogTheme</item >
 	</style >
+
+	<style name = "Theme.Petme.Auth" parent = "Theme.PetMe" >
+		<item name = "android:windowBackground" >@drawable/splash_bg</item >
+		<item name = "android:statusBarColor" >@color/surface</item >
+		<item name = "android:navigationBarColor" >@color/primary</item >
+		<item name = "android:windowLightNavigationBar" tools:targetApi = "o_mr1" >true</item >
+		<item name = "android:windowLightStatusBar" tools:targetApi = "m" >true</item >
+	</style >
+
 
 	<style name = "ActionBar" parent = "ThemeOverlay.MaterialComponents.Dark.ActionBar" >
 		<item name = "colorControlNormal" >@color/onPrimary</item >

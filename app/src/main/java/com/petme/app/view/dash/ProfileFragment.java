@@ -54,7 +54,6 @@ public class ProfileFragment extends BaseFragment < FragmentProfileBinding > {
 		bind.addPet.setOnClickListener ( v -> {
 			Bundle mBundle = new Bundle ( );
 			mBundle.putString ( "from" , "pet" );
-
 			Navigation.findNavController ( v ).navigate ( R.id.createAdoptionFragment , mBundle );
 		} );
 	}

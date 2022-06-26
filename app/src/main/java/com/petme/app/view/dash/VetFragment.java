@@ -49,9 +49,6 @@ import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.PlacesResponse;
 import com.petme.app.utils.Alerts;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 @SuppressWarnings ( "ConstantConditions" )
 @SuppressLint ( { "SetTextI18n" , "MissingPermission" , "StaticFieldLeak" } )
 public class VetFragment extends BaseFragment < FragmentVetBinding > implements OnMapReadyCallback {
@@ -73,11 +70,6 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
 		bind.header.getTitle ( ).setText ( "Find Nearest Shop/Vet" );
-
-		bind.header.getRootLayout ( ).setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.onShopContainer ) );
-		bind.header.getBack ( ).setImageTintList ( ContextCompat.getColorStateList ( mCtx , R.color.shopContainer ) );
-		bind.header.getTitle ( ).setTextColor ( ContextCompat.getColorStateList ( mCtx , R.color.shopContainer ) );
-
 		fusedClient = LocationServices.getFusedLocationProviderClient ( getActivity ( ) );
 		locationManager = ( LocationManager ) mCtx.getSystemService ( Context.LOCATION_SERVICE );
 
@@ -187,10 +179,10 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 				for (PlacesResponse.Results result : mPlace.results) {
 					LatLng latLng = new LatLng(result.geometry.location.lat, result.geometry.location.lng);
 
-					MarkerOptions mOptions = new MarkerOptions()
-							.position(latLng)
-							.title(result.name)
-							.icon(VetFragment.this.vectorToBitmap(R.drawable.ic_baseline_location_on_24, R.color.primary));
+					MarkerOptions mOptions = new MarkerOptions ( )
+							.position ( latLng )
+							.title ( result.name )
+							.icon ( VetFragment.this.vectorToBitmap ( R.drawable.ic_baseline_location_on_24 , R.color.shop ) );
 					map.addMarker(mOptions);
 				}
 

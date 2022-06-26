@@ -8,9 +8,11 @@
 
 	<com.petme.app.view.custom.HeaderView
 		android:id = "@+id/header"
-		android:background="@color/taskContainer"
+		android:background = "@color/taskContainer"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
+		app:bg_color = "@color/task"
+		app:bg_on_color = "@color/onTask"
 		app:layout_constraintTop_toTopOf = "parent" />
 
 	<androidx.recyclerview.widget.RecyclerView

@@ -71,9 +71,6 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 			bind.colorView.setVisibility ( View.GONE );
 			bind.header.getTitle ( ).setText ( "Adopt Ads" );
 			bind.addAdoptionAdv.setText ( "Post Adoption" );
-			bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx, R.color.adopt));
-			bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
-			bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
 		}
 		else {
 			bind.miscView.setVisibility ( View.GONE );
@@ -82,6 +79,9 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 			bind.header.getTitle ( ).setText ( "Add a Pet" );
 			bind.addAdoptionAdv.setText ( "Add Pet" );
 
+			bind.header.getRootLayout ( ).setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.primary ) );
+			bind.header.getBack ( ).setImageTintList ( ContextCompat.getColorStateList ( mCtx , R.color.onPrimary ) );
+			bind.header.getTitle ( ).setTextColor ( ContextCompat.getColorStateList ( mCtx , R.color.onPrimary ) );
 			bind.addAdoptionAdv.setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.primary ) );
 			bind.addAdoptionAdv.setTextColor ( ContextCompat.getColor ( mCtx , R.color.onPrimary ) );
 			requireActivity ( ).getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( mCtx , R.color.primary ) );
@@ -109,21 +109,29 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 
 		bind.addAdoptionAdv.setOnClickListener ( v -> {
 			if ( bind.petName.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
-				Alerts.log ( TAG , "Pet's Name can't be empty" );
+				Alerts.error ( mCtx , "Pet's Name can't be empty" );
 				bind.petName.requestFocus ( );
 			}
 			else if ( bind.petBreed.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
-				Alerts.log ( TAG , "Pet's Breed can't be empty" );
+				Alerts.error ( mCtx , "Pet's Breed can't be empty" );
 				bind.petBreed.requestFocus ( );
 			}
 			else if ( bind.petAge.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
-				Alerts.log ( TAG , "Pet's Age can't be empty" );
+				Alerts.error ( mCtx , "Pet's Age can't be empty" );
 				bind.petAge.requestFocus ( );
 			}
 			else if ( from.equals ( "adopt" ) ) {
 				if ( bind.contactInfo.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
-					Alerts.log ( TAG , "Contact Info can't be empty" );
+					Alerts.error ( mCtx , "Contact Info can't be empty" );
 					bind.contactInfo.requestFocus ( );
+				}
+				else {
+					if ( petImgUri != null ) {
+						uploadImage ( petImgUri );
+					}
+					else {
+						createAdoptionAd ( "" );
+					}
 				}
 			}
 			else {
@@ -131,23 +139,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 					uploadImage ( petImgUri );
 				}
 				else {
-					if ( from.equals ( "adopt" ) ) {
-						createAdoptionAd (
-								bind.petName.getText ( ).toString ( ).trim ( ) ,
-								bind.petBreed.getText ( ).toString ( ).trim ( ) ,
-								bind.petAge.getText ( ).toString ( ).trim ( ) ,
-								bind.miscDetails.getText ( ).toString ( ).trim ( ) ,
-								bind.contactInfo.getText ( ).toString ( ).trim ( ) ,
-								"" );
-					}
-					else {
-						addPet (
-								bind.petName.getText ( ).toString ( ).trim ( ) ,
-								bind.petBreed.getText ( ).toString ( ).trim ( ) ,
-								bind.petAge.getText ( ).toString ( ).trim ( ) ,
-								baseColor ,
-								"" );
-					}
+					addPet ( baseColor , "" );
 				}
 			}
 		} );
@@ -173,33 +165,22 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 					}
 
 					if ( from.equals ( "adopt" ) ) {
-						createAdoptionAd (
-								bind.petName.getText ( ).toString ( ).trim ( ) ,
-								bind.petBreed.getText ( ).toString ( ).trim ( ) ,
-								bind.petAge.getText ( ).toString ( ).trim ( ) ,
-								bind.miscDetails.getText ( ).toString ( ).trim ( ) ,
-								bind.contactInfo.getText ( ).toString ( ).trim ( ) ,
-								downloadUri );
+						createAdoptionAd ( downloadUri );
 					}
 					else {
-						addPet (
-								bind.petName.getText ( ).toString ( ).trim ( ) ,
-								bind.petBreed.getText ( ).toString ( ).trim ( ) ,
-								bind.petAge.getText ( ).toString ( ).trim ( ) ,
-								baseColor ,
-								downloadUri );
+						addPet ( baseColor , downloadUri );
 					}
 				} );
 	}
 
-	private void createAdoptionAd ( String name , String breed , String age , String details , String contact , String image ) {
-		Alerts.log(TAG, "lala");
+	private void createAdoptionAd ( String image ) {
+		Alerts.log ( TAG , "lala" );
 		HashMap < String, String > adoptMap = new HashMap <> ( );
-		adoptMap.put ( "name" , name );
-		adoptMap.put ( "breed" , breed );
-		adoptMap.put ( "age" , age );
-		adoptMap.put ( "details" , details );
-		adoptMap.put ( "contact" , contact );
+		adoptMap.put ( "name" , bind.petName.getText ( ).toString ( ).trim ( ) );
+		adoptMap.put ( "breed" , bind.petBreed.getText ( ).toString ( ).trim ( ) );
+		adoptMap.put ( "age" , bind.petAge.getText ( ).toString ( ).trim ( ) );
+		adoptMap.put ( "details" , bind.miscDetails.getText ( ).toString ( ).trim ( ) );
+		adoptMap.put ( "contact" , bind.contactInfo.getText ( ).toString ( ).trim ( ) );
 		adoptMap.put ( "image" , image );
 		adoptMap.put ( "timestamp" , "" + System.currentTimeMillis ( ) );
 
@@ -227,12 +208,12 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 		} );
 	}
 
-	private void addPet ( String name , String breed , String age , String color , String image ) {
+	private void addPet ( String color , String image ) {
 
 		HashMap < String, String > taskMap = new HashMap <> ( );
-		taskMap.put ( "name" , name );
-		taskMap.put ( "age" , age );
-		taskMap.put ( "breed" , breed );
+		taskMap.put ( "name" , bind.petName.getText ( ).toString ( ).trim ( ) );
+		taskMap.put ( "breed" , bind.petBreed.getText ( ).toString ( ).trim ( ) );
+		taskMap.put ( "age" , bind.petAge.getText ( ).toString ( ).trim ( ) );
 		taskMap.put ( "image" , image );
 		taskMap.put ( "color" , color );
 

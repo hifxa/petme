@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.animation.AnticipateOvershootInterpolator;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import com.petme.app.R;
 import com.petme.app.databinding.ActivitySplashBinding;
 import com.petme.app.utils.Prefs;
 import com.petme.app.view.auth.AuthActivity;
@@ -65,7 +63,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.surface));
+//        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.surface));
 
 
         bind.onboardingButton.setOnClickListener(view -> {

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.navigation.Navigation;
 
 import com.google.firebase.database.DataSnapshot;
@@ -37,13 +36,8 @@ public class AdoptFragment extends BaseFragment < FragmentAdoptBinding > {
 	public void onViewCreated ( @NonNull View view , @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated ( view , savedInstanceState );
 
-
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
 		bind.header.getTitle ( ).setText ( "Adopt" );
-
-		bind.header.getRootLayout().setBackgroundTintList(ContextCompat.getColorStateList(mCtx,R.color.adopt));
-		bind.header.getBack ( ).setImageTintList(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
-		bind.header.getTitle ( ).setTextColor(ContextCompat.getColorStateList(mCtx,R.color.onAdopt));
 
 		bind.newAdoptButton.setOnClickListener ( v -> {
 			Bundle mBundle = new Bundle ( );

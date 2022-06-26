@@ -66,8 +66,8 @@
 	<style name = "Button" parent = "TextAppearance.MaterialComponents.Button" >
 		<item name = "fontFamily" >@font/poppins</item >
 		<item name = "android:fontFamily" >@font/poppins</item >
-		<item name = "android:textSize" >14sp</item >
 		<item name = "android:textStyle" >bold</item >
+		<item name = "android:textSize" >14sp</item >
 	</style >
 
 	<style name = "Caption" parent = "TextAppearance.MaterialComponents.Caption" >

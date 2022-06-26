@@ -1,16 +1,19 @@
 package com.petme.app.view.dash;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
-import com.petme.app.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-public class FeedbackFragment extends Fragment {
+import com.petme.app.base.BaseFragment;
+import com.petme.app.databinding.FragmentFeedbackBinding;
+
+public class FeedbackFragment extends BaseFragment < FragmentFeedbackBinding > {
 
 
+	@Override
+	public FragmentFeedbackBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
+		return FragmentFeedbackBinding.inflate ( inflater , container , false );
+	}
 }

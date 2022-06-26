@@ -113,15 +113,11 @@
 
 				<com.google.android.material.button.MaterialButton
 					android:id = "@+id/login"
+					style = "@style/appBtn"
 					android:layout_width = "match_parent"
 					android:layout_height = "wrap_content"
 					android:layout_marginTop = "24dp"
-					android:padding = "18dp"
-					android:text = "Login"
-					android:textAppearance = "@style/Button"
-					android:textColor = "@color/white"
-					android:textStyle = "bold"
-					app:cornerRadius = "32dp" />
+					android:text = "Login" />
 
 				<com.google.android.flexbox.FlexboxLayout
 					android:layout_width = "match_parent"
