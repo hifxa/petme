@@ -72,7 +72,7 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		super.onViewCreated ( view , savedInstanceState );
 
 		bind.header.getBack ( ).setOnClickListener ( v -> Navigation.findNavController ( v ).popBackStack ( ) );
-		bind.header.getTitle ( ).setText ( "Find Nearest Vet" );
+		bind.header.getTitle ( ).setText ( "Find Nearest Shop/Vet" );
 
 		bind.header.getRootLayout ( ).setBackgroundTintList ( ContextCompat.getColorStateList ( mCtx , R.color.onShopContainer ) );
 		bind.header.getBack ( ).setImageTintList ( ContextCompat.getColorStateList ( mCtx , R.color.shopContainer ) );

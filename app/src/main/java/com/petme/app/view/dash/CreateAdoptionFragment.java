@@ -193,6 +193,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 	}
 
 	private void createAdoptionAd ( String name , String breed , String age , String details , String contact , String image ) {
+		Alerts.log(TAG, "lala");
 		HashMap < String, String > adoptMap = new HashMap <> ( );
 		adoptMap.put ( "name" , name );
 		adoptMap.put ( "breed" , breed );

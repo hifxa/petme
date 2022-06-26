@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
@@ -44,6 +45,7 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 		bind.topBar.setOnMenuItemClickListener ( item -> {
 			switch ( item.getItemId ( ) ) {
 				case R.id.about:
+					Navigation.findNavController(bind.getRoot()).navigate(R.id.feedbackFragment);
 					break;
 
 				case R.id.logout:

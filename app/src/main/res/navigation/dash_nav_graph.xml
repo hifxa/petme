@@ -103,7 +103,8 @@
 	<fragment
 		android:id = "@+id/createFoundFragment"
 		android:name = "com.petme.app.view.dash.lostandfound.CreateFoundFragment"
-		android:label = "CreateFoundFragment" />
+		android:label = "CreateFoundFragment"
+		tools:layout="@layout/fragment_create_found"/>
 	<fragment
 		android:id = "@+id/chat"
 		android:name = "com.petme.app.view.dash.ChatListFragment"
@@ -112,6 +113,12 @@
 	<fragment
 		android:id="@+id/createLostFragment"
 		android:name="com.petme.app.view.dash.lostandfound.CreateLostFragment"
-		android:label="CreateLostFragment" />
+		android:label="CreateLostFragment"
+		tools:layout="@layout/fragment_create_lost"/>
+	<fragment
+		android:id="@+id/feedbackFragment"
+		android:name="com.petme.app.view.dash.FeedbackFragment"
+		android:label="FeedbackFragment"
+		tools:layout="@layout/fragment_feedback"/>
 
 </navigation >
