@@ -1,5 +1,6 @@
 package com.petme.app.view.dash;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.petme.app.controllers.AdoptAdapter;
 import com.petme.app.databinding.FragmentAdoptBinding;
 import com.petme.app.model.AdoptModel;
 import com.petme.app.utils.Alerts;
+import com.petme.app.view.ChatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,7 @@ public class AdoptFragment extends BaseFragment < FragmentAdoptBinding > {
 		} );
 
 		mAdapter = new AdoptAdapter ( mCtx , mList , ( pos , type ) -> {
+			startActivity ( new Intent( mCtx , ChatActivity.class ).putExtra("receiverId", type) );
 		} );
 
 		bind.taskRecycler.setAdapter ( mAdapter );

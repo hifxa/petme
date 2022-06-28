@@ -8,7 +8,16 @@ public class AdoptModel {
 	String details;
 	String image;
 	String name;
+	String userId;
 	String timestamp;
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getImage ( ) {
 		return image;

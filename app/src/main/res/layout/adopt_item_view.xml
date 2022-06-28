@@ -99,6 +99,19 @@
 			android:text = "24/5/2022"
 			android:textColor = "@color/onBackground" />
 
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/getInTouch"
+			android:layout_width="wrap_content"
+			style="@style/appBtn"
+			android:paddingStart="12dp"
+			android:paddingEnd="12dp"
+			android:paddingTop="4dp"
+			android:padding="4dp"
+			android:paddingBottom="4dp"
+			android:text="Get In Touch"
+			app:backgroundTint="@color/adopt"
+			android:layout_height="wrap_content"/>
+
 	</LinearLayout >
 
 </com.google.android.material.card.MaterialCardView >

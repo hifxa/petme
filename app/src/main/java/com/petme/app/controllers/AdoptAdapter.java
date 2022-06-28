@@ -53,6 +53,8 @@ public class AdoptAdapter extends RecyclerView.Adapter < AdoptAdapter.AdoptAdapt
 			holder.bind.petContact.setText ( adopt.getContact ( ) );
 			holder.bind.petDate.setText ( formatTime ( Long.parseLong ( adopt.getTimestamp ( ) ) ) );
 
+			holder.bind.getInTouch.setOnClickListener(view -> mClicks.onItemClick(position,adopt.getUserId()));
+
 			Picasso.get ( ).load ( adopt.getImage ( ) ).placeholder ( R.drawable.pet ).error ( R.drawable.pet ).into ( holder.bind.petImg );
 		}
 		catch ( Exception e ) {

@@ -181,6 +181,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 		adoptMap.put ( "age" , bind.petAge.getText ( ).toString ( ).trim ( ) );
 		adoptMap.put ( "details" , bind.miscDetails.getText ( ).toString ( ).trim ( ) );
 		adoptMap.put ( "contact" , bind.contactInfo.getText ( ).toString ( ).trim ( ) );
+		adoptMap.put ( "userId", new Prefs(mCtx).getUserId());
 		adoptMap.put ( "image" , image );
 		adoptMap.put ( "timestamp" , "" + System.currentTimeMillis ( ) );
 

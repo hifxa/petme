@@ -67,7 +67,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
         bind.onboardingButton.setOnClickListener(view -> {
-            startActivity(new Intent(this, AuthActivity.class));
+            startActivity(new Intent(this, OnboardingActivity.class));
             finishAfterTransition();
         });
     }

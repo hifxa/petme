@@ -69,6 +69,7 @@ dependencies {
 
     //THIRD PARTY DEPENDENCIES
     implementation 'com.guolindev.permissionx:permissionx:1.6.4'
+    implementation 'com.github.ErrorxCode:ModernOnboarding:1.0.0'
     implementation 'com.github.Dhaval2404:ColorPicker:2.3'
     implementation 'com.github.Drjacky:ImagePicker:2.1.15'// image picker
     implementation 'com.github.ybq:Android-SpinKit:1.4.0' // custom loaders

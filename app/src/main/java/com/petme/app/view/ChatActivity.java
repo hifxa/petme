@@ -49,7 +49,7 @@ public class ChatActivity extends BaseActivity {
 	private final RecyclerClicks chatCLicks = ( pos , type ) -> {
 
 	};
-	private final String receiverId = "123456";
+	private String receiverId = "";
 	private String receiverChatKey = "";
 	private String senderChatKey = "";
 	private ActivityChatBinding bind;
@@ -95,7 +95,7 @@ public class ChatActivity extends BaseActivity {
 		setContentView ( bind.getRoot ( ) );
 
 		senderId = new Prefs ( this ).getUserId ( );
-//		receiverId = getIntent ( ).getStringExtra ( "receiverId" );
+		receiverId = getIntent ( ).getStringExtra ( "receiverId" );
 		setSupportActionBar ( bind.toolbar );
 
 		bind.header.getBack().setOnClickListener(view -> Navigation.findNavController(view).popBackStack());

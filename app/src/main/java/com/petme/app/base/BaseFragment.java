@@ -150,6 +150,8 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 		public static final StorageReference lostPetImageRef = FirebaseStorage.getInstance ( ).getReference ( "lost_pet_images" );
 		public static final DatabaseReference lostDbRef = FirebaseDatabase.getInstance ( ).getReference ( "lost" );
 
+		public static final DatabaseReference feedbackRef = FirebaseDatabase.getInstance ( ).getReference ( "feedback" );
+
     }
 
 }
