@@ -1,38 +1,107 @@
 package com.petme.app.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.petme.app.R;
+import com.petme.app.controllers.OnboardAdapter;
+import com.petme.app.databinding.ActivityOnboardingBinding;
 import com.petme.app.view.auth.AuthActivity;
-import com.xcode.onboarding.OnBoarder;
 import com.xcode.onboarding.OnBoardingPage;
-import com.xcode.onboarding.OnFinishLastPage;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@SuppressLint ( "SetTextI18n" )
 public class OnboardingActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	List < OnBoardingPage > pages = new ArrayList <> ( );
+	TextView[] dots;
+	private ActivityOnboardingBinding bind;
+	private final ViewPager2.OnPageChangeCallback callback = new ViewPager2.OnPageChangeCallback ( ) {
+		@Override
+		public void onPageSelected ( int position ) {
 
-        List<OnBoardingPage> pages = new ArrayList<>();
-        pages.add(new OnBoardingPage(R.drawable.welcome_image,"NEARBY PET SHOPS","Nearby vets and pet shops are now just a click away"));
-        pages.add(new OnBoardingPage(R.drawable.welcome_image,"TASK LIST","Create your own pet to-do list."));
-        pages.add(new OnBoardingPage(R.drawable.welcome_image,"ADOPT PETS","Put up pets for adoption or connect with the ones you want to adopt."));
-        pages.add(new OnBoardingPage(R.drawable.welcome_image,"LOST AND FOUND","Posting lost or found ads has never been easier."));
+			if ( position != 0 ) {
+				dots[ position - 1 ].setTextColor ( ContextCompat.getColor ( OnboardingActivity.this , R.color.black_50 ) );
+			}
 
-        OnBoarder.startOnBoarding(this, pages,null);
+			if ( position < pages.size ( ) - 1 ) {
+				dots[ position + 1 ].setTextColor ( ContextCompat.getColor ( OnboardingActivity.this , R.color.black_50 ) );
+			}
 
-        OnBoarder.startOnBoarding(this, pages, new OnFinishLastPage() {
-            @Override
-            public void onNext() {
-                startActivity(new Intent(this, AuthActivity.class));
-            }
-        });
-    }
+			if ( position == pages.size ( ) - 1 ) {
+				bind.next.setText ( "Finish" );
+			}
+			else {
+				bind.next.setText ( "Next" );
+			}
+
+			dots[ position ].setTextColor ( ContextCompat.getColor ( OnboardingActivity.this , R.color.primary ) );
+		}
+	};
+
+	@Override
+	protected void onCreate ( Bundle savedInstanceState ) {
+		super.onCreate ( savedInstanceState );
+
+		WindowCompat.setDecorFitsSystemWindows ( getWindow ( ) , false );
+
+		getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( OnboardingActivity.this , android.R.color.transparent ) );
+		getWindow ( ).setNavigationBarColor ( ContextCompat.getColor ( OnboardingActivity.this , android.R.color.transparent ) );
+
+		bind = ActivityOnboardingBinding.inflate ( getLayoutInflater ( ) );
+		setContentView ( bind.getRoot ( ) );
+
+		OnboardAdapter adapter = new OnboardAdapter ( pages );
+
+		pages.add ( new OnBoardingPage ( R.drawable.splash_illus , R.color.primaryContainer , R.color.onPrimaryContainer ,
+				"PETME" , "Improve your work-life balance without compromising on the care your pet needs!" ) );
+
+		pages.add ( new OnBoardingPage ( R.drawable.shop_onboarding , R.color.shopContainer , R.color.onShop ,
+				"NEARBY PET SHOPS" , "Nearby vets and pet shops are now just a click away" ) );
+
+		pages.add ( new OnBoardingPage ( R.drawable.task_onboading , R.color.taskContainer , R.color.onTaskContainer ,
+				"TASK LIST" , "Create your own pet to-do list." ) );
+
+		pages.add ( new OnBoardingPage ( R.drawable.adoptonboading , R.color.adoptContainer , R.color.onAdoptContainer ,
+				"ADOPT PETS" , "Put up pets for adoption or connect with the ones you want to adopt." ) );
+
+		pages.add ( new OnBoardingPage ( R.drawable.lost_and_found_onboarding , R.color.lostFoundContainer , R.color.onLostFoundContainer ,
+				"LOST AND FOUND" , "Posting lost or found ads has never been easier." ) );
+
+		dots = new TextView[ pages.size ( ) ];
+
+		for ( int i = 0 ; i < dots.length ; i++ ) {
+			dots[ i ] = new TextView ( this );
+			dots[ i ].setText ( "•" );
+			dots[ i ].setTextSize ( 50 );
+			dots[ i ].setTextColor ( ContextCompat.getColor ( OnboardingActivity.this , R.color.black_50 ) );
+			bind.indicator.addView ( dots[ i ] );
+		}
+
+		bind.viewpager.setAdapter ( adapter );
+		bind.viewpager.registerOnPageChangeCallback ( callback );
+
+		bind.next.setOnClickListener ( v -> {
+			int currentPage = bind.viewpager.getCurrentItem ( );
+
+			if ( currentPage == pages.size ( ) - 1 ) {
+				startActivity ( new Intent ( this , AuthActivity.class ) );
+				finishAfterTransition ();
+			}
+			else {
+				bind.viewpager.setCurrentItem ( currentPage + 1 );
+			}
+		} );
+
+	}
 }

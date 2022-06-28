@@ -23,7 +23,6 @@
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_login.xml" value="0.2359375" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_login1.xml" value="0.264" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_onboarding.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/activity_splash.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/add_task_sheet.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/hifza/AndroidStudioProjects/PetMe/app/src/main/res/layout/adopt_item_view.xml" value="0.4" />
@@ -80,8 +79,10 @@
         <entry key="..\:/petme/app/src/main/res/drawable/pet.xml" value="0.3355" />
         <entry key="..\:/petme/app/src/main/res/drawable/pink_gradient.xml" value="0.228" />
         <entry key="..\:/petme/app/src/main/res/drawable/splash_bg.xml" value="0.228" />
+        <entry key="..\:/petme/app/src/main/res/drawable/splash_illus.xml" value="0.228" />
         <entry key="..\:/petme/app/src/main/res/layout/activity_chat.xml" value="0.29252849303503586" />
         <entry key="..\:/petme/app/src/main/res/layout/activity_dash.xml" value="0.29615384615384616" />
+        <entry key="..\:/petme/app/src/main/res/layout/activity_onboarding.xml" value="0.29252849303503586" />
         <entry key="..\:/petme/app/src/main/res/layout/activity_splash.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/add_adopt_sheet.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/add_task_sheet.xml" value="0.29615384615384616" />
@@ -106,6 +107,7 @@
         <entry key="..\:/petme/app/src/main/res/layout/header_view.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/home_item_card.xml" value="0.29615384615384616" />
         <entry key="..\:/petme/app/src/main/res/layout/no_data_view.xml" value="0.33" />
+        <entry key="..\:/petme/app/src/main/res/layout/onboarding_page.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/receiver_chat_item.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/sender_chat_item.xml" value="0.29628046173578454" />
         <entry key="..\:/petme/app/src/main/res/layout/task_item_view.xml" value="0.5" />

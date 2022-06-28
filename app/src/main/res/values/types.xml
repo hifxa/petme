@@ -42,7 +42,7 @@
 		<item name = "fontFamily" >@font/playfair_display</item >
 		<item name = "android:textStyle" >bold</item >
 		<item name = "android:fontFamily" >@font/playfair_display</item >
-		<item name = "android:textSize" >14sp</item >
+		<item name = "android:textSize" >16sp</item >
 	</style >
 
 	<style name = "Subtitle2" parent = "TextAppearance.MaterialComponents.Subtitle2" >

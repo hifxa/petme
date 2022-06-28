@@ -17,6 +17,7 @@
         android:theme="@style/Theme.PetMe">
         <activity
             android:name=".view.OnboardingActivity"
+            android:theme="@style/Theme.Petme.Auth"
             android:exported="false" />
         <activity
             android:name=".view.ChatActivity"
