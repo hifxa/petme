@@ -1,5 +1,6 @@
 package com.petme.app.controllers;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -12,7 +13,6 @@ import com.petme.app.R;
 import com.petme.app.databinding.TaskItemViewBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.TaskModel;
-import com.petme.app.utils.Alerts;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,13 +37,12 @@ public class TaskAdapter extends RecyclerView.Adapter < TaskAdapter.TaskAdapterH
 		return new TaskAdapterHolder ( TaskItemViewBinding.bind ( LayoutInflater.from ( mCtx ).inflate ( R.layout.task_item_view , parent , false ) ) );
 	}
 
+	@SuppressLint ( "SetTextI18n" )
 	@Override
 	public void onBindViewHolder ( @NonNull TaskAdapterHolder holder , int position ) {
 
 		try {
 			TaskModel task = mList.get ( position );
-
-			Alerts.log ( "TAGS" , "INSIDE RECYCLER " + task.getTimestamp ( ) );
 
 			holder.bind.taskTitle.setText ( task.getTask ( ) );
 			holder.bind.tasskDesc.setText ( task.getDesc ( ) );

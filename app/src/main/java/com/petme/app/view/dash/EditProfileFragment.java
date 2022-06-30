@@ -103,9 +103,8 @@ public class EditProfileFragment extends BaseFragment < FragmentEditProfileBindi
 	}
 
 	private void uploadImage ( Uri uri ) {
-		StorageMetadata metadata = new StorageMetadata.Builder ( )
-				.setContentType ( "image/jpg" )
-				.build ( );
+		hideKeyboard ();
+		StorageMetadata metadata = new StorageMetadata.Builder ( ).setContentType ( "image/jpg" ).build ( );
 		String name = new Prefs ( mCtx ).getUserId ( ) + "_" + System.currentTimeMillis ( ) + ".jpeg";
 		StorageReference ref = FireRef.userProfileImageRef.child ( name );
 
@@ -125,7 +124,7 @@ public class EditProfileFragment extends BaseFragment < FragmentEditProfileBindi
 	}
 
 	private void updateProfile ( String image ) {
-
+		hideKeyboard ();
 		HashMap < String, Object > userMap = new HashMap <> ( );
 		userMap.put ( "email" , bind.email.getText ( ).toString ( ).trim ( ) );
 		userMap.put ( "phone" , bind.phone.getText ( ).toString ( ).trim ( ) );

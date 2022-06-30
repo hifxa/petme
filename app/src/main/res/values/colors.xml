@@ -56,25 +56,25 @@
 	<color name = "ucrop_color_widget_text" >@color/primary</color >
 	<color name = "ucrop_color_widget_background" >@color/surface</color >
 
-	<color name = "shop" >#FF8A65</color >
-	<color name = "onShop" >#F4511E</color >
-	<color name = "shopContainer" >#FFCCBC</color >
-	<color name = "onShopContainer" >#FF7043</color >
+	<color name = "shop" >#FF7043</color >
+	<color name = "onShop" >#D74113</color >
+	<color name = "shopContainer" >#FFD2C4</color >
+	<color name = "onShopContainer" >#FF6535</color >
 
 	<color name = "adopt" >#4CAF70</color >
-	<color name = "onAdopt" >#003918</color >
-	<color name = "adoptContainer" >#C8E6C9</color >
-	<color name = "onAdoptContainer" >#4CAF50</color >
+	<color name = "onAdopt" >#095F2E</color >
+	<color name = "adoptContainer" >#A5D6A7</color >
+	<color name = "onAdoptContainer" >#388E3C</color >
 
-	<color name = "lostFound" >#BA68C8</color >
+	<color name = "lostFound" >#D282DF</color >
 	<color name = "onLostFound" >#8E24AA</color >
 	<color name = "lostFoundContainer" >#E1BEE7</color >
 	<color name = "onLostFoundContainer" >#AB47BC</color >
 
 	<color name = "task" >#4DD0E1</color >
-	<color name = "onTask" >#143951</color >
+	<color name = "onTask" >#115A89</color >
 	<color name = "taskContainer" >#B2EBF2</color >
-	<color name = "onTaskContainer" >#00ACC1</color >
+	<color name = "onTaskContainer" >#0079B3</color >
 
 	<color name = "positiveButtonTextColor" >@color/successColor</color >
 	<color name = "negativeButtonTextColor" >@color/error</color >

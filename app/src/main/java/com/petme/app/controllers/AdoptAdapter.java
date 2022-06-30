@@ -12,7 +12,6 @@ import com.petme.app.R;
 import com.petme.app.databinding.AdoptItemViewBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.AdoptModel;
-import com.petme.app.utils.Alerts;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -43,8 +42,6 @@ public class AdoptAdapter extends RecyclerView.Adapter < AdoptAdapter.AdoptAdapt
 	public void onBindViewHolder ( @NonNull AdoptAdapterHolder holder , int position ) {
 		try {
 			AdoptModel adopt = mList.get ( position );
-
-			Alerts.log ( "TAGS" , "INSIDE RECYCLER " + adopt.getAge ( ) );
 
 			holder.bind.petBreed.setText ( adopt.getBreed ( ) );
 			holder.bind.petName.setText ( "Pet: " + adopt.getName ( ) );

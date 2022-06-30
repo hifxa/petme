@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -81,6 +82,11 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 		}
 
 		return picker.createIntent ( );
+	}
+
+	protected void hideKeyboard ( ) {
+		InputMethodManager inputManager = ( InputMethodManager ) requireActivity ().getSystemService ( Context.INPUT_METHOD_SERVICE );
+		inputManager.hideSoftInputFromWindow ( requireActivity ().getCurrentFocus ( ).getWindowToken ( ) , InputMethodManager.HIDE_NOT_ALWAYS );
 	}
 
 	protected UserModel getUserById ( String id ) {

@@ -11,7 +11,7 @@
 		android:background = "@color/taskContainer"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
-		app:bg_color = "@color/task"
+		app:bg_color = "@color/taskContainer"
 		app:bg_on_color = "@color/onTask"
 		app:layout_constraintTop_toTopOf = "parent" />
 
@@ -46,8 +46,8 @@
 		android:layout_margin = "16dp"
 		android:src = "@drawable/ic_note_2"
 		app:elevation = "2dp"
-		app:backgroundTint = "@color/task"
-		app:rippleColor="@color/taskContainer"
+		app:backgroundTint = "@color/taskContainer"
+		app:rippleColor="@color/onTaskContainer"
 		app:fabCustomSize = "50dp"
 		app:layout_constraintBottom_toBottomOf = "parent"
 		app:layout_constraintEnd_toEndOf = "parent"

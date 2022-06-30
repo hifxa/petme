@@ -88,6 +88,7 @@ public class LoginFragment extends BaseFragment < FragmentLoginBinding > {
 	// this is called twice, once when user clicks the button, and then once a new user is added
 	private void loginUser ( String email , String password ) {
 		bind.loader.setVisibility ( View.VISIBLE );
+		hideKeyboard ();
 		mAuth.signInWithEmailAndPassword ( email , password ).addOnCompleteListener ( task -> {
 			if ( task.isSuccessful ( ) ) {
 				Alerts.log ( TAG , "User Logged In: " + task.getResult ( ).getUser ( ).getEmail ( ) );

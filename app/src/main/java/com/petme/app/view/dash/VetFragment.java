@@ -24,8 +24,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.PagerSnapHelper;
 
 import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -45,7 +43,6 @@ import com.petme.app.base.BaseFragment;
 import com.petme.app.controllers.MapsShopAdapter;
 import com.petme.app.databinding.FragmentVetBinding;
 import com.petme.app.interfaces.AlertClicks;
-import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.PlacesResponse;
 import com.petme.app.utils.Alerts;
 
@@ -75,6 +72,8 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 
 		SupportMapFragment supportMapFragment = ( SupportMapFragment ) getChildFragmentManager ( ).findFragmentById ( R.id.map );
 		supportMapFragment.getMapAsync ( this );
+
+		new PagerSnapHelper ( ).attachToRecyclerView ( bind.shops );
 
 		checkIfLocationIsEnabled ( );
 	}
@@ -148,8 +147,6 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 		} );
 	}
 
-	//this is going to set a marker of the current location which is updated each and every time this is called
-
 	private BitmapDescriptor vectorToBitmap ( @DrawableRes int id , int color ) {
 		Drawable vectorDrawable = ContextCompat.getDrawable ( mCtx , id );
 		Bitmap bitmap = Bitmap.createBitmap ( vectorDrawable.getIntrinsicWidth ( ) , vectorDrawable.getIntrinsicHeight ( ) , Bitmap.Config.ARGB_8888 );
@@ -170,41 +167,32 @@ public class VetFragment extends BaseFragment < FragmentVetBinding > implements 
 				"&name=" + "pets" +
 				"&key=" + getResources ( ).getString ( R.string.api_key );
 
-		StringRequest mRequest = new StringRequest ( Request.Method.GET , url , new Response.Listener<String>() {
-			@Override
-			public void onResponse(String response) {
+		StringRequest mRequest = new StringRequest ( Request.Method.GET , url , response -> {
 
-				PlacesResponse mPlace = new Gson().fromJson(response, PlacesResponse.class);
+			PlacesResponse mPlace = new Gson ( ).fromJson ( response , PlacesResponse.class );
 
-				for (PlacesResponse.Results result : mPlace.results) {
-					LatLng latLng = new LatLng(result.geometry.location.lat, result.geometry.location.lng);
+			for ( PlacesResponse.Results result : mPlace.results ) {
 
-					MarkerOptions mOptions = new MarkerOptions ( )
-							.position ( latLng )
-							.title ( result.name )
-							.icon ( VetFragment.this.vectorToBitmap ( R.drawable.ic_baseline_location_on_24 , R.color.shop ) );
-					map.addMarker(mOptions);
-				}
+				Alerts.log ( TAG , "NAME: " + result.name );
+				LatLng latLng = new LatLng ( result.geometry.location.lat , result.geometry.location.lng );
 
-				mAdapter = new MapsShopAdapter(mCtx, mPlace.results, new RecyclerClicks() {
-					@Override
-					public void onItemClick(int pos, String type1) {
-
-					}
-				});
-				bind.shops.setAdapter(mAdapter);
-
-			new PagerSnapHelper( ).attachToRecyclerView ( bind.shops );
-
-				bind.shops.setVisibility(View.VISIBLE);
+				MarkerOptions mOptions = new MarkerOptions ( )
+						.position ( latLng )
+						.title ( result.name )
+						.icon ( VetFragment.this.vectorToBitmap ( R.drawable.ic_baseline_location_on_24 , R.color.shop ) );
+				map.addMarker ( mOptions );
 			}
-		}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				error.printStackTrace();
-				Alerts.log(TAG, "ERROR : " + error.getLocalizedMessage());
-			}
-		});
+
+			mAdapter = new MapsShopAdapter ( mCtx , mPlace.results , ( pos , type1 ) -> {
+
+			} );
+			bind.shops.setAdapter ( mAdapter );
+
+			bind.shops.setVisibility ( View.VISIBLE );
+		} , error -> {
+			error.printStackTrace ( );
+			Alerts.log ( TAG , "ERROR : " + error.getLocalizedMessage ( ) );
+		} );
 
 		Volley.newRequestQueue ( mCtx ).add ( mRequest );
 

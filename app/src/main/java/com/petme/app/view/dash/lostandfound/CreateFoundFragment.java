@@ -6,6 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
@@ -13,12 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.firebase.storage.StorageMetadata;
@@ -87,6 +85,7 @@ public class CreateFoundFragment extends BaseFragment <FragmentCreateFoundBindin
     }
 
     private void createFoundAdv ( String animal , String breed , String foundLoc , String currentlyAt , String contact , String image ) {
+        hideKeyboard ();
         HashMap<String, String> foundMap = new HashMap<>();
         foundMap.put("name", animal);
         foundMap.put("breed", breed);
@@ -119,6 +118,7 @@ public class CreateFoundFragment extends BaseFragment <FragmentCreateFoundBindin
     }
 
     private void uploadImage ( Uri uri ) {
+        hideKeyboard ();
         StorageMetadata metadata = new StorageMetadata.Builder ( ).setContentType ( "image/jpg" ).build ( );
 
         String name = System.currentTimeMillis ( ) + ".jpeg";

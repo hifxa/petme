@@ -146,6 +146,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 	}
 
 	private void uploadImage ( Uri uri ) {
+		hideKeyboard ();
 		StorageMetadata metadata = new StorageMetadata.Builder ( ).setContentType ( "image/jpg" ).build ( );
 
 		String name = System.currentTimeMillis ( ) + ".jpeg";
@@ -174,7 +175,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 	}
 
 	private void createAdoptionAd ( String image ) {
-		Alerts.log ( TAG , "lala" );
+		hideKeyboard ();
 		HashMap < String, String > adoptMap = new HashMap <> ( );
 		adoptMap.put ( "name" , bind.petName.getText ( ).toString ( ).trim ( ) );
 		adoptMap.put ( "breed" , bind.petBreed.getText ( ).toString ( ).trim ( ) );
@@ -210,7 +211,7 @@ public class CreateAdoptionFragment extends BaseFragment < FragmentCreateAdoptio
 	}
 
 	private void addPet ( String color , String image ) {
-
+		hideKeyboard ();
 		HashMap < String, String > taskMap = new HashMap <> ( );
 		taskMap.put ( "name" , bind.petName.getText ( ).toString ( ).trim ( ) );
 		taskMap.put ( "breed" , bind.petBreed.getText ( ).toString ( ).trim ( ) );

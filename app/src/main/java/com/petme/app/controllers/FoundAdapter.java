@@ -11,7 +11,6 @@ import com.petme.app.R;
 import com.petme.app.databinding.FoundItemViewBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.FoundModel;
-import com.petme.app.utils.Alerts;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -42,9 +41,6 @@ public class FoundAdapter extends RecyclerView.Adapter<FoundAdapter.FoundAdapter
 
         try {
             FoundModel found = mList.get(position);
-
-            Alerts.log("TAGS", "INSIDE RECYCLER " + found.getPetAnimal());
-
             holder.bind.petBreed.setText(found.getBreed());
             holder.bind.petAnimal.setText("Pet: " + found.getPetAnimal());
             holder.bind.foundLocation.setText(found.getFoundLocation());

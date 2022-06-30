@@ -37,6 +37,8 @@ public class FeedbackFragment extends BaseFragment < FragmentFeedbackBinding > {
 	}
 
 	private void sendFeedback(){
+		hideKeyboard ();
+
 		HashMap<String,String> feedback = new HashMap<>();
 		feedback.put("name",bind.name.getText().toString().trim());
 		feedback.put("number",bind.email.getText().toString().trim());

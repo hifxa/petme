@@ -10,11 +10,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.petme.app.base.BaseFragment;
+import com.petme.app.controllers.ChatListAdapter;
 import com.petme.app.databinding.FragmentChatListBinding;
+import com.petme.app.interfaces.RecyclerClicks;
+import com.petme.app.model.ChatModel;
+import com.petme.app.utils.Prefs;
 import com.petme.app.view.ChatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChatListFragment extends BaseFragment < FragmentChatListBinding > {
+
+	List < ChatModel > mList = new ArrayList <> ( );
+	ChatListAdapter mAdapter;
 
 	@Override
 	public FragmentChatListBinding getBind ( @NonNull LayoutInflater inflater , @Nullable ViewGroup container ) {
@@ -25,6 +38,58 @@ public class ChatListFragment extends BaseFragment < FragmentChatListBinding > {
 	public void onViewCreated ( @NonNull View view , @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated ( view , savedInstanceState );
 
+		mAdapter = new ChatListAdapter ( mCtx , mList , new RecyclerClicks ( ) {
+
+			@Override
+			public void onItemClick ( int pos , String type ) {
+
+			}
+		} );
+
 		bind.chat.setOnClickListener ( v -> startActivity ( new Intent ( mCtx , ChatActivity.class ) ) );
 	}
+
+	@Override
+	public void onStart ( ) {
+		super.onStart ( );
+
+		getChats ( );
+	}
+
+	private void getChats ( ) {
+
+		FireRef.chatListRef.child ( new Prefs ( mCtx ).getUserId ( ) ).addValueEventListener ( new ValueEventListener ( ) {
+			@Override
+			public void onDataChange ( @NonNull DataSnapshot snap ) {
+				try {
+					mList.clear ( );
+					for ( DataSnapshot mData : snap.getChildren ( ) ) {
+						mList.add ( mData.getValue ( ChatModel.class ) );
+					}
+
+					if ( mList.isEmpty ( ) ) {
+						bind.noData.getRoot ( ).setVisibility ( View.VISIBLE );
+						bind.chatsRecycler.setVisibility ( View.GONE );
+					}
+					else {
+						bind.noData.getRoot ( ).setVisibility ( View.GONE );
+						bind.chatsRecycler.setVisibility ( View.VISIBLE );
+					}
+
+					mAdapter.notifyDataSetChanged ( );
+				}
+				catch ( Exception e ) {
+					e.printStackTrace ( );
+					bind.noData.getRoot ( ).setVisibility ( View.VISIBLE );
+					bind.chatsRecycler.setVisibility ( View.GONE );
+				}
+			}
+
+			@Override
+			public void onCancelled ( @NonNull DatabaseError error ) {
+
+			}
+		} );
+	}
+
 }

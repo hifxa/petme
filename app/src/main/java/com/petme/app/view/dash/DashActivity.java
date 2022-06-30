@@ -8,7 +8,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -17,11 +16,12 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.petme.app.R;
+import com.petme.app.base.BaseActivity;
 import com.petme.app.databinding.ActivityDashBinding;
 import com.petme.app.utils.Prefs;
 import com.petme.app.view.auth.AuthActivity;
 
-public class DashActivity extends AppCompatActivity implements NavController.OnDestinationChangedListener {
+public class DashActivity extends BaseActivity implements NavController.OnDestinationChangedListener {
 
 	ActivityDashBinding bind;
 	NavHostFragment navView;
@@ -68,6 +68,7 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 	@SuppressLint ( "NonConstantResourceId" )
 	@Override
 	public void onDestinationChanged ( @NonNull NavController navController , @NonNull NavDestination navDestination , @Nullable Bundle bundle ) {
+		hideKeyboard ( );
 		switch ( navDestination.getId ( ) ) {
 			case R.id.home:
 			case R.id.profile:
@@ -77,7 +78,7 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 				break;
 			case R.id.vetFragment:
 				showHideBar ( true );
-				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.onShopContainer ) );
+				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.shopContainer ) );
 				break;
 			case R.id.createLostFragment:
 			case R.id.createFoundFragment:
@@ -87,19 +88,16 @@ public class DashActivity extends AppCompatActivity implements NavController.OnD
 				break;
 			case R.id.taskFragment:
 				showHideBar ( true );
-				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.task ) );
+				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.taskContainer ) );
 				break;
 			case R.id.shopsFragment:
 				showHideBar ( true );
 				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.shop ) );
 				break;
 			case R.id.adoptFragment:
-				showHideBar ( true );
-				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.adopt ) );
-				break;
 			case R.id.createAdoptionFragment:
 				showHideBar ( true );
-				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.adopt ) );
+				getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( this , R.color.adoptContainer ) );
 				break;
 			case R.id.matingFragment:
 				showHideBar ( true );

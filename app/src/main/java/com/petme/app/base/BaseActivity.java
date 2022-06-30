@@ -1,6 +1,8 @@
 package com.petme.app.base;
 
+import android.content.Context;
 import android.content.Intent;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,5 +28,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 		}
 
 		return picker.createIntent ( );
+	}
+
+	protected void hideKeyboard ( ) {
+		InputMethodManager inputManager = ( InputMethodManager ) getSystemService ( Context.INPUT_METHOD_SERVICE );
+		inputManager.hideSoftInputFromWindow ( getCurrentFocus ( ).getWindowToken ( ) , InputMethodManager.HIDE_NOT_ALWAYS );
 	}
 }

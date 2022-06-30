@@ -92,7 +92,7 @@ public class TaskFragment extends BaseFragment < FragmentTaskBinding > {
 	}
 
 	private void addNewTask ( ) {
-
+		hideKeyboard ();
 		AddTaskSheetBinding sBind = AddTaskSheetBinding.bind ( getLayoutInflater ( ).inflate ( R.layout.add_task_sheet , bind.getRoot ( ) , false ) );
 		BottomSheetDialog mSheet = new BottomSheetDialog ( mCtx );
 		mSheet.setContentView ( sBind.getRoot ( ) );
