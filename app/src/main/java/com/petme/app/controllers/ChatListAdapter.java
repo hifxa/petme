@@ -11,6 +11,7 @@ import com.petme.app.R;
 import com.petme.app.databinding.ChatListItemBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.ChatModel;
+import com.petme.app.utils.Prefs;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +24,7 @@ public class ChatListAdapter extends RecyclerView.Adapter < ChatListAdapter.Task
 	private final RecyclerClicks mClicks;
 	private final Context mCtx;
 
-	public ChatListAdapter ( Context mCtx , List < ChatModel > mList , RecyclerClicks mClicks) {
+	public ChatListAdapter ( Context mCtx , List < ChatModel > mList , RecyclerClicks mClicks ) {
 		this.mList = mList;
 		this.mCtx = mCtx;
 		this.mClicks = mClicks;
@@ -41,7 +42,7 @@ public class ChatListAdapter extends RecyclerView.Adapter < ChatListAdapter.Task
 		try {
 			ChatModel model = mList.get ( position );
 
-			holder.bind.senderName.setText ( model.getSender_id ( ) );
+			holder.bind.senderName.setText ( model.getReceiverName ( ) );
 			holder.bind.date.setText ( formatTime ( Long.parseLong ( model.getTimestamp ( ) ) ) );
 
 
@@ -52,7 +53,14 @@ public class ChatListAdapter extends RecyclerView.Adapter < ChatListAdapter.Task
 				holder.bind.message.setText ( model.getMessage ( ) );
 			}
 
-			//holder.bind.taskCheckBox.setOnCheckedChangeListener(chat.isCheck());
+			holder.bind.getRoot ( ).setOnClickListener ( v -> {
+				if ( model.getSender_id ( ).equals ( new Prefs ( mCtx ).getUserId ( ) ) ) {
+					mClicks.onItemClick ( position , model.getReceiver_id ( ) );
+				}
+				else {
+					mClicks.onItemClick ( position , model.getSender_id ( ) );
+				}
+			} );
 		}
 		catch ( Exception e ) {
 			e.printStackTrace ( );

@@ -32,6 +32,7 @@ import com.petme.app.databinding.AttachmentViewBinding;
 import com.petme.app.interfaces.ChatSelection;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.ChatModel;
+import com.petme.app.model.UserModel;
 import com.petme.app.utils.Alerts;
 import com.petme.app.utils.Prefs;
 
@@ -56,18 +57,6 @@ public class ChatActivity extends BaseActivity {
 	private ActionModeCall mCallback;
 	private ActionMode actionMode;
 	private String senderId = "";
-	ActivityResultLauncher < Intent > launcher = registerForActivityResult ( new ActivityResultContracts.StartActivityForResult ( ) , ( ActivityResult result ) -> {
-		if ( result.getResultCode ( ) == RESULT_OK ) {
-			Uri shareUri = result.getData ( ).getData ( );
-			bind.attachment.setVisibility ( View.VISIBLE );
-			bind.uploadImg.setImageURI ( shareUri );
-
-			uploadImage ( shareUri );
-		}
-		else if ( result.getResultCode ( ) == ImagePicker.RESULT_ERROR ) {
-
-		}
-	} );
 	private BottomSheetDialog attachSheet;
 	private ChatAdapter adapter;
 	private final ChatSelection chatSelect = new ChatSelection ( ) {
@@ -87,6 +76,19 @@ public class ChatActivity extends BaseActivity {
 			enableActionMode ( position );
 		}
 	};
+	private UserModel receiverModel;
+	ActivityResultLauncher < Intent > launcher = registerForActivityResult ( new ActivityResultContracts.StartActivityForResult ( ) , ( ActivityResult result ) -> {
+		if ( result.getResultCode ( ) == RESULT_OK ) {
+			Uri shareUri = result.getData ( ).getData ( );
+			bind.attachment.setVisibility ( View.VISIBLE );
+			bind.uploadImg.setImageURI ( shareUri );
+
+			uploadImage ( shareUri );
+		}
+		else if ( result.getResultCode ( ) == ImagePicker.RESULT_ERROR ) {
+
+		}
+	} );
 
 	@Override
 	protected void onCreate ( Bundle savedInstanceState ) {
@@ -98,10 +100,11 @@ public class ChatActivity extends BaseActivity {
 		receiverId = getIntent ( ).getStringExtra ( "receiverId" );
 		setSupportActionBar ( bind.toolbar );
 
-		bind.header.getBack().setOnClickListener(view -> Navigation.findNavController(view).popBackStack());
-		bind.header.getTitle().setText(receiverId);
+		bind.header.getBack ( ).setOnClickListener ( view -> Navigation.findNavController ( view ).popBackStack ( ) );
 
 		bind.header.getBack ( ).setOnClickListener ( v -> finishAfterTransition ( ) );
+
+		getUserById ( receiverId );
 
 		mCallback = new ActionModeCall ( );
 
@@ -119,6 +122,23 @@ public class ChatActivity extends BaseActivity {
 		} );
 
 		bind.chatBox.setEndIconOnClickListener ( v -> launcher.launch ( getImagePicker ( false ) ) );
+	}
+
+	private void getUserById ( String id ) {
+
+		BaseFragment.FireRef.userDbRef.child ( id ).addValueEventListener ( new ValueEventListener ( ) {
+			@Override
+			public void onDataChange ( @NonNull DataSnapshot snap ) {
+				receiverModel = snap.getValue ( UserModel.class );
+				bind.header.getTitle ( ).setText ( receiverModel.getName ( ) + "" );
+			}
+
+			@Override
+			public void onCancelled ( @NonNull DatabaseError error ) {
+				error.toException ( ).printStackTrace ( );
+			}
+		} );
+
 	}
 
 	private void showAttachmentSheet ( ) {
@@ -200,22 +220,24 @@ public class ChatActivity extends BaseActivity {
 	private void sendMessage ( String message , String type ) {
 		Map < String, String > chatMap = new HashMap <> ( );
 		chatMap.put ( "type" , type );
+		chatMap.put ( "receiverName" , receiverModel.getName ( ) );
 		chatMap.put ( "message" , message );
 		chatMap.put ( "sender_id" , new Prefs ( this ).getUserId ( ) );
+		chatMap.put ( "receiver_id" , receiverId );
 		chatMap.put ( "timestamp" , String.valueOf ( System.currentTimeMillis ( ) ) );
 
 		String pushKey = BaseFragment.FireRef.chatRef.push ( ).getKey ( );
 
 		BaseFragment.FireRef.chatRef.child ( senderChatKey ).child ( pushKey ).setValue ( chatMap ).addOnCompleteListener ( task -> {
 					if ( task.isSuccessful ( ) ) {
-						addToChatList ( chatMap , senderId );
+						addToChatList ( chatMap , senderId , receiverId );
 					}
 				} )
 				.addOnFailureListener ( e -> e.printStackTrace ( ) );
 
 		BaseFragment.FireRef.chatRef.child ( receiverChatKey ).child ( pushKey ).setValue ( chatMap ).addOnCompleteListener ( task -> {
 					if ( task.isSuccessful ( ) ) {
-						addToChatList ( chatMap , receiverId );
+						addToChatList ( chatMap , receiverId , senderId );
 					}
 				} )
 				.addOnFailureListener ( e -> e.printStackTrace ( ) );
@@ -254,8 +276,8 @@ public class ChatActivity extends BaseActivity {
 	}
 
 	// this will add the chats to the user's chat list, which they can access from the bottom menu
-	private void addToChatList ( Map < String, String > data , String id ) {
-		BaseFragment.FireRef.chatListRef.child ( id ).setValue ( data ).addOnCompleteListener ( task -> {
+	private void addToChatList ( Map < String, String > data , String senderId , String receiverId ) {
+		BaseFragment.FireRef.chatListRef.child ( senderId ).child ( receiverId ).setValue ( data ).addOnCompleteListener ( task -> {
 		} ).addOnFailureListener ( Throwable :: printStackTrace );
 	}
 

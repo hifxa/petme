@@ -5,9 +5,27 @@ import androidx.annotation.NonNull;
 public class ChatModel {
 
 	String sender_id;
+	String receiver_id;
 	String type;
 	String message;
 	String timestamp;
+	String receiverName;
+
+	public String getReceiver_id ( ) {
+		return receiver_id;
+	}
+
+	public void setReceiver_id ( String receiver_id ) {
+		this.receiver_id = receiver_id;
+	}
+
+	public String getReceiverName ( ) {
+		return receiverName;
+	}
+
+	public void setReceiverName ( String receiverName ) {
+		this.receiverName = receiverName;
+	}
 
 	public String getSender_id ( ) {
 		return sender_id;

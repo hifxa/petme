@@ -3,6 +3,7 @@ package com.petme.app.controllers;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import com.petme.app.R;
 import com.petme.app.databinding.AdoptItemViewBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.AdoptModel;
+import com.petme.app.utils.Prefs;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -50,7 +52,11 @@ public class AdoptAdapter extends RecyclerView.Adapter < AdoptAdapter.AdoptAdapt
 			holder.bind.petContact.setText ( adopt.getContact ( ) );
 			holder.bind.petDate.setText ( formatTime ( Long.parseLong ( adopt.getTimestamp ( ) ) ) );
 
-			holder.bind.getInTouch.setOnClickListener(view -> mClicks.onItemClick(position,adopt.getUserId()));
+			if ( adopt.getUserId ( ).equals ( new Prefs ( mCtx ).getUserId ( ) ) ) {
+				holder.bind.getInTouch.setVisibility ( View.GONE );
+			}
+
+			holder.bind.getInTouch.setOnClickListener ( view -> mClicks.onItemClick ( position , adopt.getUserId ( ) ) );
 
 			Picasso.get ( ).load ( adopt.getImage ( ) ).placeholder ( R.drawable.pet ).error ( R.drawable.pet ).into ( holder.bind.petImg );
 		}
