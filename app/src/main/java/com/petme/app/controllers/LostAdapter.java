@@ -42,7 +42,7 @@ public class LostAdapter extends RecyclerView.Adapter < LostAdapter.LostAdapterH
 			LostModel lost = mList.get ( position );
 
 			holder.bind.petBreed.setText ( lost.getBreed ( ) );
-			holder.bind.petAnimal.setText ( "Pet: " + lost.getPetAnimal ( ) );
+			holder.bind.petAnimal.setText ( "Pet: " + lost.getName ( ) );
 			holder.bind.lastSeen.setText ( lost.getLastSeen ( ) );
 			holder.bind.details.setText ( lost.getDetails ( ) );
 			holder.bind.petContact.setText ( lost.getContact ( ) );

@@ -2,6 +2,7 @@ package com.petme.app.view.dash.lostandfound;
 
 import static android.app.Activity.RESULT_OK;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -30,13 +31,14 @@ import com.petme.app.utils.Alerts;
 import java.util.HashMap;
 
 
+@SuppressWarnings ( "ConstantConditions" )
 public class CreateLostFragment extends BaseFragment < FragmentCreateLostBinding > {
 
 	Uri petImgUri;
 	ActivityResultLauncher < Intent > launcher = registerForActivityResult ( new ActivityResultContracts.StartActivityForResult ( ) , ( ActivityResult result ) -> {
 		if ( result.getResultCode ( ) == RESULT_OK ) {
 			petImgUri = result.getData ( ).getData ( );
-
+			bind.petImg.setImageTintList ( null );
 			bind.petImg.setImageURI ( petImgUri );
 		}
 		else if ( result.getResultCode ( ) == ImagePicker.RESULT_ERROR ) {
@@ -48,6 +50,7 @@ public class CreateLostFragment extends BaseFragment < FragmentCreateLostBinding
 		return FragmentCreateLostBinding.inflate ( inflater , container , false );
 	}
 
+	@SuppressLint ( "SetTextI18n" )
 	public void onViewCreated ( @NonNull View view , @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated ( view , savedInstanceState );
 
@@ -61,10 +64,7 @@ public class CreateLostFragment extends BaseFragment < FragmentCreateLostBinding
 		bind.petImg.setOnClickListener ( view1 -> launcher.launch ( getImagePicker ( false ) ) );
 
 		bind.addLostAdv.setOnClickListener ( view1 -> {
-			if ( petImgUri != null ) {
-				uploadImage ( petImgUri );
-			}
-			else if ( bind.petAnimal.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
+			if ( bind.petAnimal.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
 				Alerts.error ( mCtx , "Add your pet's name!" );
 			}
 			else if ( bind.lastSeen.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
@@ -76,8 +76,17 @@ public class CreateLostFragment extends BaseFragment < FragmentCreateLostBinding
 			else if ( bind.contactInfo.getText ( ).toString ( ).trim ( ).isEmpty ( ) ) {
 				Alerts.error ( mCtx , "Contact info cant be empty!" );
 			}
+			else if ( petImgUri != null ) {
+				uploadImage ( petImgUri );
+			}
 			else {
-
+				createLostAdv (
+						bind.petAnimal.getText ( ).toString ( ).trim ( ) ,
+						bind.petBreed.getText ( ).toString ( ).trim ( ) ,
+						bind.lastSeen.getText ( ).toString ( ).trim ( ) ,
+						bind.details.getText ( ).toString ( ).trim ( ) ,
+						bind.contactInfo.getText ( ).toString ( ).trim ( ) ,
+						"" );
 			}
 		} );
 	}

@@ -2,7 +2,7 @@ package com.petme.app.model;
 
 public class LostModel {
 
-    String petAnimal;
+    String name;
     String breed;
     String lastSeen;
     String details;
@@ -10,12 +10,12 @@ public class LostModel {
     String image;
     String timestamp;
 
-    public String getPetAnimal() {
-        return petAnimal;
+    public String getName () {
+        return name;
     }
 
-    public void setPetAnimal(String petAnimal) {
-        this.petAnimal = petAnimal;
+    public void setName ( String name ) {
+        this.name = name;
     }
 
     public String getBreed() {
