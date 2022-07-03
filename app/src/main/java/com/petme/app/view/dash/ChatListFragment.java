@@ -18,6 +18,7 @@ import com.petme.app.controllers.ChatListAdapter;
 import com.petme.app.databinding.FragmentChatListBinding;
 import com.petme.app.interfaces.RecyclerClicks;
 import com.petme.app.model.ChatModel;
+import com.petme.app.utils.Alerts;
 import com.petme.app.utils.Prefs;
 import com.petme.app.view.ChatActivity;
 
@@ -38,13 +39,12 @@ public class ChatListFragment extends BaseFragment < FragmentChatListBinding > {
 	public void onViewCreated ( @NonNull View view , @Nullable Bundle savedInstanceState ) {
 		super.onViewCreated ( view , savedInstanceState );
 
-		mAdapter = new ChatListAdapter ( mCtx , mList , new RecyclerClicks ( ) {
+		mAdapter = new ChatListAdapter ( mCtx , mList , ( pos , type ) -> {
+			startActivity ( new Intent( mCtx , ChatActivity.class ).putExtra("receiverId", type) );
 
-			@Override
-			public void onItemClick ( int pos , String type ) {
-
-			}
 		} );
+
+		bind.chatsRecycler.setAdapter ( mAdapter );
 
 		bind.chat.setOnClickListener ( v -> startActivity ( new Intent ( mCtx , ChatActivity.class ) ) );
 	}
@@ -64,6 +64,9 @@ public class ChatListFragment extends BaseFragment < FragmentChatListBinding > {
 				try {
 					mList.clear ( );
 					for ( DataSnapshot mData : snap.getChildren ( ) ) {
+
+						Alerts.log ( TAG,"DATA: "+mData.getValue () );
+
 						mList.add ( mData.getValue ( ChatModel.class ) );
 					}
 

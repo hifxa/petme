@@ -86,7 +86,7 @@ public abstract class BaseFragment < BIND extends ViewBinding > extends Fragment
 
 	protected void hideKeyboard ( ) {
 		InputMethodManager inputManager = ( InputMethodManager ) requireActivity ().getSystemService ( Context.INPUT_METHOD_SERVICE );
-		inputManager.hideSoftInputFromWindow ( requireActivity ().getCurrentFocus ( ).getWindowToken ( ) , InputMethodManager.HIDE_NOT_ALWAYS );
+		inputManager.hideSoftInputFromWindow ( requireActivity ().getWindow ().getDecorView ().getWindowToken ( ) , InputMethodManager.HIDE_NOT_ALWAYS );
 	}
 
 	protected UserModel getUserById ( String id ) {
