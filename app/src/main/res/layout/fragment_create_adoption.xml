@@ -208,7 +208,7 @@
 				android:textAppearance = "@style/Button"
 				android:textColor = "@color/onAdopt"
 				android:textStyle = "bold"
-				android:backgroundTint="@color/adopt"
+				android:backgroundTint="@color/adoptContainer"
 				app:cornerRadius = "32dp" />
 
 		</LinearLayout >

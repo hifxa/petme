@@ -2,7 +2,6 @@ package com.petme.app.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.petme.app.R;
@@ -55,16 +55,13 @@ public class OnboardingActivity extends AppCompatActivity {
 	protected void onCreate ( Bundle savedInstanceState ) {
 		super.onCreate ( savedInstanceState );
 
-//		WindowCompat.setDecorFitsSystemWindows ( getWindow ( ) , false );
+//		getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
+		WindowCompat.setDecorFitsSystemWindows ( getWindow ( ) , false );
 
-		getWindow ( ).clearFlags ( WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS );
-		getWindow ( ).setFlags ( WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS , WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS );
-		getWindow ( ).addFlags ( WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS );
-
-		getWindow ( ).getDecorView ( ).setSystemUiVisibility ( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE );
-
-		getWindow ( ).setStatusBarColor ( Color.TRANSPARENT );
-		getWindow ( ).setNavigationBarColor ( Color.TRANSPARENT );
+		getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( OnboardingActivity.this , android.R.color.transparent ) );
+		getWindow ( ).setNavigationBarColor ( ContextCompat.getColor ( OnboardingActivity.this , android.R.color.transparent ) );
 
 		bind = ActivityOnboardingBinding.inflate ( getLayoutInflater ( ) );
 		setContentView ( bind.getRoot ( ) );
@@ -104,7 +101,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
 			if ( currentPage == pages.size ( ) - 1 ) {
 				startActivity ( new Intent ( this , AuthActivity.class ) );
-				finishAfterTransition ( );
+				finishAfterTransition ();
 			}
 			else {
 				bind.viewpager.setCurrentItem ( currentPage + 1 );

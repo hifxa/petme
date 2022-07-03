@@ -48,6 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="16dp"
+                android:padding="16dp"
                 android:text="Pet Me is your first ever all in one pet care application that's easy to use and is lightweight too. All features embedded here have been given utmost thought with keeping a busy pet owner's life in mind.\n\nIf Pet Me helped you in any way we'll lovve to hear about. So dont be shy and send us a feedback about your experience. It matters for us! Looking forward to hearing from you.\n\nLove and Regards,\nTeam Pet Me!" />
 
             <LinearLayout
