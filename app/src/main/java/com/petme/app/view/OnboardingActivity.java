@@ -3,6 +3,8 @@ package com.petme.app.view;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +55,9 @@ public class OnboardingActivity extends AppCompatActivity {
 	protected void onCreate ( Bundle savedInstanceState ) {
 		super.onCreate ( savedInstanceState );
 
+//		getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//		getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
 		WindowCompat.setDecorFitsSystemWindows ( getWindow ( ) , false );
 
 		getWindow ( ).setStatusBarColor ( ContextCompat.getColor ( OnboardingActivity.this , android.R.color.transparent ) );

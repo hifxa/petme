@@ -12,8 +12,8 @@
 		android:id = "@+id/header"
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
-		app:bg_color = "@color/adopt"
-		app:bg_on_color = "@color/adoptContainer"
+		app:bg_color = "@color/adoptContainer"
+		app:bg_on_color = "@color/onAdopt"
 		app:layout_constraintTop_toTopOf = "parent" />
 
 	<ScrollView
@@ -208,7 +208,7 @@
 				android:textAppearance = "@style/Button"
 				android:textColor = "@color/onAdopt"
 				android:textStyle = "bold"
-				android:backgroundTint="@color/adopt"
+				android:backgroundTint="@color/adoptContainer"
 				app:cornerRadius = "32dp" />
 
 		</LinearLayout >
